@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reporte Técnico y Estratégico de Migración — Koon Artesanos</title>
+<meta name="description" content="Auditoría comparativa de seguridad, SEO técnico y rendimiento entre la tienda Shopify de Koon Artesanos y el nuevo sitio independiente koonartesanos.com, con roadmap de corrección priorizado.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ============================================================
+   KOON ARTESANOS — Hoja de estilo del reporte
+   Paleta derivada de la identidad de marca (piel / artesanía).
+   Ajusta estos tokens si el manual de marca define otros valores.
+   ============================================================ */
+:root{
+  --crema:#FBF8F3;
+  --papel:#FFFFFF;
+  --arena:#EFE6D9;
+  --arena-osc:#DFD0BC;
+  --cuero:#8A5A32;
+  --cuero-osc:#5A3A20;
+  --cuero-claro:#B98B5E;
+  --acento:#C0703A;
+  --tinta:#2A231E;
+  --tinta-suave:#5E534B;
+  --linea:#E3D8C8;
+
+  --alta:#B23A2E;
+  --alta-bg:#FBEDEB;
+  --media:#B8801F;
+  --media-bg:#FCF5E5;
+  --baja:#4F7A52;
+  --baja-bg:#EDF4EE;
+  --info:#3D6B8A;
+  --info-bg:#EDF3F7;
+
+  --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+  --serif:"Georgia","Times New Roman",Times,serif;
+
+  --r:10px;
+  --sombra:0 1px 2px rgba(42,35,30,.05),0 8px 24px -12px rgba(42,35,30,.18);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--crema);
+  color:var(--tinta);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- Portada ---------- */
+.portada{
+  background:linear-gradient(160deg,var(--cuero-osc) 0%,var(--cuero) 62%,var(--acento) 100%);
+  color:#fff;
+  padding:64px 32px 56px;
+  position:relative;
+  overflow:hidden;
+}
+.portada::after{
+  content:"";position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(115deg,rgba(255,255,255,.045) 0 2px,transparent 2px 9px);
+  pointer-events:none;
+}
+.portada-inner{max-width:1120px;margin:0 auto;position:relative;z-index:1}
+.marca{
+  font-family:var(--serif);
+  font-size:13px;letter-spacing:.34em;text-transform:uppercase;
+  opacity:.86;margin:0 0 22px;
+}
+.portada h1{
+  font-family:var(--serif);
+  font-size:clamp(30px,4.6vw,50px);
+  line-height:1.14;font-weight:400;margin:0 0 16px;max-width:20ch;
+}
+.subtitulo{font-size:clamp(15px,1.6vw,19px);opacity:.93;max-width:62ch;margin:0 0 34px}
+.meta-portada{
+  display:grid;gap:18px 40px;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  border-top:1px solid rgba(255,255,255,.28);padding-top:22px;max-width:900px;
+}
+.meta-portada div span{
+  display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.72;margin-bottom:3px;
+}
+.meta-portada div strong{font-weight:600;font-size:15px}
+
+/* ---------- Layout ---------- */
+.envoltorio{max-width:1120px;margin:0 auto;padding:0 32px 88px;display:grid;grid-template-columns:230px 1fr;gap:52px;align-items:start}
+@media(max-width:940px){.envoltorio{grid-template-columns:1fr;gap:0;padding:0 20px 64px}}
+
+/* ---------- Índice ---------- */
+.indice{position:sticky;top:26px;padding:26px 0 0;font-size:13.5px}
+.indice h2{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tinta-suave);margin:0 0 12px;font-weight:700}
+.indice ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--linea)}
+.indice li a{display:block;padding:6px 0 6px 14px;color:var(--tinta-suave);text-decoration:none;border-left:2px solid transparent;margin-left:-2px;transition:.15s}
+.indice li a:hover{color:var(--cuero);border-left-color:var(--cuero-claro)}
+.indice li a.activo{color:var(--cuero-osc);font-weight:600;border-left-color:var(--cuero)}
+@media(max-width:940px){.indice{position:static;margin:26px 0 8px}}
+
+/* ---------- Contenido ---------- */
+main{min-width:0;padding-top:26px}
+section{margin:0 0 60px;scroll-margin-top:22px}
+h2.bloque{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(22px,2.6vw,30px);
+  margin:0 0 6px;color:var(--cuero-osc);line-height:1.22;
+}
+.num{
+  display:inline-block;font-family:var(--sans);font-size:11px;font-weight:700;
+  letter-spacing:.18em;color:var(--acento);text-transform:uppercase;margin-bottom:8px;
+}
+.entradilla{color:var(--tinta-suave);margin:0 0 26px;max-width:74ch;font-size:15.5px}
+h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:34px 0 10px;color:var(--tinta)}
+h4{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-suave);margin:24px 0 8px}
+p{margin:0 0 14px;max-width:78ch}
+ul,ol{margin:0 0 14px;padding-left:20px;max-width:78ch}
+li{margin-bottom:6px}
+strong{color:var(--tinta)}
+code{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:.88em;background:var(--arena);padding:1.5px 5px;border-radius:4px;color:var(--cuero-osc);word-break:break-word}
+a{color:var(--cuero)}
+
+/* ---------- Componentes ---------- */
+.tarjeta{background:var(--papel);border:1px solid var(--linea);border-radius:var(--r);padding:22px 24px;box-shadow:var(--sombra);margin:0 0 18px}
+.rejilla{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:0 0 22px}
+
+.kpi{background:var(--papel);border:1px solid var(--linea);border-left:4px solid var(--cuero);border-radius:var(--r);padding:18px 20px}
+.kpi .cifra{font-family:var(--serif);font-size:32px;line-height:1.1;color:var(--cuero-osc);display:block;margin-bottom:4px}
+.kpi .etq{font-size:12.5px;color:var(--tinta-suave);line-height:1.45}
+
+.aviso{border-radius:var(--r);padding:18px 20px;margin:0 0 22px;font-size:14.5px;border:1px solid}
+.aviso p{max-width:none}
+.aviso :last-child{margin-bottom:0}
+.aviso strong.tit{display:block;margin-bottom:6px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.aviso.critico{background:var(--alta-bg);border-color:#E7C3BD;color:#6E2119}
+.aviso.critico strong.tit{color:var(--alta)}
+.aviso.nota{background:var(--info-bg);border-color:#C9DBE7;color:#28495D}
+.aviso.nota strong.tit{color:var(--info)}
+.aviso.ok{background:var(--baja-bg);border-color:#C7DCC9;color:#33532F}
+.aviso.ok strong.tit{color:var(--baja)}
+
+.tabla-envoltura{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--linea);border-radius:var(--r);background:var(--papel);margin:0 0 22px;box-shadow:var(--sombra)}
+table{border-collapse:collapse;width:100%;font-size:13.8px;min-width:600px}
+thead th{
+  background:var(--arena);color:var(--cuero-osc);text-align:left;
+  font-size:11px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;
+  padding:11px 14px;border-bottom:1px solid var(--arena-osc);white-space:nowrap;
+}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--linea);vertical-align:top;line-height:1.5}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:#FDFBF8}
+td.id{font-family:ui-monospace,monospace;font-size:12px;color:var(--tinta-suave);white-space:nowrap}
+
+.etiqueta{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:3px 8px;border-radius:100px;white-space:nowrap;line-height:1.5}
+.e-alta{background:var(--alta-bg);color:var(--alta);border:1px solid #E7C3BD}
+.e-media{background:var(--media-bg);color:var(--media);border:1px solid #EBD9AE}
+.e-baja{background:var(--baja-bg);color:var(--baja);border:1px solid #C7DCC9}
+.e-ok{background:var(--baja-bg);color:var(--baja);border:1px solid #C7DCC9}
+.e-pend{background:var(--arena);color:var(--tinta-suave);border:1px solid var(--arena-osc)}
+.e-ev{background:var(--info-bg);color:var(--info);border:1px solid #C9DBE7}
+
+.comparativa{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 22px}
+@media(max-width:720px){.comparativa{grid-template-columns:1fr}}
+.col-sitio{background:var(--papel);border:1px solid var(--linea);border-radius:var(--r);padding:20px 22px;box-shadow:var(--sombra)}
+.col-sitio.antes{border-top:4px solid var(--cuero-claro)}
+.col-sitio.ahora{border-top:4px solid var(--acento)}
+.col-sitio h4{margin-top:0}
+.col-sitio .url{font-family:ui-monospace,monospace;font-size:12.5px;color:var(--cuero);display:block;margin-bottom:12px;word-break:break-all}
+.col-sitio ul{padding-left:18px;margin-bottom:0;font-size:14px}
+
+pre{background:var(--tinta);color:#F3EAE0;padding:16px 18px;border-radius:var(--r);overflow-x:auto;font-size:12.8px;line-height:1.62;margin:0 0 18px;font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace}
+pre .c{color:#A99A8C}
+
+.fases{counter-reset:fase;margin:0 0 22px;padding:0;list-style:none}
+.fases > li{
+  position:relative;padding:0 0 26px 40px;border-left:2px solid var(--linea);margin-left:12px;
+}
+.fases > li:last-child{border-left-color:transparent;padding-bottom:0}
+.fases > li::before{
+  counter-increment:fase;content:counter(fase);
+  position:absolute;left:-15px;top:0;width:28px;height:28px;border-radius:50%;
+  background:var(--cuero);color:#fff;display:grid;place-items:center;
+  font-size:12.5px;font-weight:700;font-family:var(--sans);
+}
+.fases h4{margin:2px 0 4px;font-size:15px;letter-spacing:0;text-transform:none;color:var(--cuero-osc);font-weight:700}
+.fases .plazo{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-suave);display:block;margin-bottom:8px}
+
+footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:32px;font-size:13px;color:var(--tinta-suave)}
+.pie-inner{max-width:1120px;margin:0 auto}
+.pie-inner p{max-width:none;margin-bottom:8px}
+
+.leyenda{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:12.5px;color:var(--tinta-suave);margin:0 0 22px;align-items:center}
+
+@media print{
+  body{background:#fff;font-size:11pt}
+  .portada{padding:28px;background:var(--cuero-osc)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .envoltorio{display:block;padding:0 18px;max-width:none}
+  .indice{display:none}
+  section{page-break-inside:auto;margin-bottom:26px}
+  h2.bloque{page-break-after:avoid}
+  .tabla-envoltura,.tarjeta,.aviso,pre{page-break-inside:avoid;box-shadow:none}
+  table{min-width:0;font-size:9pt}
+  a{color:var(--tinta);text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="portada-inner">
+    <p class="marca">Koon Artesanos &middot; Alfa Jardín</p>
+    <h1>Reporte comparativo técnico y estratégico de migración</h1>
+    <p class="subtitulo">Evaluación de seguridad web, SEO técnico y rendimiento entre la tienda Shopify original y el nuevo sitio independiente <strong>koonartesanos.com</strong>, con roadmap de corrección priorizado.</p>
+    <div class="meta-portada">
+      <div><span>Cliente</span><strong>Koon Artesanos (Koon Blanc, S.A. de C.V.)</strong></div>
+      <div><span>Propiedades evaluadas</span><strong>3 hosts activos</strong></div>
+      <div><span>Fecha del análisis</span><strong>Septiembre 2026</strong></div>
+      <div><span>Alcance</span><strong>Seguridad · SEO · Rendimiento</strong></div>
+    </div>
+  </div>
+</header>
+
+<div class="envoltorio">
+
+<nav class="indice" aria-label="Índice del reporte">
+  <h2>Contenido</h2>
+  <ol>
+    <li><a href="#alcance">0 · Alcance y método</a></li>
+    <li><a href="#resumen">1 · Resumen ejecutivo</a></li>
+    <li><a href="#seguridad">2 · Auditoría de seguridad</a></li>
+    <li><a href="#seo">3 · SEO on-page y técnico</a></li>
+    <li><a href="#rendimiento">4 · Rendimiento y Core Web Vitals</a></li>
+    <li><a href="#roadmap">5 · Plan de acción y roadmap</a></li>
+    <li><a href="#anexos">6 · Anexos y protocolo</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- =========================================================
+     0 · ALCANCE Y MÉTODO
+     ========================================================= -->
+<section id="alcance">
+  <span class="num">Bloque 0</span>
+  <h2 class="bloque">Alcance, método y trazabilidad del dato</h2>
+  <p class="entradilla">Este apartado define qué se midió, cómo se midió y qué queda pendiente de verificación en sitio. Se declara explícitamente para que ningún dato del reporte pueda confundirse con una estimación.</p>
+
+  <div class="aviso nota">
+    <strong class="tit">Condición de ejecución de esta auditoría</strong>
+    <p>El análisis se elaboró desde un entorno con <strong>egreso de red restringido</strong>: no fue posible ejecutar peticiones HTTP directas contra <code>koonartesanos.com</code>, <code>store.koonartesanos.com</code> ni <code>koonartesanos.myshopify.com</code>. En consecuencia:</p>
+    <ul>
+      <li><strong>Los hallazgos de arquitectura, indexación, URLs y metadatos</strong> se sustentan en <em>evidencia real recuperada del índice de buscadores</em> (URLs indexadas, títulos servidos en SERP y estructura de rutas). Están marcados como <span class="etiqueta e-ev">Evidencia</span>.</li>
+      <li><strong>Las métricas que exigen respuesta del servidor</strong> —cadena TLS, cabeceras HTTP, LCP/INP/CLS/TTFB, peso de página, compresión— <em>no se han inventado</em>. Aparecen como <span class="etiqueta e-pend">Pendiente</span> junto con el umbral de referencia contra el que deben evaluarse y el comando exacto para obtenerlas (Bloque 6).</li>
+    </ul>
+    <p style="margin-bottom:0">Ejecutando el protocolo del Bloque 6 (aprox. 45 minutos) las celdas pendientes quedan completadas sin alterar ninguna conclusión estructural: los hallazgos críticos de este reporte <strong>no dependen</strong> de esas mediciones.</p>
+  </div>
+
+  <div class="leyenda">
+    <span><span class="etiqueta e-ev">Evidencia</span> verificado contra el índice público</span>
+    <span><span class="etiqueta e-pend">Pendiente</span> requiere medición en sitio</span>
+    <span><span class="etiqueta e-alta">Alta</span> <span class="etiqueta e-media">Media</span> <span class="etiqueta e-baja">Baja</span> prioridad de corrección</span>
+  </div>
+
+  <h3>Propiedades bajo análisis</h3>
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Host</th><th>Plataforma</th><th>Estado observado</th><th>Rol previsto</th><th>Rol real</th></tr></thead>
+      <tbody>
+        <tr><td><code>koonartesanos.com</code> / <code>www.</code></td><td>Desarrollo a medida (fuera de Shopify)</td><td>Activo e indexado</td><td>Sitio único de marca</td><td>Sitio nuevo, catálogo poco indexado</td></tr>
+        <tr><td><code>store.koonartesanos.com</code></td><td>Shopify</td><td><strong>Activo e indexado</strong></td><td>Retirado tras la migración</td><td>Tienda operativa en paralelo</td></tr>
+        <tr><td><code>koonartesanos.myshopify.com</code></td><td>Shopify (dominio técnico)</td><td><strong>Activo e indexado</strong></td><td>No indexable</td><td>Tercera copia del catálogo en el índice</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Este cuadro es, por sí solo, el hallazgo principal del reporte</strong> y se desarrolla en los bloques 1 y 3.</p>
+</section>
+
+<!-- =========================================================
+     1 · RESUMEN EJECUTIVO
+     ========================================================= -->
+<section id="resumen">
+  <span class="num">Bloque 1</span>
+  <h2 class="bloque">Resumen ejecutivo</h2>
+  <p class="entradilla">Diagnóstico del cambio de plataforma y del impacto de haber sustituido una tienda Shopify consolidada por un desarrollo a medida sin estrategia de SEO técnico.</p>
+
+  <div class="aviso critico">
+    <strong class="tit">Diagnóstico central</strong>
+    <p style="margin-bottom:0">Lo ocurrido <strong>no fue una migración: fue una duplicación</strong>. Una migración sustituye una plataforma por otra transfiriendo las señales de autoridad mediante redirecciones 301 permanentes. Aquí el sitio nuevo se publicó <em>encima</em> de un ecosistema Shopify que sigue vivo, servido e indexado. El resultado es que el dominio compite consigo mismo en tres frentes y que el capital SEO acumulado por la tienda anterior no se ha transferido a <code>koonartesanos.com</code>: sigue anclado donde estaba.</p>
+  </div>
+
+  <div class="rejilla">
+    <div class="kpi"><span class="cifra">3</span><span class="etq">Hosts sirviendo el mismo catálogo simultáneamente, más la variante <code>www</code>/no-<code>www</code></span></div>
+    <div class="kpi"><span class="cifra">0</span><span class="etq">Redirecciones 301 detectadas desde las URLs de Shopify hacia el sitio nuevo</span></div>
+    <div class="kpi"><span class="cifra">A+</span><span class="etq">Nivel de exposición que asume la marca al pasar de un SaaS gestionado a infraestructura propia</span></div>
+  </div>
+
+  <h3>Qué se perdió al salir de Shopify</h3>
+  <p>La decisión de abandonar la plantilla comprada era <strong>correcta y está bien fundamentada</strong>: un tema sobrescrito por varios desarrolladores acumula deuda técnica imposible de mantener, y una identidad visual desalineada tiene coste comercial directo. El problema no es la decisión, es la ejecución: se descartó el vehículo <em>y con él la carga</em>.</p>
+  <ul>
+    <li><strong>La plantilla de títulos long-tail.</strong> La tienda Shopify servía títulos de producto con un patrón consistente y altamente transaccional: <em>«Porta lápices 100% de piel hecho a mano»</em>, <em>«Charola para cama 100% de piel hecha a mano»</em>, <em>«Perchero para trajes 100% de piel hecho a mano»</em>. Cada uno captura intención de compra específica. <span class="etiqueta e-ev">Evidencia</span></li>
+    <li><strong>Las URLs semánticas.</strong> Rutas como <code>/collections/charolas-de-piel/products/charola-rectangular-chica</code> o <code>/collections/regalos-corporativos-premium</code> llevan la palabra clave en la propia dirección. El sitio nuevo expone rutas del tipo <code>/layouts/Avisodeprivacidad</code>, que filtran la estructura interna del framework al usuario y al robot. <span class="etiqueta e-ev">Evidencia</span></li>
+    <li><strong>La profundidad de indexación.</strong> El catálogo de producto, las colecciones y el blog corporativo (<code>/blogs/noticias</code>) están indexados en los hosts Shopify. En el <code>.com</code> la presencia observable se reduce a un puñado de colecciones y páginas legales. <span class="etiqueta e-ev">Evidencia</span></li>
+    <li><strong>El blindaje de plataforma.</strong> Shopify absorbía parcheo, TLS, mitigación DDoS, WAF y cumplimiento PCI DSS. Esa responsabilidad pasó íntegra al nuevo proveedor de hosting y al equipo de desarrollo.</li>
+  </ul>
+
+  <h3>Impacto de negocio</h3>
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Efecto</th><th>Mecánica</th><th>Traducción comercial</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Canibalización de marca</strong></td>
+          <td>Tres hosts compiten por las mismas consultas. El buscador elige uno y descarta el resto como duplicado.</td>
+          <td>El tráfico de marca aterriza en la tienda antigua, no en el sitio que representa la identidad actual.</td>
+        </tr>
+        <tr>
+          <td><strong>Dilución de autoridad</strong></td>
+          <td>Los enlaces históricos y las menciones apuntan a <code>store.</code> y a <code>myshopify.com</code>. Sin 301, esa autoridad no fluye al <code>.com</code>.</td>
+          <td>El dominio nuevo arranca prácticamente desde cero pese a que la marca tiene más de 20 años de recorrido.</td>
+        </tr>
+        <tr>
+          <td><strong>Pérdida de long tail</strong></td>
+          <td>Las consultas específicas de producto («charola de piel hecha a mano», «porta lápices piel») estaban cubiertas por fichas con título optimizado que ya no existen en el sitio nuevo.</td>
+          <td>Desaparece el tráfico con mayor intención de compra y menor coste de adquisición.</td>
+        </tr>
+        <tr>
+          <td><strong>Fricción en el canal B2B</strong></td>
+          <td>«Regalos corporativos» es la línea de mayor ticket y tenía colección propia optimizada en Shopify.</td>
+          <td>El segmento más rentable pierde su puerta de entrada orgánica.</td>
+        </tr>
+        <tr>
+          <td><strong>Riesgo de superficie</strong></td>
+          <td>Infraestructura propia sin las salvaguardas por defecto de un SaaS gestionado.</td>
+          <td>Exposición reputacional y regulatoria (LFPDPPP) sobre datos de clientes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Recomendación estratégica</h3>
+  <p>Antes de invertir un peso en contenido, campañas o rediseño, hay que <strong>consolidar el ecosistema en un único dominio canónico</strong> y transferir las señales con un mapa de redirecciones 1:1. Es la acción de mayor retorno y menor coste del roadmap: sin ella, cualquier inversión posterior en SEO se reparte entre tres propiedades que se anulan mutuamente.</p>
+  <p>El orden de ejecución recomendado es <strong>consolidar → indexar → optimizar → blindar</strong>. Invertir el orden es la razón habitual por la que un rediseño «bonito» destruye tracción orgánica.</p>
+</section>
+
+<!-- =========================================================
+     2 · SEGURIDAD
+     ========================================================= -->
+<section id="seguridad">
+  <span class="num">Bloque 2</span>
+  <h2 class="bloque">Auditoría de seguridad web</h2>
+  <p class="entradilla">Evaluación de la cadena TLS, de las cabeceras de seguridad HTTP y del cambio de modelo de responsabilidad al pasar de una plataforma SaaS gestionada a infraestructura propia.</p>
+
+  <h3>2.1 · El cambio de modelo de responsabilidad</h3>
+  <p>Este es el punto que suele pasarse por alto en una salida de Shopify. En un SaaS gestionado el proveedor asume la mayor parte de la superficie de ataque; en un desarrollo independiente esa carga se transfiere <strong>íntegra y de forma silenciosa</strong> a quien opera el sitio. Nadie firma ese traspaso, pero ocurre el día del lanzamiento.</p>
+
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Dominio de control</th><th>Shopify (SaaS gestionado)</th><th>Sitio independiente</th><th>Riesgo tras el cambio</th></tr></thead>
+      <tbody>
+        <tr><td>Certificado TLS y renovación</td><td>Automático, gestionado y renovado por plataforma</td><td>Responsabilidad del hosting; depende de ACME/Let's Encrypt o de renovación manual</td><td><span class="etiqueta e-media">Media</span> Caducidad no vigilada = caída total del sitio</td></tr>
+        <tr><td>HSTS</td><td>Activo por defecto en dominios conectados</td><td>Debe configurarse explícitamente en servidor</td><td><span class="etiqueta e-alta">Alta</span> Ventana a downgrade y SSL stripping</td></tr>
+        <tr><td>Parcheo del stack</td><td>Continuo, transparente para el comercio</td><td>Manual: SO, runtime, framework, dependencias, CMS y plugins</td><td><span class="etiqueta e-alta">Alta</span> Vector nº1 de compromiso en sitios a medida</td></tr>
+        <tr><td>Cumplimiento PCI DSS</td><td>Nivel 1 certificado; el comercio queda fuera de alcance</td><td>Si hay checkout propio, la marca entra en alcance PCI</td><td><span class="etiqueta e-alta">Alta</span> Obligación regulatoria nueva no presupuestada</td></tr>
+        <tr><td>WAF y mitigación DDoS</td><td>Incluidos en el borde de la plataforma</td><td>Solo si se contrata CDN/WAF (Cloudflare, Fastly, AWS…)</td><td><span class="etiqueta e-media">Media</span> Exposición a inyección y a saturación</td></tr>
+        <tr><td>Hardening del panel de administración</td><td>2FA, control de sesiones y registro de accesos nativos</td><td>Depende por completo de la implementación</td><td><span class="etiqueta e-alta">Alta</span> Ruta de administración expuesta y sin 2FA</td></tr>
+        <tr><td>Copias de seguridad y recuperación</td><td>Redundancia de plataforma</td><td>Deben definirse, automatizarse y <em>probarse</em></td><td><span class="etiqueta e-media">Media</span> Backup no restaurado no es backup</td></tr>
+        <tr><td>Divulgación de vulnerabilidades</td><td>Programa de bug bounty activo y equipo dedicado</td><td>Inexistente salvo que se contrate auditoría</td><td><span class="etiqueta e-baja">Baja</span> Descubrimiento tardío de fallos</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="aviso nota">
+    <strong class="tit">Lectura honesta del comparativo</strong>
+    <p style="margin-bottom:0">Shopify <em>no</em> es intrínsecamente más seguro que un sitio a medida bien construido: es más seguro <strong>por defecto</strong>. Un desarrollo independiente correctamente endurecido alcanza o supera ese nivel, con la ventaja añadida de una superficie de terceros mucho menor (sin apps de marketplace inyectando scripts en el checkout). La diferencia no está en la tecnología, está en si alguien tiene asignada la responsabilidad de mantenerla. <strong>Hoy esa asignación no consta.</strong></p>
+  </div>
+
+  <h3>2.2 · Cabeceras de seguridad HTTP — matriz de evaluación</h3>
+  <p>Cada fila indica el valor recomendado para <code>koonartesanos.com</code> y el impacto de su ausencia. La columna de estado se completa ejecutando el comando del Bloque 6.1.</p>
+
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Cabecera</th><th>Estado</th><th>Valor recomendado</th><th>Qué previene</th><th>Prioridad</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>Strict-Transport-Security</code></td>
+          <td><span class="etiqueta e-pend">Pendiente</span></td>
+          <td><code>max-age=31536000; includeSubDomains; preload</code></td>
+          <td>Downgrade a HTTP y SSL stripping en redes hostiles (Wi-Fi público)</td>
+          <td><span class="etiqueta e-alta">Alta</span></td>
+        </tr>
+        <tr>
+          <td><code>Content-Security-Policy</code></td>
+          <td><span class="etiqueta e-pend">Pendiente</span></td>
+          <td>Desplegar primero como <code>Content-Security-Policy-Report-Only</code>, restringiendo <code>default-src 'self'</code> y declarando explícitamente CDN, analítica y pasarelas</td>
+          <td>XSS, inyección de scripts de terceros y <em>formjacking</em> sobre el formulario de pedido</td>
+          <td><span class="etiqueta e-alta">Alta</span></td>
+        </tr>
+        <tr>
+          <td><code>X-Frame-Options</code> / <code>frame-ancestors</code></td>
+          <td><span class="etiqueta e-pend">Pendiente</span></td>
+          <td><code>SAMEORIGIN</code> y, en CSP, <code>frame-ancestors 'self'</code></td>
+          <td>Clickjacking: superposición del sitio en un iframe fraudulento</td>
+          <td><span class="etiqueta e-alta">Alta</span></td>
+        </tr>
+        <tr>
+          <td><code>X-Content-Type-Options</code></td>
+          <td><span class="etiqueta e-pend">Pendiente</span></td>
+          <td><code>nosniff</code></td>
+          <td>Que el navegador reinterprete un archivo subido como script ejecutable</td>
+          <td><span class="etiqueta e-media">Media</span></td>
+        </tr>
+        <tr>
+          <td><code>Referrer-Policy</code></td>
+          <td><span class="etiqueta e-pend">Pendiente</span></td>
+          <td><code>strict-origin-when-cross-origin</code></td>
+          <td>Fuga de rutas internas y parámetros a dominios de terceros</td>
+          <td><span class="etiqueta e-media">Media</span></td>
+        </tr>
+        <tr>
+          <td><code>Permissions-Policy</code></td>
+          <td><span class="etiqueta e-pend">Pendiente</span></td>
+          <td><code>geolocation=(), camera=(), microphone=(), interest-cohort=()</code></td>
+          <td>Acceso indebido a APIs del dispositivo desde scripts embebidos</td>
+          <td><span class="etiqueta e-baja">Baja</span></td>
+        </tr>
+        <tr>
+          <td><code>Server</code> / <code>X-Powered-By</code></td>
+          <td><span class="etiqueta e-pend">Pendiente</span></td>
+          <td>Suprimir o enmascarar</td>
+          <td>Reconocimiento de versión para explotación dirigida de CVE conocidos</td>
+          <td><span class="etiqueta e-baja">Baja</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>2.3 · Certificado SSL/TLS — puntos de control</h3>
+  <ul>
+    <li><strong>Cobertura del certificado:</strong> debe amparar <code>koonartesanos.com</code> <em>y</em> <code>www.koonartesanos.com</code>. Ambas variantes aparecen en el índice público <span class="etiqueta e-ev">Evidencia</span>, así que un certificado que cubra solo una generaría error de confianza en la otra.</li>
+    <li><strong>Protocolos:</strong> únicamente TLS 1.2 y 1.3. TLS 1.0/1.1 y SSLv3 deben estar deshabilitados.</li>
+    <li><strong>Cadena de confianza completa:</strong> el fallo más frecuente en migraciones es servir el certificado de hoja sin la intermedia. Los navegadores de escritorio lo toleran; muchos clientes móviles y bots no.</li>
+    <li><strong>Redirección forzada:</strong> <code>http://</code> y la variante no canónica deben resolver con <strong>301</strong> (no 302) al host canónico en HTTPS, en un único salto.</li>
+    <li><strong>Contenido mixto:</strong> ningún recurso <code>http://</code> embebido. Especial atención a los activos que todavía se sirven desde <code>cdn.shopify.com</code> <span class="etiqueta e-ev">Evidencia</span>.</li>
+    <li><strong>Vigilancia de caducidad:</strong> alerta automatizada a 30 y 7 días. Objetivo de calificación: <strong>A o superior</strong> en SSL Labs.</li>
+  </ul>
+
+  <h3>2.4 · Cumplimiento y datos personales</h3>
+  <div class="aviso ok">
+    <strong class="tit">Hallazgo favorable</strong>
+    <p style="margin-bottom:0">El sitio nuevo publica <strong>Aviso de Privacidad</strong> con responsable identificado (<em>Koon Blanc, S.A. de C.V.</em>), domicilio del área de datos personales y canal de contacto para revocación de consentimiento. Es un requisito de la <strong>LFPDPPP</strong> que muchos sitios a medida omiten y que aquí sí está cubierto. <span class="etiqueta e-ev">Evidencia</span></p>
+  </div>
+  <p>Pendientes asociados: verificar que el formulario de contacto y el alta de newsletter recojan <strong>consentimiento explícito</strong> enlazando el aviso; que dispongan de protección antispam; y que las políticas de servicio y devoluciones publicadas en Shopify (<code>/pages/politicas-de-servicio</code> <span class="etiqueta e-ev">Evidencia</span>) se hayan trasladado al <code>.com</code> —de lo contrario la tienda nueva opera sin sus condiciones de venta publicadas.</p>
+</section>
+
+<!-- =========================================================
+     3 · SEO
+     ========================================================= -->
+<section id="seo">
+  <span class="num">Bloque 3</span>
+  <h2 class="bloque">Auditoría SEO on-page y técnico</h2>
+  <p class="entradilla">Revisión bajo criterios SEOQuake: indexabilidad, canonicalización, redirecciones, estructura de encabezados, metadatos, intención de palabra clave y archivos de control de rastreo.</p>
+
+  <h3>3.1 · Fragmentación del dominio — hallazgo crítico</h3>
+  <div class="aviso critico">
+    <strong class="tit">El catálogo está indexado tres veces</strong>
+    <p>Se confirma presencia simultánea en el índice público de las tres propiedades, sirviendo el mismo inventario de producto. No se observa ninguna redirección 301 desde los hosts Shopify hacia el sitio nuevo. <span class="etiqueta e-ev">Evidencia</span></p>
+    <p style="margin-bottom:0">Para un buscador esto no es «un sitio con historia», es <strong>contenido duplicado a escala de catálogo completo</strong>. Selecciona una versión canónica por su cuenta —normalmente la más antigua y con más enlaces, es decir, la de Shopify— y relega el resto.</p>
+  </div>
+
+  <div class="comparativa">
+    <div class="col-sitio antes">
+      <h4>Ecosistema Shopify (anterior)</h4>
+      <span class="url">store.koonartesanos.com<br>koonartesanos.myshopify.com</span>
+      <ul>
+        <li>URLs semánticas en kebab-case con palabra clave: <code>/collections/charolas-de-piel/products/charola-rectangular-chica</code></li>
+        <li>Títulos de producto long-tail consistentes: <em>«… 100% de piel hecho a mano»</em></li>
+        <li>Taxonomía de colecciones amplia: oficina, decoración, marcos, charolas, regalos corporativos premium, A+A, productos seleccionados</li>
+        <li>Blog corporativo activo en <code>/blogs/noticias</code></li>
+        <li>Páginas de soporte: sobre nosotros, políticas de servicio, bolsa de trabajo, tienda física</li>
+        <li>Canonical, sitemap y <code>robots.txt</code> generados y mantenidos por plataforma</li>
+      </ul>
+    </div>
+    <div class="col-sitio ahora">
+      <h4>Sitio nuevo (actual)</h4>
+      <span class="url">koonartesanos.com</span>
+      <ul>
+        <li>Rutas que exponen la estructura del framework: <code>/layouts/Avisodeprivacidad</code> — segmento técnico, CamelCase, sin separadores</li>
+        <li>Indicios de <strong>plantilla de título única</strong>: el mismo texto de marca aparece asociado a URLs distintas</li>
+        <li>Indicio de <strong>título ausente</strong>: al menos una URL se muestra en resultados con su propia dirección como título, lo que ocurre cuando falta <code>&lt;title&gt;</code> o se inyecta por JavaScript tras el render</li>
+        <li>Convive con rutas heredadas tipo <code>/collections/…</code> sin el catálogo completo detrás</li>
+        <li>Cobertura de indexación observable muy inferior: sin fichas de producto</li>
+        <li>Dependencia residual: activos de marca aún servidos desde <code>cdn.shopify.com</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>3.2 · Mapa de redirecciones 301 — base de trabajo</h3>
+  <p>Toda migración se sostiene sobre un mapa <strong>1:1 a nivel de URL</strong>. Redirigir en bloque a la portada es el error más caro: el buscador lo interpreta como <em>soft 404</em> y descarta la señal. La tabla siguiente parte de rutas <strong>observadas realmente en el índice</strong> y debe completarse con la exportación total de URLs de Shopify.</p>
+
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>URL de origen (Shopify)</th><th>Destino propuesto en koonartesanos.com</th><th>Tipo</th></tr></thead>
+      <tbody>
+        <tr><td><code>/collections/all</code></td><td><code>/tienda</code> (listado maestro)</td><td>301</td></tr>
+        <tr><td><code>/collections/oficina</code></td><td><code>/coleccion/oficina</code></td><td>301</td></tr>
+        <tr><td><code>/collections/decoracion</code></td><td><code>/coleccion/decoracion</code></td><td>301</td></tr>
+        <tr><td><code>/collections/charolas-de-piel</code></td><td><code>/coleccion/charolas-de-piel</code></td><td>301</td></tr>
+        <tr><td><code>/collections/all/marcos</code></td><td><code>/coleccion/marcos</code></td><td>301</td></tr>
+        <tr><td><code>/collections/regalos-corporativos</code></td><td><code>/coleccion/regalos-corporativos</code></td><td>301</td></tr>
+        <tr><td><code>/collections/regalos-corporativos-premium</code></td><td><code>/coleccion/regalos-corporativos-premium</code></td><td>301</td></tr>
+        <tr><td><code>/collections/koon-artesanos-artesanos-a-a</code></td><td><code>/coleccion/koon-artesanos-artesanos</code></td><td>301</td></tr>
+        <tr><td><code>/collections/te-amamos-mexico</code></td><td><code>/coleccion/te-amamos-mexico</code></td><td>301</td></tr>
+        <tr><td><code>/collections/productos-seleccionados</code></td><td><code>/coleccion/seleccion</code></td><td>301</td></tr>
+        <tr><td><code>/products/porta-lapices</code></td><td><code>/producto/porta-lapices-piel</code></td><td>301</td></tr>
+        <tr><td><code>/products/charola-cama</code></td><td><code>/producto/charola-para-cama-piel</code></td><td>301</td></tr>
+        <tr><td><code>/products/charola-rectangular-chica</code></td><td><code>/producto/charola-rectangular-chica-piel</code></td><td>301</td></tr>
+        <tr><td><code>/products/basurero-redondo</code></td><td><code>/producto/bote-basura-redondo-piel</code></td><td>301</td></tr>
+        <tr><td><code>/products/perchero-trajes</code></td><td><code>/producto/perchero-para-trajes-piel</code></td><td>301</td></tr>
+        <tr><td><code>/products/cartera-hombre</code></td><td><code>/producto/cartera-hombre-piel</code></td><td>301</td></tr>
+        <tr><td><code>/products/archivero</code></td><td><code>/producto/archivero-piel</code></td><td>301</td></tr>
+        <tr><td><code>/pages/sobre-nosotros</code></td><td><code>/sobre-nosotros</code></td><td>301</td></tr>
+        <tr><td><code>/pages/politicas-de-servicio</code></td><td><code>/politicas-de-servicio</code></td><td>301</td></tr>
+        <tr><td><code>/pages/bolsa-de-trabajo</code></td><td><code>/bolsa-de-trabajo</code></td><td>301</td></tr>
+        <tr><td><code>/pages/koon-artesanos-prado-norte</code></td><td><code>/tienda-prado-norte</code></td><td>301</td></tr>
+        <tr><td><code>/blogs/noticias</code> y artículos</td><td><code>/blog</code> y <code>/blog/{slug}</code></td><td>301</td></tr>
+        <tr><td><code>/layouts/Avisodeprivacidad</code> <em>(sitio nuevo)</em></td><td><code>/aviso-de-privacidad</code></td><td>301 interna</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="aviso nota">
+    <strong class="tit">Reglas de ejecución del mapa</strong>
+    <ul style="margin-bottom:0">
+      <li><strong>301, nunca 302.</strong> La redirección temporal no transfiere autoridad.</li>
+      <li><strong>Un solo salto.</strong> Nada de cadenas <code>myshopify → store → www → apex</code>: cada salto añade latencia y diluye la señal.</li>
+      <li><strong>Sin bucles ni destinos 404.</strong> Validar el mapa completo con un rastreador antes de publicarlo.</li>
+      <li><strong>Mantener el 301 activo un mínimo de 12 meses.</strong> La consolidación de señales no es inmediata.</li>
+      <li><strong>Si la tienda Shopify debe seguir operando</strong> por razones de negocio, entonces no se redirige: se establece <code>rel="canonical"</code> cruzado hacia el <code>.com</code> y se diferencian contenidos. Lo que no es viable es el estado actual: dos catálogos idénticos sin ninguna señal que indique cuál es el bueno.</li>
+      <li><strong>El dominio <code>myshopify.com</code> nunca debe ser indexable.</strong> Su aparición en resultados indica que el dominio primario no está correctamente asignado en la configuración de la tienda: verificarlo es el primer paso.</li>
+    </ul>
+  </div>
+
+  <h3>3.3 · Metadatos y estructura on-page</h3>
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Elemento</th><th>Criterio SEOQuake</th><th>Situación observada</th><th>Prioridad</th></tr></thead>
+      <tbody>
+        <tr><td><code>&lt;title&gt;</code></td><td>Único por URL, 50–60 caracteres, palabra clave al inicio + marca al final</td><td>Indicios de plantilla global repetida y de al menos una URL sin título propio <span class="etiqueta e-ev">Evidencia</span></td><td><span class="etiqueta e-alta">Alta</span></td></tr>
+        <tr><td><code>meta description</code></td><td>Única, 140–160 caracteres, con propuesta de valor y llamada a la acción</td><td>Verificar en rastreo completo <span class="etiqueta e-pend">Pendiente</span></td><td><span class="etiqueta e-alta">Alta</span></td></tr>
+        <tr><td><code>H1</code></td><td>Exactamente uno por página, distinto del título, con la palabra clave principal</td><td>Verificar duplicidad de H1 y uso de H1 en el logotipo del encabezado <span class="etiqueta e-pend">Pendiente</span></td><td><span class="etiqueta e-alta">Alta</span></td></tr>
+        <tr><td><code>H2–H6</code></td><td>Jerarquía descendente sin saltos de nivel; encabezados semánticos, no decorativos</td><td>Verificar que no se usen por tamaño de fuente <span class="etiqueta e-pend">Pendiente</span></td><td><span class="etiqueta e-media">Media</span></td></tr>
+        <tr><td><code>rel="canonical"</code></td><td>Autorreferencial y absoluto en cada URL</td><td>Imprescindible dado el escenario multi-host</td><td><span class="etiqueta e-alta">Alta</span></td></tr>
+        <tr><td><code>alt</code> en imágenes</td><td>Descriptivo; crítico en catálogo artesanal donde el producto <em>es</em> la imagen</td><td>Verificar cobertura en rastreo <span class="etiqueta e-pend">Pendiente</span></td><td><span class="etiqueta e-media">Media</span></td></tr>
+        <tr><td>Datos estructurados</td><td><code>Organization</code>, <code>Product</code> + <code>Offer</code>, <code>BreadcrumbList</code>, <code>LocalBusiness</code></td><td>Sin evidencia de resultados enriquecidos en SERP <span class="etiqueta e-pend">Pendiente</span></td><td><span class="etiqueta e-media">Media</span></td></tr>
+        <tr><td>Open Graph / Twitter Card</td><td>Título, descripción e imagen 1200×630 por URL</td><td>Determinante: la marca tiene 29 K seguidores en Instagram y tráfico social <span class="etiqueta e-pend">Pendiente</span></td><td><span class="etiqueta e-media">Media</span></td></tr>
+        <tr><td>Enlazado interno</td><td>Profundidad ≤ 3 clics desde portada; breadcrumbs en producto</td><td>Reconstruir tras consolidar el catálogo</td><td><span class="etiqueta e-media">Media</span></td></tr>
+        <tr><td><code>hreflang</code></td><td>Solo si se sirven versiones en inglés para el mercado de exportación</td><td>Evaluar según plan comercial</td><td><span class="etiqueta e-baja">Baja</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Plantillas de metadatos recomendadas</h4>
+  <pre><span class="c">// Producto — reproduce el patrón que ya funcionaba en Shopify</span>
+title:       {Producto} 100% de piel hecho a mano | Koon Artesanos
+description: {Producto} elaborado a mano por artesanos mexicanos en piel
+             genuina. Pieza {atributo}. Envío a todo México. Personalización
+             con logotipo disponible.
+
+<span class="c">// Colección</span>
+title:       {Colección} en piel hecha a mano | Koon Artesanos
+description: Descubre nuestra colección de {colección} en piel genuina,
+             elaborada artesanalmente en México. Más de 20 años de oficio.
+
+<span class="c">// Colección corporativa — mayor ticket, mayor intención</span>
+title:       Regalos Corporativos Personalizados en Piel | Koon Artesanos
+description: Regalos corporativos premium en piel hecha a mano, con grabado
+             de logotipo. Atención personalizada para pedidos por volumen.</pre>
+
+  <h3>3.4 · Intención de búsqueda y arquitectura de palabras clave</h3>
+  <p>Para un catálogo artesanal la densidad de palabra clave es un indicador secundario; lo determinante es <strong>cubrir la intención con la página adecuada</strong>. La estrategia se organiza en cuatro capas:</p>
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Capa</th><th>Intención</th><th>Ejemplos de consulta</th><th>Página que debe responder</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Transaccional B2C</strong></td><td>Compra directa</td><td>«charola de piel hecha a mano», «porta lápices de piel», «cartera de piel para hombre»</td><td>Ficha de producto</td></tr>
+        <tr><td><strong>Transaccional B2B</strong></td><td>Compra por volumen — mayor ticket</td><td>«regalos corporativos personalizados piel», «regalos empresariales fin de año México», «regalos corporativos con logotipo»</td><td>Landing corporativa con formulario de cotización</td></tr>
+        <tr><td><strong>Categoría</strong></td><td>Exploración</td><td>«decoración en piel», «artículos de oficina en piel», «marcos de piel»</td><td>Página de colección con texto introductorio propio</td></tr>
+        <tr><td><strong>Informacional / marca</strong></td><td>Confianza y diferenciación</td><td>«artesanía mexicana en piel», «bordado otomí», «arte huichol», «cómo cuidar la piel genuina»</td><td>Blog y páginas de proyecto A+A</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>La capa informacional es la ventaja competitiva real de esta marca: el proyecto <strong>A+A (Koon Artesanos + Artesanos)</strong> —bordado otomí, brocado, arte huichol, papel amate— es contenido que ningún competidor puede replicar. Estaba publicado en Shopify y no aparece desarrollado en el sitio nuevo. Recuperarlo es contenido de alto valor ya escrito.</p>
+
+  <h3>3.5 · <code>robots.txt</code> y <code>sitemap.xml</code></h3>
+  <p>Ambos archivos deben verificarse en <code>koonartesanos.com</code> <span class="etiqueta e-pend">Pendiente</span>. Especificación objetivo:</p>
+  <pre><span class="c"># https://koonartesanos.com/robots.txt</span>
+User-agent: *
+Allow: /
+Disallow: /carrito
+Disallow: /checkout
+Disallow: /cuenta
+Disallow: /*?orden=
+Disallow: /*?filtro=
+Disallow: /busqueda
+
+Sitemap: https://koonartesanos.com/sitemap.xml</pre>
+  <ul>
+    <li><strong>Verificar que no exista</strong> un <code>Disallow: /</code> heredado del entorno de desarrollo ni una metaetiqueta <code>noindex</code> global: es la causa más común de invisibilidad total tras un lanzamiento.</li>
+    <li>El <code>sitemap.xml</code> debe contener <strong>solo URLs canónicas con respuesta 200</strong>, sin redirecciones ni paginaciones filtradas, y declarar <code>&lt;lastmod&gt;</code> real.</li>
+    <li>Si el catálogo supera las 1 000 URLs, dividir en índice de sitemaps por tipo (producto, colección, blog, estáticas).</li>
+    <li>Dar de alta y verificar las <strong>tres propiedades</strong> en Search Console —incluidos los hosts Shopify— para medir la transferencia de señales durante la consolidación.</li>
+    <li>Bloquear el rastreo de los parámetros de filtrado y orden para evitar duplicación por facetas.</li>
+  </ul>
+</section>
+
+<!-- =========================================================
+     4 · RENDIMIENTO
+     ========================================================= -->
+<section id="rendimiento">
+  <span class="num">Bloque 4</span>
+  <h2 class="bloque">Rendimiento y Core Web Vitals</h2>
+  <p class="entradilla">Marco de evaluación bajo criterios de Google PageSpeed Insights y Pingdom Tools, con umbrales de aceptación y diagnóstico de las palancas de carga.</p>
+
+  <div class="aviso nota">
+    <strong class="tit">Sobre los valores de esta sección</strong>
+    <p style="margin-bottom:0">Las métricas de campo y laboratorio requieren ejecución contra el sitio en vivo, imposible desde este entorno. Se entregan por tanto los <strong>umbrales oficiales</strong> contra los que debe juzgarse cada medición y el <strong>procedimiento exacto</strong> para obtenerlas (Bloque 6.2). Se ha optado deliberadamente por no publicar cifras estimadas: una métrica inventada en un reporte técnico invalida el documento completo.</p>
+  </div>
+
+  <h3>4.1 · Umbrales de aceptación</h3>
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Métrica</th><th>Qué mide</th><th>Bueno</th><th>Mejorable</th><th>Deficiente</th><th>Medido</th></tr></thead>
+      <tbody>
+        <tr><td><strong>LCP</strong><br><span style="font-size:12px;color:var(--tinta-suave)">Largest Contentful Paint</span></td><td>Cuándo se pinta el elemento principal, normalmente la foto de producto</td><td>≤ 2,5 s</td><td>2,5 – 4,0 s</td><td>&gt; 4,0 s</td><td><span class="etiqueta e-pend">Pendiente</span></td></tr>
+        <tr><td><strong>INP</strong><br><span style="font-size:12px;color:var(--tinta-suave)">Interaction to Next Paint</span></td><td>Latencia de respuesta a la interacción: filtros, variantes, añadir al carrito</td><td>≤ 200 ms</td><td>200 – 500 ms</td><td>&gt; 500 ms</td><td><span class="etiqueta e-pend">Pendiente</span></td></tr>
+        <tr><td><strong>CLS</strong><br><span style="font-size:12px;color:var(--tinta-suave)">Cumulative Layout Shift</span></td><td>Desplazamiento visual durante la carga</td><td>≤ 0,10</td><td>0,10 – 0,25</td><td>&gt; 0,25</td><td><span class="etiqueta e-pend">Pendiente</span></td></tr>
+        <tr><td><strong>TTFB</strong><br><span style="font-size:12px;color:var(--tinta-suave)">Time to First Byte</span></td><td>Respuesta del servidor: hosting, backend y caché</td><td>≤ 800 ms</td><td>0,8 – 1,8 s</td><td>&gt; 1,8 s</td><td><span class="etiqueta e-pend">Pendiente</span></td></tr>
+        <tr><td><strong>FCP</strong><br><span style="font-size:12px;color:var(--tinta-suave)">First Contentful Paint</span></td><td>Primer píxel con contenido</td><td>≤ 1,8 s</td><td>1,8 – 3,0 s</td><td>&gt; 3,0 s</td><td><span class="etiqueta e-pend">Pendiente</span></td></tr>
+        <tr><td><strong>Peso total</strong><br><span style="font-size:12px;color:var(--tinta-suave)">Pingdom</span></td><td>Bytes transferidos por página</td><td>≤ 1,5 MB</td><td>1,5 – 3 MB</td><td>&gt; 3 MB</td><td><span class="etiqueta e-pend">Pendiente</span></td></tr>
+        <tr><td><strong>Peticiones</strong><br><span style="font-size:12px;color:var(--tinta-suave)">Pingdom</span></td><td>Número de solicitudes HTTP</td><td>≤ 60</td><td>60 – 100</td><td>&gt; 100</td><td><span class="etiqueta e-pend">Pendiente</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Criterio de aprobación:</strong> Google evalúa el <strong>percentil 75 de usuarios reales</strong> (datos CrUX), no el resultado de laboratorio. Un 95 en PageSpeed con datos de campo en rojo significa que el sitio va bien en el laboratorio y mal para los clientes. La medición debe hacerse en <strong>móvil</strong>, que es donde se juega el tráfico de esta categoría.</p>
+
+  <h3>4.2 · Palancas de diagnóstico</h3>
+  <p>Un catálogo artesanal es, por naturaleza, un sitio pesado en imagen: la fotografía de producto <em>es</em> el argumento de venta. Por eso el trabajo de rendimiento aquí no consiste en reducir calidad visual, sino en servir esa calidad de forma eficiente.</p>
+
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Palanca</th><th>Qué revisar</th><th>Acción correctiva</th><th>Métrica que mejora</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Formato de imagen</strong></td>
+          <td>Uso de JPG/PNG sin conversión moderna; fotos de catálogo servidas a resolución original</td>
+          <td>Servir <strong>AVIF</strong> con respaldo <strong>WebP</strong> mediante <code>&lt;picture&gt;</code>; ahorro típico del 50–70 % del peso</td>
+          <td>LCP · Peso</td>
+        </tr>
+        <tr>
+          <td><strong>Dimensionado</strong></td>
+          <td>Imágenes de 2000 px escaladas por CSS a 400 px en móvil</td>
+          <td><code>srcset</code> + <code>sizes</code> con puntos de corte reales del diseño</td>
+          <td>LCP · Peso</td>
+        </tr>
+        <tr>
+          <td><strong>Reserva de espacio</strong></td>
+          <td>Imágenes sin <code>width</code>/<code>height</code> o sin <code>aspect-ratio</code></td>
+          <td>Declarar dimensiones intrínsecas en todo elemento multimedia y en banners</td>
+          <td>CLS</td>
+        </tr>
+        <tr>
+          <td><strong>Prioridad de carga</strong></td>
+          <td><code>loading="lazy"</code> aplicado también a la imagen principal — error habitual que retrasa el LCP</td>
+          <td><code>fetchpriority="high"</code> y <code>preload</code> en el elemento LCP; <code>lazy</code> solo por debajo del pliegue</td>
+          <td>LCP</td>
+        </tr>
+        <tr>
+          <td><strong>JavaScript</strong></td>
+          <td>Bundles monolíticos, librerías completas para un carrusel, scripts de terceros bloqueantes</td>
+          <td>Minificar, dividir por ruta, <code>defer</code>/<code>async</code>, retirar dependencias no usadas, cargar píxeles de marketing tras interacción</td>
+          <td>INP · FCP</td>
+        </tr>
+        <tr>
+          <td><strong>CSS</strong></td>
+          <td>Hoja única con estilos de todo el sitio en cada vista</td>
+          <td>CSS crítico en línea para el pliegue, resto diferido; purgar reglas muertas</td>
+          <td>FCP · LCP</td>
+        </tr>
+        <tr>
+          <td><strong>Tipografías</strong></td>
+          <td>Fuentes web sin <code>font-display</code>, cargadas desde origen externo</td>
+          <td><code>font-display: swap</code>, <code>preconnect</code>, subconjunto latino y autoalojamiento en WOFF2</td>
+          <td>CLS · FCP</td>
+        </tr>
+        <tr>
+          <td><strong>Compresión</strong></td>
+          <td>Respuestas de texto sin comprimir</td>
+          <td>Activar <strong>Brotli</strong> (respaldo Gzip) en HTML, CSS, JS, SVG y JSON</td>
+          <td>Peso · TTFB</td>
+        </tr>
+        <tr>
+          <td><strong>Caché</strong></td>
+          <td>Ausencia de <code>Cache-Control</code> en estáticos</td>
+          <td><code>max-age=31536000, immutable</code> con nombres versionados; HTML con revalidación</td>
+          <td>TTFB en visitas recurrentes</td>
+        </tr>
+        <tr>
+          <td><strong>Servidor y CDN</strong></td>
+          <td>Origen único, previsiblemente fuera de México; sin caché de borde</td>
+          <td>CDN con nodo en México, HTTP/2 o HTTP/3, caché de página completa</td>
+          <td>TTFB</td>
+        </tr>
+        <tr>
+          <td><strong>Renderizado</strong></td>
+          <td>Si el contenido —incluido el <code>&lt;title&gt;</code>— se genera en cliente</td>
+          <td>SSR o generación estática: es simultáneamente un arreglo de rendimiento <em>y</em> de indexabilidad</td>
+          <td>LCP · TTFB · Indexación</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="aviso critico">
+    <strong class="tit">Hipótesis prioritaria de verificación</strong>
+    <p style="margin-bottom:0">El indicio de una URL indexada <strong>con su propia dirección como título</strong> es compatible con un sitio que <strong>renderiza los metadatos en el navegador</strong> en lugar de servirlos en el HTML inicial. De confirmarse, se trata del defecto raíz que explica a la vez la baja indexación y un LCP alto, y su corrección —renderizado en servidor o prerenderizado— resuelve dos bloques de este reporte con una sola intervención. <strong>Debe ser la primera comprobación del equipo técnico</strong>: basta con inspeccionar el HTML de origen sin ejecutar JavaScript (Bloque 6.3).</p>
+  </div>
+</section>
+
+<!-- =========================================================
+     5 · ROADMAP
+     ========================================================= -->
+<section id="roadmap">
+  <span class="num">Bloque 5</span>
+  <h2 class="bloque">Plan de acción y roadmap de corrección</h2>
+  <p class="entradilla">Matriz de prioridad para recuperar la tracción orgánica que tenía la tienda en Shopify y cerrar las brechas de seguridad del sitio actual.</p>
+
+  <h3>5.1 · Matriz de prioridad</h3>
+  <p>Criterio de ordenación: <strong>impacto sobre el negocio ÷ esfuerzo de implementación</strong>. Las acciones de prioridad Alta bloquean el rendimiento de todo lo demás.</p>
+
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>ID</th><th>Acción</th><th>Bloque</th><th>Prioridad</th><th>Impacto</th><th>Esfuerzo</th><th>Responsable</th></tr></thead>
+      <tbody>
+        <tr><td class="id">A-01</td><td>Verificar que no exista <code>noindex</code> global ni <code>Disallow: /</code> heredado del entorno de desarrollo</td><td>SEO</td><td><span class="etiqueta e-alta">Alta</span></td><td>Crítico</td><td>Mínimo</td><td>Desarrollo</td></tr>
+        <tr><td class="id">A-02</td><td>Decidir y declarar el <strong>dominio canónico único</strong> (recomendado: <code>https://koonartesanos.com</code> sin <code>www</code>)</td><td>Estrategia</td><td><span class="etiqueta e-alta">Alta</span></td><td>Crítico</td><td>Mínimo</td><td>Dirección + SEO</td></tr>
+        <tr><td class="id">A-03</td><td>Unificar <code>www</code> / no-<code>www</code> y <code>http</code> / <code>https</code> con 301 en un único salto</td><td>SEO / Infra</td><td><span class="etiqueta e-alta">Alta</span></td><td>Alto</td><td>Bajo</td><td>Infraestructura</td></tr>
+        <tr><td class="id">A-04</td><td>Exportar el inventario completo de URLs de Shopify y cerrar el <strong>mapa 301 uno a uno</strong> (base en 3.2)</td><td>SEO</td><td><span class="etiqueta e-alta">Alta</span></td><td>Crítico</td><td>Medio</td><td>SEO + Desarrollo</td></tr>
+        <tr><td class="id">A-05</td><td>Retirar de indexación <code>koonartesanos.myshopify.com</code>: confirmar dominio primario en Shopify</td><td>SEO</td><td><span class="etiqueta e-alta">Alta</span></td><td>Alto</td><td>Mínimo</td><td>Desarrollo</td></tr>
+        <tr><td class="id">A-06</td><td>Resolver el conflicto <code>store.koonartesanos.com</code>: redirigir o canonicalizar de forma cruzada</td><td>SEO</td><td><span class="etiqueta e-alta">Alta</span></td><td>Crítico</td><td>Medio</td><td>Dirección + SEO</td></tr>
+        <tr><td class="id">A-07</td><td>Comprobar si los metadatos se renderizan en cliente; si es así, pasar a SSR o prerenderizado</td><td>SEO / Rend.</td><td><span class="etiqueta e-alta">Alta</span></td><td>Crítico</td><td>Alto</td><td>Desarrollo</td></tr>
+        <tr><td class="id">A-08</td><td><code>&lt;title&gt;</code> y <code>meta description</code> únicos por URL, con las plantillas de 3.3</td><td>SEO</td><td><span class="etiqueta e-alta">Alta</span></td><td>Alto</td><td>Medio</td><td>SEO + Contenido</td></tr>
+        <tr><td class="id">A-09</td><td><code>rel="canonical"</code> autorreferencial y absoluto en todas las URLs</td><td>SEO</td><td><span class="etiqueta e-alta">Alta</span></td><td>Alto</td><td>Bajo</td><td>Desarrollo</td></tr>
+        <tr><td class="id">A-10</td><td>Publicar <code>sitemap.xml</code> válido y <code>robots.txt</code> correcto; alta en Search Console de las 3 propiedades</td><td>SEO</td><td><span class="etiqueta e-alta">Alta</span></td><td>Alto</td><td>Bajo</td><td>SEO</td></tr>
+        <tr><td class="id">A-11</td><td>Desplegar <code>HSTS</code>, <code>X-Frame-Options</code>, <code>X-Content-Type-Options</code> y <code>Referrer-Policy</code></td><td>Seguridad</td><td><span class="etiqueta e-alta">Alta</span></td><td>Alto</td><td>Bajo</td><td>Infraestructura</td></tr>
+        <tr><td class="id">A-12</td><td>Auditar la cadena TLS: cobertura de ambos hosts, intermedias, TLS 1.2+ y alerta de caducidad</td><td>Seguridad</td><td><span class="etiqueta e-alta">Alta</span></td><td>Alto</td><td>Bajo</td><td>Infraestructura</td></tr>
+        <tr><td class="id">A-13</td><td>Restituir las páginas legales y de servicio ausentes en el <code>.com</code> (políticas de servicio, devoluciones)</td><td>Legal / SEO</td><td><span class="etiqueta e-alta">Alta</span></td><td>Alto</td><td>Bajo</td><td>Legal + Contenido</td></tr>
+
+        <tr><td class="id">M-01</td><td>Reconstruir la <strong>ficha de producto</strong> con título long-tail, descripción propia, imagen optimizada y datos estructurados <code>Product</code></td><td>SEO</td><td><span class="etiqueta e-media">Media</span></td><td>Crítico</td><td>Alto</td><td>SEO + Contenido</td></tr>
+        <tr><td class="id">M-02</td><td>Rediseñar la estructura de URLs a formato semántico en kebab-case, con 301 desde las rutas técnicas actuales</td><td>SEO</td><td><span class="etiqueta e-media">Media</span></td><td>Alto</td><td>Medio</td><td>Desarrollo</td></tr>
+        <tr><td class="id">M-03</td><td>Normalizar la jerarquía de encabezados: un solo <code>H1</code> por página, sin saltos de nivel</td><td>SEO</td><td><span class="etiqueta e-media">Media</span></td><td>Medio</td><td>Bajo</td><td>Desarrollo</td></tr>
+        <tr><td class="id">M-04</td><td>Migrar el blog <code>/blogs/noticias</code> y el contenido del proyecto A+A</td><td>Contenido</td><td><span class="etiqueta e-media">Media</span></td><td>Alto</td><td>Medio</td><td>Contenido</td></tr>
+        <tr><td class="id">M-05</td><td>Landing dedicada de <strong>regalos corporativos</strong> con formulario de cotización y seguimiento de conversión</td><td>Negocio</td><td><span class="etiqueta e-media">Media</span></td><td>Crítico</td><td>Medio</td><td>Marketing</td></tr>
+        <tr><td class="id">M-06</td><td>Optimizar imágenes: AVIF/WebP, <code>srcset</code>, dimensiones declaradas, <code>preload</code> del LCP</td><td>Rendimiento</td><td><span class="etiqueta e-media">Media</span></td><td>Alto</td><td>Medio</td><td>Desarrollo</td></tr>
+        <tr><td class="id">M-07</td><td>Activar Brotli, cabeceras de caché y CDN con nodo en México</td><td>Rendimiento</td><td><span class="etiqueta e-media">Media</span></td><td>Alto</td><td>Bajo</td><td>Infraestructura</td></tr>
+        <tr><td class="id">M-08</td><td>Minificar y dividir JS/CSS; diferir scripts de terceros</td><td>Rendimiento</td><td><span class="etiqueta e-media">Media</span></td><td>Medio</td><td>Medio</td><td>Desarrollo</td></tr>
+        <tr><td class="id">M-09</td><td>Implantar <code>Content-Security-Policy</code>: primero en modo <em>Report-Only</em>, después en aplicación</td><td>Seguridad</td><td><span class="etiqueta e-media">Media</span></td><td>Alto</td><td>Alto</td><td>Desarrollo + Infra</td></tr>
+        <tr><td class="id">M-10</td><td>WAF/CDN con mitigación DDoS, límite de tasa y protección antispam en formularios</td><td>Seguridad</td><td><span class="etiqueta e-media">Media</span></td><td>Medio</td><td>Bajo</td><td>Infraestructura</td></tr>
+        <tr><td class="id">M-11</td><td>Copias de seguridad automatizadas con <strong>prueba de restauración documentada</strong></td><td>Seguridad</td><td><span class="etiqueta e-media">Media</span></td><td>Alto</td><td>Bajo</td><td>Infraestructura</td></tr>
+        <tr><td class="id">M-12</td><td>Datos estructurados <code>Organization</code>, <code>BreadcrumbList</code> y <code>LocalBusiness</code> (tienda Prado Norte)</td><td>SEO</td><td><span class="etiqueta e-media">Media</span></td><td>Medio</td><td>Bajo</td><td>Desarrollo</td></tr>
+        <tr><td class="id">M-13</td><td>Migrar los activos residuales alojados en <code>cdn.shopify.com</code> al dominio propio</td><td>SEO / Infra</td><td><span class="etiqueta e-media">Media</span></td><td>Medio</td><td>Bajo</td><td>Desarrollo</td></tr>
+
+        <tr><td class="id">B-01</td><td>Open Graph y Twitter Card por URL, con imagen 1200×630</td><td>SEO / Social</td><td><span class="etiqueta e-baja">Baja</span></td><td>Medio</td><td>Bajo</td><td>Desarrollo</td></tr>
+        <tr><td class="id">B-02</td><td><code>Permissions-Policy</code> y supresión de cabeceras <code>Server</code> / <code>X-Powered-By</code></td><td>Seguridad</td><td><span class="etiqueta e-baja">Baja</span></td><td>Bajo</td><td>Mínimo</td><td>Infraestructura</td></tr>
+        <tr><td class="id">B-03</td><td>Página 404 personalizada con buscador y enlaces a colecciones destacadas</td><td>UX / SEO</td><td><span class="etiqueta e-baja">Baja</span></td><td>Bajo</td><td>Bajo</td><td>Desarrollo</td></tr>
+        <tr><td class="id">B-04</td><td>Evaluar versión en inglés con <code>hreflang</code> para el mercado de exportación</td><td>Estrategia</td><td><span class="etiqueta e-baja">Baja</span></td><td>Medio</td><td>Alto</td><td>Dirección</td></tr>
+        <tr><td class="id">B-05</td><td>Panel de monitoreo continuo: CWV, disponibilidad, caducidad TLS y cobertura de indexación</td><td>Operación</td><td><span class="etiqueta e-baja">Baja</span></td><td>Medio</td><td>Bajo</td><td>SEO + Infra</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.2 · Secuencia de ejecución</h3>
+  <ol class="fases">
+    <li>
+      <h4>Contención — detener la pérdida</h4>
+      <span class="plazo">Semana 1 · A-01 a A-06, A-12</span>
+      <p>Diagnóstico de indexabilidad, decisión del dominio canónico, unificación de hosts, mapa 301 y auditoría TLS. <strong>Sin esta fase ninguna inversión posterior rinde</strong>, porque las señales se siguen repartiendo entre tres propiedades.</p>
+    </li>
+    <li>
+      <h4>Recuperación de indexación</h4>
+      <span class="plazo">Semanas 2–4 · A-07 a A-11, A-13, M-02, M-03</span>
+      <p>Renderizado en servidor si procede, metadatos únicos, canonicals, sitemap, robots, URLs semánticas y primeras cabeceras de seguridad. Al final de esta fase el sitio debe ser <strong>plenamente rastreable e indexable</strong>.</p>
+    </li>
+    <li>
+      <h4>Reconstrucción del activo comercial</h4>
+      <span class="plazo">Semanas 4–8 · M-01, M-04, M-05, M-12</span>
+      <p>Fichas de producto con el patrón long-tail que ya funcionaba, recuperación del blog y del contenido A+A, landing corporativa y datos estructurados. Es la fase que devuelve el <strong>tráfico con intención de compra</strong>.</p>
+    </li>
+    <li>
+      <h4>Rendimiento y blindaje</h4>
+      <span class="plazo">Semanas 6–10 · M-06 a M-11, B-01, B-02</span>
+      <p>Imágenes, compresión, CDN, división de bundles, CSP, WAF y respaldos probados. Puede solaparse con la fase 3 al ser trabajo de equipos distintos.</p>
+    </li>
+    <li>
+      <h4>Medición y mejora continua</h4>
+      <span class="plazo">Desde la semana 10 · B-03 a B-05</span>
+      <p>Panel de seguimiento, revisión mensual de Search Console y CrUX, y ampliación de contenido informacional sobre la ventaja diferencial de la marca.</p>
+    </li>
+  </ol>
+
+  <h3>5.3 · Indicadores de recuperación</h3>
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Indicador</th><th>Fuente</th><th>Objetivo a 90 días</th></tr></thead>
+      <tbody>
+        <tr><td>URLs válidas indexadas en <code>koonartesanos.com</code></td><td>Search Console — Cobertura</td><td>≥ 90 % del catálogo publicado</td></tr>
+        <tr><td>URLs indexadas en hosts Shopify</td><td>Search Console</td><td>Tendencia a 0 conforme consolidan los 301</td></tr>
+        <tr><td>Clics e impresiones orgánicas</td><td>Search Console</td><td>Recuperar el nivel previo a la migración</td></tr>
+        <tr><td>Consultas long-tail de producto posicionadas</td><td>Search Console</td><td>Cobertura de las familias listadas en 3.4</td></tr>
+        <tr><td>URLs con <code>title</code> y <code>description</code> únicos</td><td>Rastreo (Screaming Frog)</td><td>100 %</td></tr>
+        <tr><td>Core Web Vitals en «Bueno»</td><td>CrUX / PageSpeed Insights</td><td>≥ 75 % de URLs en móvil</td></tr>
+        <tr><td>Calificación de cabeceras de seguridad</td><td>securityheaders.com</td><td>A o superior</td></tr>
+        <tr><td>Calificación TLS</td><td>SSL Labs</td><td>A o superior</td></tr>
+        <tr><td>Solicitudes de cotización corporativa</td><td>Analítica / CRM</td><td>Medición base establecida y en crecimiento</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- =========================================================
+     6 · ANEXOS
+     ========================================================= -->
+<section id="anexos">
+  <span class="num">Bloque 6</span>
+  <h2 class="bloque">Anexos — protocolo de verificación</h2>
+  <p class="entradilla">Procedimiento para completar en aproximadamente 45 minutos todas las celdas marcadas como pendientes, sin alterar ninguna conclusión estructural del reporte.</p>
+
+  <h3>6.1 · Cabeceras de seguridad y cadena TLS</h3>
+  <pre><span class="c"># Cabeceras y cadena de redirecciones (un único salto esperado)</span>
+curl -sSIL https://koonartesanos.com/ -A "Mozilla/5.0" | grep -iE \
+  'HTTP/|location|strict-transport|content-security|x-frame|x-content-type|referrer-policy|permissions-policy|server|x-powered-by|content-encoding|cache-control'
+
+<span class="c"># Comprobar las cuatro variantes de host</span>
+for u in http://koonartesanos.com https://koonartesanos.com \
+         http://www.koonartesanos.com https://www.koonartesanos.com; do
+  echo "== $u"; curl -sSI -o /dev/null -w '%{http_code} -> %{redirect_url}\n' "$u"
+done
+
+<span class="c"># Certificado: emisor, vigencia y cobertura de nombres</span>
+echo | openssl s_client -servername koonartesanos.com -connect koonartesanos.com:443 2>/dev/null \
+  | openssl x509 -noout -subject -issuer -dates -ext subjectAltName
+
+<span class="c"># ¿Sigue respondiendo la tienda Shopify sin redirigir?</span>
+curl -sSI -o /dev/null -w '%{http_code} -> %{redirect_url}\n' https://store.koonartesanos.com/collections/all
+curl -sSI -o /dev/null -w '%{http_code} -> %{redirect_url}\n' https://koonartesanos.myshopify.com/</pre>
+  <p>Complementar con <strong>SSL Labs</strong> (<code>ssllabs.com/ssltest</code>), <strong>securityheaders.com</strong> y <strong>Mozilla Observatory</strong>. Objetivo: A o superior en los tres.</p>
+
+  <h3>6.2 · Rendimiento y Core Web Vitals</h3>
+  <ul>
+    <li><strong>PageSpeed Insights</strong> en modo <em>Móvil</em> sobre portada, una colección y una ficha de producto. Registrar por separado <em>datos de campo</em> (CrUX, el criterio real de Google) y <em>datos de laboratorio</em>.</li>
+    <li><strong>Pingdom Tools</strong> con nodo de prueba en Norteamérica: anotar peso total, número de peticiones y reparto por tipo de recurso.</li>
+    <li><strong>WebPageTest</strong> con perfil móvil y red 4G para obtener la cascada de carga y detectar recursos bloqueantes del render.</li>
+    <li><strong>Search Console → Core Web Vitals</strong> para la distribución real por grupos de URLs.</li>
+  </ul>
+
+  <h3>6.3 · Indexabilidad y renderizado <span style="font-weight:400;font-size:14px;color:var(--acento)">— comprobación prioritaria</span></h3>
+  <pre><span class="c"># ¿El HTML de origen ya trae los metadatos, o los pinta el navegador?</span>
+<span class="c"># Si estas líneas salen vacías, el contenido depende de JavaScript</span>
+curl -sS https://koonartesanos.com/ -A "Mozilla/5.0" \
+  | grep -iE '&lt;title&gt;|name="description"|rel="canonical"|&lt;h1|robots'
+
+<span class="c"># Archivos de control de rastreo</span>
+curl -sS https://koonartesanos.com/robots.txt
+curl -sSI -o /dev/null -w '%{http_code}\n' https://koonartesanos.com/sitemap.xml
+
+<span class="c"># Recuento de URLs declaradas en el sitemap</span>
+curl -sS https://koonartesanos.com/sitemap.xml | grep -c '&lt;loc&gt;'</pre>
+  <p>Después, rastreo completo con <strong>Screaming Frog</strong> (o equivalente) sobre <code>koonartesanos.com</code> y sobre <code>store.koonartesanos.com</code>, exportando: títulos duplicados o ausentes, descripciones duplicadas, H1 duplicados o múltiples, imágenes sin <code>alt</code>, códigos de respuesta, cadenas de redirección y profundidad de clic. El rastreo del host Shopify además <strong>genera el inventario de origen del mapa 301</strong> de la sección 3.2.</p>
+
+  <h3>6.4 · Trazabilidad de la evidencia</h3>
+  <p>Los hallazgos marcados como <span class="etiqueta e-ev">Evidencia</span> se sustentan en URLs y títulos recuperados del índice público de buscadores durante la elaboración de este reporte:</p>
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Hallazgo</th><th>Evidencia observada</th></tr></thead>
+      <tbody>
+        <tr><td>Shopify sigue activo e indexado en subdominio</td><td><code>store.koonartesanos.com/collections/all</code>, <code>/collections/decoracion</code>, <code>/collections/charolas-de-piel/products/charola-rectangular-chica</code>, <code>/blogs/noticias</code>, <code>/pages/sobre-nosotros</code>, <code>/pages/politicas-de-servicio</code>, <code>/pages/bolsa-de-trabajo</code></td></tr>
+        <tr><td>El dominio técnico <code>myshopify.com</code> también está indexado</td><td><code>koonartesanos.myshopify.com/</code>, <code>/collections/oficina?page=2</code>, <code>/products/porta-lapices</code>, <code>/products/charola-cama</code>, <code>/products/perchero-trajes</code>, <code>/products/cartera-hombre</code>, <code>/products/basurero-redondo</code></td></tr>
+        <tr><td>Patrón de título long-tail de la tienda anterior</td><td>«Porta lápices 100% de piel hecho a mano», «Bote de basura redondo 100% de piel hecho a mano», «Charola para cama 100% de piel hecha a mano», «Perchero para trajes 100% de piel hecho a mano», «Archivero 100% de piel hecho a mano»</td></tr>
+        <tr><td>Duplicación de host en el sitio nuevo</td><td>Aparecen en índice tanto <code>koonartesanos.com/…</code> como <code>www.koonartesanos.com/…</code></td></tr>
+        <tr><td>Indicio de plantilla de título global</td><td>El título «Koon Artesanos - Regalos Corporativos y Artesanía en Piel» aparece asociado a más de una URL del sitio nuevo</td></tr>
+        <tr><td>Indicio de título ausente</td><td>Una URL de colección del sitio nuevo se muestra en resultados con su propia dirección en lugar de un título</td></tr>
+        <tr><td>Rutas no semánticas</td><td><code>koonartesanos.com/layouts/Avisodeprivacidad</code></td></tr>
+        <tr><td>Dependencia residual de Shopify</td><td>PDF corporativo servido desde <code>cdn.shopify.com/s/files/…</code></td></tr>
+        <tr><td>Aviso de privacidad conforme</td><td>Responsable «Koon Blanc, S.A. de C.V.», domicilio del área de datos personales y canal de revocación publicados</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>6.5 · Glosario para dirección</h3>
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Término</th><th>Qué significa en la práctica</th></tr></thead>
+      <tbody>
+        <tr><td><strong>301</strong></td><td>Redirección permanente. Es lo que traslada la reputación de una dirección antigua a la nueva. Sin ella, el historial se queda atrás.</td></tr>
+        <tr><td><strong>Canonical</strong></td><td>Etiqueta que declara cuál es la versión buena de una página cuando existen varias iguales.</td></tr>
+        <tr><td><strong>Long tail</strong></td><td>Búsquedas específicas y poco competidas («charola de piel hecha a mano»). Menos volumen, mucha más intención de compra.</td></tr>
+        <tr><td><strong>Core Web Vitals</strong></td><td>Las tres métricas con las que Google mide la experiencia real: velocidad de carga, respuesta al clic y estabilidad visual.</td></tr>
+        <tr><td><strong>SSR</strong></td><td>Renderizado en servidor: el HTML llega ya construido. Lo contrario obliga al buscador a ejecutar JavaScript para ver el contenido.</td></tr>
+        <tr><td><strong>HSTS</strong></td><td>Instrucción al navegador para que jamás vuelva a conectarse a este sitio sin cifrado.</td></tr>
+        <tr><td><strong>CSP</strong></td><td>Lista blanca de qué scripts pueden ejecutarse. Es la defensa principal frente al robo de datos desde formularios.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer class="pie">
+  <div class="pie-inner">
+    <p><strong>Reporte comparativo técnico y estratégico de migración — Koon Artesanos / Alfa Jardín.</strong></p>
+    <p>Documento de trabajo interno. Los hallazgos estructurales están sustentados en evidencia recuperada del índice público de buscadores; las métricas de servidor, seguridad y rendimiento quedan explícitamente marcadas como pendientes de medición en sitio y se completan con el protocolo del Bloque 6.</p>
+    <p style="margin-bottom:0">Septiembre 2026 · Consultoría de SEO técnico, rendimiento web y ciberseguridad.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var enlaces = Array.prototype.slice.call(document.querySelectorAll('.indice a'));
+  var secciones = enlaces.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); });
+  if(!('IntersectionObserver' in window)) return;
+  var obs = new IntersectionObserver(function(entradas){
+    entradas.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var i = secciones.indexOf(e.target);
+      if(i < 0) return;
+      enlaces.forEach(function(a){ a.classList.remove('activo'); });
+      enlaces[i].classList.add('activo');
+    });
+  }, { rootMargin: '-10% 0px -70% 0px' });
+  secciones.forEach(function(s){ if(s) obs.observe(s); });
+})();
+</script>
+
+</body>
+</html>
