@@ -1,20 +1,35 @@
 # Capturas del reporte
 
-Coloca aquí los seis archivos de pantalla, con estos nombres exactos.
-El reporte los inserta automáticamente al abrirlo.
+Las 14 capturas están incorporadas. Se tomaron el 1 de septiembre de 2026.
 
-| Archivo | Qué debe mostrar |
+## Insertadas en el cuerpo del reporte
+
+| Archivo | Contenido |
 |---|---|
-| `seoquake-nuevo.png` | Auditoría SEOQuake de koonartesanos.com (pestaña Diagnóstico) |
-| `seoquake-shopify.png` | Auditoría SEOQuake de koonartesanos.myshopify.com (pestaña Diagnóstico) |
-| `pagespeed-nuevo-movil.png` | PageSpeed Insights de koonartesanos.com, pestaña Móvil |
-| `pagespeed-shopify-movil.png` | PageSpeed Insights de la tienda Shopify, pestaña Móvil |
-| `pingdom-nuevo.png` | Resultado de Pingdom para koonartesanos.com |
-| `pingdom-shopify.png` | Resultado de Pingdom para la tienda Shopify |
+| `seoquake-nuevo-diagnostico.png` | SEOQuake · koonartesanos.com · 16 aprobados, 3 avisos, 2 errores |
+| `seoquake-shopify-diagnostico.png` | SEOQuake · Shopify · 15 aprobados, 5 avisos, 1 error |
+| `pagespeed-nuevo-movil.png` | PageSpeed · nuevo · celular · 48 / 85 / 96 / 100 |
+| `pagespeed-shopify-movil.png` | PageSpeed · Shopify · celular · 51 / 91 / 73 / 100 |
+| `pingdom-nuevo.png` | Pingdom · nuevo · B 82 · 542,6 KB · 292 ms · 19 archivos |
+| `pingdom-shopify.png` | Pingdom · Shopify · D 66 · 2,9 MB · 923 ms · 159 archivos |
 
-Formato PNG o JPG (si usas JPG, cambia la extensión en el HTML).
-Ancho recomendado: entre 1000 y 1600 px.
+Las dos de SEOQuake son muy altas: en el reporte se muestran recortadas con
+un enlace «ver completa» que abre el archivo original.
 
-Mientras un archivo no exista, el reporte muestra en su lugar un recuadro
-punteado con el nombre que falta, y al imprimir lo omite. El documento es
-válido y presentable con o sin las capturas.
+## Enlazadas como material complementario
+
+| Archivo | Contenido |
+|---|---|
+| `seoquake-nuevo-densidad.png` | Densidad de palabras clave · nuevo · 847 palabras |
+| `seoquake-shopify-densidad.png` | Densidad de palabras clave · Shopify · 201 palabras |
+| `pagespeed-nuevo-movil-metricas.png` | FCP 4,6 s · LCP 16,7 s · TBT 540 ms · CLS 0 · SI 5,9 s |
+| `pagespeed-shopify-movil-metricas.png` | FCP 8,5 s · LCP 20,5 s · TBT 280 ms · CLS 0 · SI 9,5 s |
+| `pagespeed-nuevo-escritorio.png` | PageSpeed · nuevo · escritorio · 79 / 85 / 92 / 100 |
+| `pagespeed-nuevo-escritorio-metricas.png` | FCP 0,5 s · LCP 2,7 s · TBT 70 ms · CLS 0,001 · SI 2,6 s |
+| `pagespeed-shopify-escritorio.png` | PageSpeed · Shopify · escritorio · 65 / 84 / 73 / 100 |
+| `pagespeed-shopify-escritorio-metricas.png` | FCP 0,7 s · LCP 1,2 s · TBT 810 ms · CLS 0,001 · SI 2,3 s |
+
+## Nota
+
+Si una imagen no se encuentra, el reporte muestra en su lugar un recuadro
+punteado con el nombre del archivo que falta, y lo omite al imprimir.

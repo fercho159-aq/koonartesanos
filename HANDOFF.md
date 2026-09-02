@@ -11,7 +11,7 @@ sin acceso a la conversación original.
 Marca mexicana fundada en 2002. Artículos de piel 100 % hechos a mano por
 artesanos mexicanos: decoración, interiorismo, accesorios personales y —línea
 de mayor ticket— **regalos corporativos**. Tienda física en Prado Norte 540,
-CDMX. Contacto: contacto@koonartesanos.com. ~29 K seguidores en Instagram.
+CDMContacto: contacto@koonartesanos.com. ~29 K seguidores en Instagram.
 
 **Agencia/interlocutor:** Alfa Jardín.
 
@@ -241,11 +241,12 @@ Tipografía serif (Georgia) para títulos, sans del sistema para cuerpo.
 Los medidores circulares de PageSpeed están reproducidos en SVG inline con la
 misma escala de color de Google (rojo <50, naranja 50-89, verde 90+).
 
-**Capturas:** el reporte tiene seis huecos de imagen bajo `capturas/` con
-nombres fijos (`seoquake-nuevo.png`, `seoquake-shopify.png`,
-`pagespeed-nuevo-movil.png`, `pagespeed-shopify-movil.png`, `pingdom-nuevo.png`,
-`pingdom-shopify.png`). Si el archivo no existe, se muestra un recuadro
-punteado con el nombre que falta y se omite al imprimir. Ver `capturas/LEEME.md`.
+**Capturas:** las 14 capturas de las herramientas están en `capturas/` con
+nombres descriptivos y ya incorporadas. Seis se muestran en el cuerpo del
+reporte (diagnóstico SEOQuake de cada sitio, PageSpeed móvil de cada sitio y
+Pingdom de cada sitio) y ocho quedan enlazadas como material complementario
+(densidad de palabras clave y detalle de métricas de PageSpeed en ambos
+dispositivos). Inventario completo en `capturas/LEEME.md`.
 
 **Historial:** existe una versión anterior más extensa (692 líneas, 13
 acciones, glosario, protocolo de verificación con comandos) en el commit
@@ -255,11 +256,10 @@ acciones, glosario, protocolo de verificación con comandos) en el commit
 
 ## 6. Pendientes
 
-1. **Insertar las capturas** en `capturas/` (archivos no disponibles aún).
-2. **Revisión de seguridad del servidor** — requiere acceso al hosting;
-   no se puede medir desde fuera.
-3. **Decisión de dirección** sobre el futuro de la tienda Shopify.
-4. Opcional: exportación completa de URLs de Shopify para cerrar el mapa 301.
+1. **Revisión de seguridad del servidor** — requiere acceso al hosting; no se
+   puede medir desde fuera.
+2. **Decisión de dirección** sobre el futuro de la tienda Shopify.
+3. Opcional: exportación completa de URLs de Shopify para cerrar el mapa 301.
 
 ---
 

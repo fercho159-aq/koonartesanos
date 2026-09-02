@@ -85,6 +85,10 @@ td.q{font-weight:600}
 .captura figcaption{font-size:12.5px;color:var(--tinta-suave);margin-top:8px;font-style:italic}
 .captura.falta::before{content:"Captura pendiente · " attr(data-archivo);display:block;border:2px dashed var(--arena-osc);border-radius:8px;padding:30px 16px;text-align:center;color:var(--tinta-suave);font-size:13px;background:#FCFAF6;font-family:ui-monospace,Menlo,monospace}
 .captura.falta figcaption{display:none}
+.captura.recorte img{max-height:560px;object-fit:cover;object-position:top}
+.captura a{display:block}
+.mas{font-size:12.5px;color:var(--tinta-suave);margin:14px 0 0}
+.mas a{color:var(--cuero)}
 
 .acciones{counter-reset:a;list-style:none;margin:0 0 20px;padding:0}
 .acciones li{position:relative;padding:14px 0 14px 46px;border-bottom:1px solid var(--linea)}
@@ -191,13 +195,14 @@ footer p{max-width:none;margin:0 0 6px}
       </div>
     </div>
     <p class="veredicto"><strong>Los dos errores del sitio nuevo:</strong> no hay mapa del sitio y solo el 2,9 % de la página es texto. A eso se suma que la portada no tiene título principal.</p>
-    <figure class="captura" data-archivo="capturas/seoquake-nuevo.png">
-        <img src="capturas/seoquake-nuevo.png" alt="Auditoría SEOQuake de koonartesanos.com" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
-        <figcaption>Auditoría de SEOQuake sobre koonartesanos.com.</figcaption>
+    <p class="mas">Densidad de palabras clave: <a href="capturas/seoquake-nuevo-densidad.png" target="_blank">sitio nuevo</a> · <a href="capturas/seoquake-shopify-densidad.png" target="_blank">Shopify</a></p>
+    <figure class="captura recorte" data-archivo="capturas/seoquake-nuevo-diagnostico.png">
+        <a href="capturas/seoquake-nuevo-diagnostico.png" target="_blank"><img src="capturas/seoquake-nuevo-diagnostico.png" alt="Auditoría SEOQuake de koonartesanos.com" loading="lazy" onerror="this.closest('figure').classList.add('falta')"></a>
+        <figcaption>Auditoría de SEOQuake sobre <strong>koonartesanos.com</strong>: 16 aprobados, 3 avisos, 2 errores. <a href="capturas/seoquake-nuevo-diagnostico.png" target="_blank">ver completa</a></figcaption>
       </figure>
-    <figure class="captura" data-archivo="capturas/seoquake-shopify.png">
-        <img src="capturas/seoquake-shopify.png" alt="Auditoría SEOQuake de la tienda Shopify" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
-        <figcaption>Auditoría de SEOQuake sobre la tienda anterior en Shopify.</figcaption>
+    <figure class="captura recorte" data-archivo="capturas/seoquake-shopify-diagnostico.png">
+        <a href="capturas/seoquake-shopify-diagnostico.png" target="_blank"><img src="capturas/seoquake-shopify-diagnostico.png" alt="Auditoría SEOQuake de la tienda Shopify" loading="lazy" onerror="this.closest('figure').classList.add('falta')"></a>
+        <figcaption>Auditoría de SEOQuake sobre la <strong>tienda Shopify</strong>: 15 aprobados, 5 avisos, 1 error. <a href="capturas/seoquake-shopify-diagnostico.png" target="_blank">ver completa</a></figcaption>
       </figure>
   </div>
 
@@ -265,13 +270,14 @@ footer p{max-width:none;margin:0 0 6px}
       </div>
     </div>
     <p class="veredicto"><strong>En computadora el sitio nuevo gana claro:</strong> 79 contra 65. En celular los dos suspenden, y ahí es donde entra la mayoría de los clientes.</p>
+    <p class="mas">Detalle de métricas: <a href="capturas/pagespeed-nuevo-movil-metricas.png" target="_blank">nuevo celular</a> · <a href="capturas/pagespeed-shopify-movil-metricas.png" target="_blank">Shopify celular</a> · <a href="capturas/pagespeed-nuevo-escritorio.png" target="_blank">nuevo escritorio</a> · <a href="capturas/pagespeed-shopify-escritorio.png" target="_blank">Shopify escritorio</a></p>
     <figure class="captura" data-archivo="capturas/pagespeed-nuevo-movil.png">
-        <img src="capturas/pagespeed-nuevo-movil.png" alt="PageSpeed Insights de koonartesanos.com en móvil" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
-        <figcaption>PageSpeed Insights de koonartesanos.com en celular: 48 de 100.</figcaption>
+        <a href="capturas/pagespeed-nuevo-movil.png" target="_blank"><img src="capturas/pagespeed-nuevo-movil.png" alt="PageSpeed Insights de koonartesanos.com en móvil" loading="lazy" onerror="this.closest('figure').classList.add('falta')"></a>
+        <figcaption>PageSpeed de <strong>koonartesanos.com</strong> en celular: 48 de 100.</figcaption>
       </figure>
     <figure class="captura" data-archivo="capturas/pagespeed-shopify-movil.png">
-        <img src="capturas/pagespeed-shopify-movil.png" alt="PageSpeed Insights de la tienda Shopify en móvil" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
-        <figcaption>PageSpeed Insights de la tienda Shopify en celular: 51 de 100.</figcaption>
+        <a href="capturas/pagespeed-shopify-movil.png" target="_blank"><img src="capturas/pagespeed-shopify-movil.png" alt="PageSpeed Insights de la tienda Shopify en móvil" loading="lazy" onerror="this.closest('figure').classList.add('falta')"></a>
+        <figcaption>PageSpeed de la <strong>tienda Shopify</strong> en celular: 51 de 100.</figcaption>
       </figure>
   </div>
 
@@ -298,12 +304,12 @@ footer p{max-width:none;margin:0 0 6px}
     </div>
     <p class="veredicto"><strong>Resultado contundente a favor del sitio nuevo.</strong> La plantilla de Shopify arrastraba el peso de muchas aplicaciones instaladas encima.</p>
     <figure class="captura" data-archivo="capturas/pingdom-nuevo.png">
-        <img src="capturas/pingdom-nuevo.png" alt="Resultado de Pingdom para koonartesanos.com" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
-        <figcaption>Pingdom sobre koonartesanos.com: 542,6 KB y 19 archivos.</figcaption>
+        <a href="capturas/pingdom-nuevo.png" target="_blank"><img src="capturas/pingdom-nuevo.png" alt="Resultado de Pingdom para koonartesanos.com" loading="lazy" onerror="this.closest('figure').classList.add('falta')"></a>
+        <figcaption>Pingdom sobre <strong>koonartesanos.com</strong>: 542,6 KB y 19 archivos.</figcaption>
       </figure>
     <figure class="captura" data-archivo="capturas/pingdom-shopify.png">
-        <img src="capturas/pingdom-shopify.png" alt="Resultado de Pingdom para la tienda Shopify" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
-        <figcaption>Pingdom sobre la tienda Shopify: 2,9 MB y 159 archivos.</figcaption>
+        <a href="capturas/pingdom-shopify.png" target="_blank"><img src="capturas/pingdom-shopify.png" alt="Resultado de Pingdom para la tienda Shopify" loading="lazy" onerror="this.closest('figure').classList.add('falta')"></a>
+        <figcaption>Pingdom sobre la <strong>tienda Shopify</strong>: 2,9 MB y 159 archivos.</figcaption>
       </figure>
   </div>
 </section>
