@@ -8,29 +8,30 @@ Shopify de Koon Artesanos y el nuevo sitio independiente `koonartesanos.com`.
   hoja de estilo de impresión. Se abre directamente en el navegador o se exporta
   a PDF con *Imprimir → Guardar como PDF*.
 
+Versión orientada a cliente: lenguaje llano, sin jerga técnica y apoyada en
+mediciones reales de herramientas.
+
 ## Bloques
 
-0. Alcance, método y trazabilidad del dato
-1. Resumen ejecutivo
-2. Auditoría de seguridad web (TLS, cabeceras HTTP, SaaS gestionado vs. sitio a medida)
-3. Auditoría SEO on-page y técnico (criterios SEOQuake)
-4. Rendimiento y Core Web Vitals (PageSpeed Insights / Pingdom)
-5. Plan de acción y roadmap de corrección
-6. Anexos: protocolo de verificación, trazabilidad de evidencia y glosario
+1. En una página — marcador comparativo y los cuatro fallos a corregir
+2. Comparativa SEO — datos reales de SEOQuake sobre ambos sitios
+3. Seguridad — qué cambió al salir de una plataforma administrada
+4. Velocidad — pendiente de PageSpeed Insights y Pingdom Tools
+5. Qué hacer ahora — doce acciones priorizadas y calendario
+6. Glosario
 
-## Nota sobre los datos
+## Origen de los datos
 
-El reporte se elaboró desde un entorno con egreso de red restringido, sin acceso
-HTTP directo a los dominios auditados.
+| Bloque | Herramienta | Estado |
+|---|---|---|
+| Comparativa SEO | SEOQuake | Datos reales incorporados |
+| Velocidad | Google PageSpeed Insights | Pendiente de recibir |
+| Velocidad | Pingdom Tools | Pendiente de recibir |
+| Seguridad | Revisión de servidor | Pendiente de ejecutar |
 
-- Los hallazgos de **arquitectura, indexación, URLs y metadatos** se sustentan en
-  evidencia real recuperada del índice público de buscadores y están marcados
-  como *Evidencia* (la trazabilidad completa está en el bloque 6.4).
-- Las métricas que exigen respuesta del servidor (cadena TLS, cabeceras HTTP,
-  LCP/INP/CLS/TTFB, peso de página) **no se estimaron ni se inventaron**: aparecen
-  como *Pendiente*, junto al umbral de referencia y al comando exacto para
-  obtenerlas. El bloque 6 permite completarlas en ~45 minutos sin alterar ninguna
-  conclusión estructural.
+Las secciones pendientes están marcadas como tales en el documento, con los
+umbrales de referencia contra los que se evaluarán. No se publican cifras
+estimadas.
 
 ## Personalización visual
 
