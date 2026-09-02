@@ -143,7 +143,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
       <div><span>Cliente</span><strong>Koon Artesanos</strong></div>
       <div><span>Fecha</span><strong>Septiembre 2026</strong></div>
       <div><span>Herramientas</span><strong>SEOQuake · PageSpeed · Pingdom</strong></div>
-      <div><span>Estado</span><strong>Datos SEO verificados</strong></div>
+      <div><span>Estado</span><strong>SEO y velocidad medidos</strong></div>
     </div>
   </div>
 </header>
@@ -203,8 +203,13 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
 
   <div class="tabla-envoltura">
     <table>
-      <thead><tr><th>Los cuatro fallos</th><th>Qué provoca</th><th>Dificultad de arreglo</th></tr></thead>
+      <thead><tr><th>Los cinco fallos</th><th>Qué provoca</th><th>Dificultad de arreglo</th></tr></thead>
       <tbody>
+        <tr>
+          <td class="crit">En celular, la página tarda <strong>16,7 segundos</strong> en mostrar la imagen principal</td>
+          <td>La mayoría de los visitantes se va antes de ver el primer producto. Es el fallo más caro de todos.</td>
+          <td><span class="etiqueta e-media">Días</span></td>
+        </tr>
         <tr>
           <td class="crit">No existe el mapa del sitio (<code>sitemap.xml</code>)</td>
           <td>Google tiene que adivinar qué páginas existen. Muchas no llegan a mostrarse en los resultados.</td>
@@ -222,11 +227,16 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
         </tr>
         <tr>
           <td class="crit">Solo el 2,9 % de la página es texto; el resto es código</td>
-          <td>Página pesada y lenta, con poco contenido real que Google pueda valorar.</td>
+          <td>Es la causa técnica directa del punto anterior: página pesada, lenta y con poco contenido que Google pueda valorar.</td>
           <td><span class="etiqueta e-media">Días</span></td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="aviso critico">
+    <strong class="tit">El dato que más pesa</strong>
+    <p style="margin-bottom:0">En computadora el sitio va bien: <strong>79 de 100</strong> en velocidad. En celular baja a <strong>48 de 100</strong>, y la imagen principal tarda <strong>16,7 segundos</strong> en aparecer. El máximo recomendable son 2,5 segundos. Como la mayoría de los clientes de esta categoría entra desde el teléfono, aquí es donde se está perdiendo el negocio.</p>
   </div>
 
   <h3>Y una decisión pendiente</h3>
@@ -392,63 +402,139 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
 <section id="velocidad">
   <span class="num">Bloque 4</span>
   <h2 class="bloque">Velocidad y experiencia de carga</h2>
-  <p class="entradilla">Cómo se mide y contra qué se compara. Los resultados se incorporan en cuanto lleguen las mediciones.</p>
+  <p class="entradilla">Medición real con Google PageSpeed Insights sobre <code>koonartesanos.com</code>, el 1 de septiembre de 2026.</p>
 
-  <div class="reservado">
-    <strong>Sección pendiente de datos</strong>
-    <p>A la espera de los reportes de <strong>Google PageSpeed Insights</strong> y <strong>Pingdom Tools</strong>. En cuanto se reciban, esta sección se completa con los resultados reales de ambos sitios, igual que se hizo con SEOQuake.</p>
+  <div class="semaforo">
+    <div class="sitio antes">
+      <p class="nombre">En computadora</p>
+      <span class="url">Resultado aceptable</span>
+      <div class="marcadores">
+        <div class="marcador m-medio"><b>79</b><span>Velocidad</span></div>
+        <div class="marcador m-medio"><b>85</b><span>Accesib.</span></div>
+        <div class="marcador m-bien"><b>92</b><span>Buenas práct.</span></div>
+        <div class="marcador m-bien"><b>100</b><span>SEO</span></div>
+      </div>
+    </div>
+    <div class="sitio ahora">
+      <p class="nombre">En celular</p>
+      <span class="url">Resultado deficiente</span>
+      <div class="marcadores">
+        <div class="marcador m-mal"><b>48</b><span>Velocidad</span></div>
+        <div class="marcador m-medio"><b>85</b><span>Accesib.</span></div>
+        <div class="marcador m-bien"><b>96</b><span>Buenas práct.</span></div>
+        <div class="marcador m-bien"><b>100</b><span>SEO</span></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:13.5px;color:var(--tinta-suave);margin-top:-12px">PageSpeed Insights, 1 sept 2026. Prueba en celular simulando un teléfono de gama media con red 4G, que es el escenario real de la mayoría de los clientes.</p>
+
+  <div class="aviso critico">
+    <strong class="tit">El hallazgo principal de todo el reporte</strong>
+    <p>La imagen principal de la portada tarda <strong>16,7 segundos</strong> en aparecer en celular. El máximo recomendable son <strong>2,5 segundos</strong>: el sitio está casi <strong>siete veces por encima</strong>.</p>
+    <p style="margin-bottom:0">Traducido a negocio: quien entra desde el teléfono ve una pantalla prácticamente vacía durante más de quince segundos. La gran mayoría cierra antes de ver el primer producto. No importa cuánto tráfico se consiga si se pierde en la puerta.</p>
   </div>
 
-  <h3>Contra qué se van a comparar</h3>
+  <h3>Las cinco métricas, con sus valores reales</h3>
   <div class="tabla-envoltura">
     <table>
-      <thead><tr><th>Qué mide</th><th>En palabras simples</th><th>Bien</th><th>Mal</th></tr></thead>
+      <thead><tr><th>Qué mide</th><th>Computadora</th><th>Celular</th><th>Meta</th><th>Veredicto</th></tr></thead>
       <tbody>
-        <tr><td class="crit">LCP</td><td>Cuánto tarda en verse la foto principal del producto</td><td>Menos de 2,5 s</td><td>Más de 4 s</td></tr>
-        <tr><td class="crit">INP</td><td>Cuánto tarda el sitio en responder cuando el cliente toca algo</td><td>Menos de 0,2 s</td><td>Más de 0,5 s</td></tr>
-        <tr><td class="crit">CLS</td><td>Si los elementos se mueven solos mientras carga</td><td>Casi nada</td><td>Se mueve visiblemente</td></tr>
-        <tr><td class="crit">TTFB</td><td>Cuánto tarda el servidor en contestar</td><td>Menos de 0,8 s</td><td>Más de 1,8 s</td></tr>
-        <tr><td class="crit">Peso de la página</td><td>Cuántos datos consume abrir el sitio</td><td>Menos de 1,5 MB</td><td>Más de 3 MB</td></tr>
+        <tr>
+          <td class="crit">Tiempo en verse la imagen principal <span style="font-weight:400;color:var(--tinta-suave)">(LCP)</span></td>
+          <td>2,7 s</td>
+          <td><span class="no">16,7 s</span></td>
+          <td>≤ 2,5 s</td>
+          <td><span class="no">Crítico en celular</span></td>
+        </tr>
+        <tr>
+          <td class="crit">Tiempo en verse algo <span style="font-weight:400;color:var(--tinta-suave)">(FCP)</span></td>
+          <td><span class="si">0,5 s</span></td>
+          <td><span class="no">4,6 s</span></td>
+          <td>≤ 1,8 s</td>
+          <td><span class="no">Deficiente en celular</span></td>
+        </tr>
+        <tr>
+          <td class="crit">Sensación general de carga <span style="font-weight:400;color:var(--tinta-suave)">(Speed Index)</span></td>
+          <td>2,6 s</td>
+          <td><span class="no">5,9 s</span></td>
+          <td>≤ 3,4 s</td>
+          <td><span class="no">Deficiente en celular</span></td>
+        </tr>
+        <tr>
+          <td class="crit">Bloqueo al tocar la pantalla <span style="font-weight:400;color:var(--tinta-suave)">(TBT)</span></td>
+          <td><span class="si">70 ms</span></td>
+          <td><span class="ojo">540 ms</span></td>
+          <td>≤ 200 ms</td>
+          <td><span class="ojo">Mejorable en celular</span></td>
+        </tr>
+        <tr>
+          <td class="crit">Estabilidad: que nada se mueva solo <span style="font-weight:400;color:var(--tinta-suave)">(CLS)</span></td>
+          <td><span class="si">0,001</span></td>
+          <td><span class="si">0</span></td>
+          <td>≤ 0,1</td>
+          <td><span class="si">Excelente en ambos</span></td>
+        </tr>
       </tbody>
     </table>
   </div>
+  <p style="font-size:13.5px;color:var(--tinta-suave);margin-top:-12px">Las metas corresponden a los umbrales oficiales de Google. En computadora la herramienta aplica una escala más exigente, por eso marca en rojo valores que en la escala general serían aceptables.</p>
+
+  <h3>Dos lecturas que conviene entender bien</h3>
 
   <div class="aviso nota">
-    <strong class="tit">Un dato que ya anticipa el resultado</strong>
-    <p style="margin-bottom:0">SEOQuake detectó que <strong>solo el 2,9 % de la página de inicio es texto</strong>: el 97 % restante es código. Eso casi siempre significa páginas pesadas y lentas en celular, que es donde compra la mayoría de los clientes. Es previsible que las mediciones de velocidad lo confirmen.</p>
+    <strong class="tit">Por qué el «SEO 100» no contradice el bloque 2</strong>
+    <p style="margin-bottom:0">PageSpeed da <strong>100 de 100 en SEO</strong>, y eso está muy bien, pero mide una lista corta de requisitos básicos: que exista un título, que haya descripción, que la versión móvil esté declarada, que el texto sea legible. <strong>No revisa si hay mapa del sitio, ni si existe un H1, ni si el título está bien escrito.</strong> Eso lo revisa SEOQuake, y ahí es donde aparecen los fallos. Las dos herramientas son compatibles: una mide que estén los cimientos, la otra mide si están bien puestos.</p>
   </div>
 
-  <h3>Dónde se suele ganar velocidad en un catálogo como este</h3>
-  <p>En una marca artesanal la fotografía es el argumento de venta, así que <strong>no se trata de bajar la calidad de las imágenes</strong>, sino de servirlas de forma eficiente:</p>
+  <div class="aviso nota">
+    <strong class="tit">«No hay datos de usuarios reales»</strong>
+    <p style="margin-bottom:0">Google no pudo mostrar la experiencia de visitantes reales porque el sitio <strong>no alcanza el volumen mínimo de visitas</strong> que necesita para reunir esa información. Es, en sí mismo, una confirmación del diagnóstico: el tráfico todavía es bajo. Cuando las correcciones surtan efecto, este apartado empezará a mostrar datos y servirá para medir el avance.</p>
+  </div>
+
+  <h3>Qué está causando la lentitud</h3>
+  <p>Las cifras señalan un culpable claro y consistente:</p>
   <ul>
-    <li><strong>Imágenes en formato moderno</strong> y en el tamaño justo para cada pantalla: suele reducir el peso entre un 50 % y un 70 % sin que se note en calidad.</li>
-    <li><strong>Cargar primero lo que se ve</strong> y dejar el resto para después.</li>
-    <li><strong>Comprimir y limpiar el código</strong> sobrante, que es justo el problema que señala el 2,9 %.</li>
-    <li><strong>Servidor con entrega desde México</strong> y memoria caché, para que la primera respuesta llegue rápido.</li>
+    <li><strong>La imagen principal de la portada pesa demasiado.</strong> La pantalla aparece rápido (0,5 s en computadora) pero la foto grande tarda muchísimo. El problema no es que el sitio arranque lento: es que la imagen que lo encabeza es enorme.</li>
+    <li><strong>Hay mucho código ejecutándose antes de tiempo.</strong> Los 540 ms de bloqueo en celular y el 2,9 % de texto frente al código que detectó SEOQuake apuntan a lo mismo: se carga demasiado antes de mostrar lo importante.</li>
+    <li><strong>La estructura visual está bien resuelta.</strong> La estabilidad es prácticamente perfecta (0 y 0,001). Eso significa que el maquetado es correcto y que el problema es de peso, no de diseño.</li>
   </ul>
+
+  <div class="aviso ok">
+    <strong class="tit">La buena noticia</strong>
+    <p style="margin-bottom:0">Esto <strong>no obliga a rehacer el sitio</strong>. Optimizar las imágenes de portada y ordenar la carga de los archivos suele reducir el tiempo entre un 50 % y un 70 %. Es trabajo técnico acotado, de días, no de meses, y el diseño no se toca.</p>
+  </div>
+
+  <h3>Un apunte adicional</h3>
+  <p>La calificación de <strong>accesibilidad es 85</strong> en ambos dispositivos. No es un fallo, pero sí margen de mejora: tiene que ver con contrastes de color, etiquetas de botones y navegación con teclado. Importa por experiencia de usuario y, cada vez más, por cumplimiento. Conviene atenderlo en una segunda fase.</p>
+
+  <div class="reservado">
+    <strong>Pendiente para cerrar este bloque</strong>
+    <p>Falta el reporte de <strong>Pingdom Tools</strong> (peso total de la página y número de archivos) y, si se quiere comparativa completa, el <strong>PageSpeed de la tienda en Shopify</strong>. Ambos se incorporan en cuanto lleguen.</p>
+  </div>
 </section>
 
 <section id="plan">
   <span class="num">Bloque 5</span>
   <h2 class="bloque">Qué hacer ahora</h2>
-  <p class="entradilla">Doce acciones ordenadas por lo que más rinde con menos esfuerzo. Las de prioridad alta bloquean el resultado de todas las demás.</p>
+  <p class="entradilla">Trece acciones ordenadas por lo que más rinde con menos esfuerzo. Las de prioridad alta bloquean el resultado de todas las demás.</p>
 
   <div class="tabla-envoltura">
     <table>
       <thead><tr><th>#</th><th>Acción</th><th>Para qué sirve</th><th>Prioridad</th><th>Quién</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td class="crit">Publicar el mapa del sitio (<code>sitemap.xml</code>)</td><td>Que Google encuentre todas las páginas, no solo algunas</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
-        <tr><td>2</td><td class="crit">Añadir un título principal (H1) a cada página</td><td>Que Google entienda de qué trata cada página</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
-        <tr><td>3</td><td class="crit">Reescribir títulos y descripciones con las palabras que la gente busca</td><td>Más clics desde Google con el mismo tráfico</td><td><span class="etiqueta e-alta">Alta</span></td><td>Contenido</td></tr>
-        <tr><td>4</td><td class="crit">Decidir el futuro de la tienda en Shopify y redirigir sus direcciones</td><td>Dejar de competir contra uno mismo y recuperar el historial</td><td><span class="etiqueta e-alta">Alta</span></td><td>Dirección</td></tr>
-        <tr><td>5</td><td class="crit">Revisar certificado, actualizaciones y protección de formularios</td><td>Evitar caídas del sitio y riesgo sobre los datos de clientes</td><td><span class="etiqueta e-alta">Alta</span></td><td>Infraestructura</td></tr>
-        <tr><td>6</td><td class="crit">Confirmar que estén publicadas las políticas de servicio y devoluciones</td><td>Cumplimiento legal y confianza en la compra</td><td><span class="etiqueta e-alta">Alta</span></td><td>Legal</td></tr>
-        <tr><td>7</td><td class="crit">Aligerar el código de las páginas</td><td>Sitio más rápido, sobre todo en celular</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
-        <tr><td>8</td><td class="crit">Optimizar las fotos de producto</td><td>Carga más rápida sin perder calidad visual</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
-        <tr><td>9</td><td class="crit">Ordenar los encabezados y quitar el texto de relleno</td><td>Contenido más claro para el cliente y para Google</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo + Contenido</td></tr>
-        <tr><td>10</td><td class="crit">Ampliar los datos de empresa a fichas de producto</td><td>Que Google muestre precio y disponibilidad en los resultados</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
-        <tr><td>11</td><td class="crit">Crear una página dedicada a regalos corporativos con formulario</td><td>Captar el segmento de mayor ticket</td><td><span class="etiqueta e-media">Media</span></td><td>Marketing</td></tr>
-        <tr><td>12</td><td class="crit">Configurar copias de seguridad y un panel de seguimiento mensual</td><td>Tranquilidad operativa y control del avance</td><td><span class="etiqueta e-baja">Baja</span></td><td>Infraestructura</td></tr>
+        <tr><td>1</td><td class="crit">Optimizar la imagen principal y el orden de carga en celular</td><td>Bajar de 16,7 s a menos de 3 s: es donde se está perdiendo la venta</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
+        <tr><td>2</td><td class="crit">Publicar el mapa del sitio (<code>sitemap.xml</code>)</td><td>Que Google encuentre todas las páginas, no solo algunas</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
+        <tr><td>3</td><td class="crit">Añadir un título principal (H1) a cada página</td><td>Que Google entienda de qué trata cada página</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
+        <tr><td>4</td><td class="crit">Reescribir títulos y descripciones con las palabras que la gente busca</td><td>Más clics desde Google con el mismo tráfico</td><td><span class="etiqueta e-alta">Alta</span></td><td>Contenido</td></tr>
+        <tr><td>5</td><td class="crit">Decidir el futuro de la tienda en Shopify y redirigir sus direcciones</td><td>Dejar de competir contra uno mismo y recuperar el historial</td><td><span class="etiqueta e-alta">Alta</span></td><td>Dirección</td></tr>
+        <tr><td>6</td><td class="crit">Revisar certificado, actualizaciones y protección de formularios</td><td>Evitar caídas del sitio y riesgo sobre los datos de clientes</td><td><span class="etiqueta e-alta">Alta</span></td><td>Infraestructura</td></tr>
+        <tr><td>7</td><td class="crit">Confirmar que estén publicadas las políticas de servicio y devoluciones</td><td>Cumplimiento legal y confianza en la compra</td><td><span class="etiqueta e-alta">Alta</span></td><td>Legal</td></tr>
+        <tr><td>8</td><td class="crit">Aligerar el código y diferir lo que no se ve al entrar</td><td>Reducir el bloqueo de 540 ms y subir la calificación en celular</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
+        <tr><td>9</td><td class="crit">Optimizar el resto de fotos del catálogo</td><td>Carga más rápida en todas las páginas, sin perder calidad visual</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
+        <tr><td>10</td><td class="crit">Ordenar los encabezados y quitar el texto de relleno</td><td>Contenido más claro para el cliente y para Google</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo + Contenido</td></tr>
+        <tr><td>11</td><td class="crit">Ampliar los datos de empresa a fichas de producto</td><td>Que Google muestre precio y disponibilidad en los resultados</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
+        <tr><td>12</td><td class="crit">Crear una página dedicada a regalos corporativos con formulario</td><td>Captar el segmento de mayor ticket</td><td><span class="etiqueta e-media">Media</span></td><td>Marketing</td></tr>
+        <tr><td>13</td><td class="crit">Mejorar accesibilidad, copias de seguridad y panel de seguimiento</td><td>Mejor experiencia, tranquilidad operativa y control del avance</td><td><span class="etiqueta e-baja">Baja</span></td><td>Desarrollo + Infra</td></tr>
       </tbody>
     </table>
   </div>
@@ -456,24 +542,29 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
   <h3>Cómo se ordena en el tiempo</h3>
   <ol class="fases">
     <li>
-      <h4>Arreglos rápidos</h4>
-      <span class="plazo">Semana 1 · acciones 1, 2, 3</span>
-      <p>Los tres fallos que se resuelven en horas y desbloquean la visibilidad en Google. Es donde está el mayor retorno inmediato.</p>
+      <h4>Arreglos de horas</h4>
+      <span class="plazo">Semana 1 · acciones 2, 3, 4</span>
+      <p>Los tres fallos SEO que se resuelven el mismo día y desbloquean la visibilidad en Google. Máximo retorno inmediato, coste mínimo.</p>
     </li>
     <li>
-      <h4>Decisión sobre Shopify</h4>
-      <span class="plazo">Semanas 1–2 · acciones 4, 6</span>
-      <p>Definir si la tienda anterior se cierra y se redirige, o se le da un rol diferenciado. Requiere una decisión de dirección antes de ejecutar.</p>
+      <h4>Velocidad en celular</h4>
+      <span class="plazo">Semanas 1–3 · acciones 1, 8, 9</span>
+      <p>La prioridad comercial del proyecto. Empezar por la imagen de portada, que es la que provoca los 16,7 segundos, y seguir con el resto del catálogo.</p>
+    </li>
+    <li>
+      <h4>Decisión sobre Shopify y cierre legal</h4>
+      <span class="plazo">Semanas 1–2 · acciones 5, 7</span>
+      <p>Definir si la tienda anterior se cierra y se redirige o se le da un rol diferenciado, y confirmar que las políticas de venta estén publicadas.</p>
     </li>
     <li>
       <h4>Seguridad</h4>
-      <span class="plazo">Semanas 2–3 · acciones 5, 12</span>
-      <p>Revisión del servidor, certificado, actualizaciones y copias de seguridad. Trabajo independiente del resto, puede ir en paralelo.</p>
+      <span class="plazo">Semanas 2–3 · acción 6</span>
+      <p>Revisión del servidor, certificado, actualizaciones y protección de formularios. Va en paralelo, es otro equipo.</p>
     </li>
     <li>
-      <h4>Velocidad y contenido</h4>
-      <span class="plazo">Semanas 3–6 · acciones 7 a 11</span>
-      <p>Aligerar el sitio, optimizar fotos, ordenar el contenido y abrir la puerta comercial al canal corporativo.</p>
+      <h4>Contenido y conversión</h4>
+      <span class="plazo">Semanas 3–6 · acciones 10 a 13</span>
+      <p>Ordenar el contenido, enriquecer las fichas de producto y abrir la puerta comercial al canal corporativo.</p>
     </li>
   </ol>
 
@@ -482,12 +573,16 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
     <table>
       <thead><tr><th>Indicador</th><th>Hoy</th><th>Meta a 90 días</th></tr></thead>
       <tbody>
-        <tr><td>Errores en la auditoría SEO</td><td>2</td><td>0</td></tr>
-        <tr><td>Avisos en la auditoría SEO</td><td>3</td><td>0 o 1</td></tr>
-        <tr><td>Páginas que Google encuentra</td><td>Limitadas por la falta de mapa del sitio</td><td>Todo el catálogo publicado</td></tr>
-        <tr><td>Proporción de texto en la página</td><td>2,9 %</td><td>Por encima de 15 %</td></tr>
-        <tr><td>Visitas desde Google</td><td>Medición base por establecer</td><td>Recuperar el nivel previo a la migración</td></tr>
-        <tr><td>Solicitudes de regalos corporativos</td><td>Sin medición</td><td>Medición activa y en crecimiento</td></tr>
+        <tr><td class="crit">Velocidad en celular</td><td><span class="no">48 / 100</span></td><td>90 o más</td></tr>
+        <tr><td class="crit">Tiempo en verse la imagen principal (celular)</td><td><span class="no">16,7 s</span></td><td>Menos de 2,5 s</td></tr>
+        <tr><td class="crit">Velocidad en computadora</td><td>79 / 100</td><td>90 o más</td></tr>
+        <tr><td class="crit">Errores en la auditoría SEO</td><td>2</td><td>0</td></tr>
+        <tr><td class="crit">Avisos en la auditoría SEO</td><td>3</td><td>0 o 1</td></tr>
+        <tr><td class="crit">Proporción de texto en la página</td><td>2,9 %</td><td>Por encima de 15 %</td></tr>
+        <tr><td class="crit">Páginas que Google encuentra</td><td>Limitadas por la falta de mapa del sitio</td><td>Todo el catálogo publicado</td></tr>
+        <tr><td class="crit">Datos de usuarios reales en PageSpeed</td><td>Sin datos por bajo tráfico</td><td>Con datos suficientes para medir</td></tr>
+        <tr><td class="crit">Accesibilidad</td><td>85 / 100</td><td>90 o más</td></tr>
+        <tr><td class="crit">Solicitudes de regalos corporativos</td><td>Sin medición</td><td>Medición activa y en crecimiento</td></tr>
       </tbody>
     </table>
   </div>
@@ -507,6 +602,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
         <tr><td class="crit">Etiqueta canónica</td><td>Aviso al buscador de cuál es la versión oficial de una página cuando existen varias parecidas.</td></tr>
         <tr><td class="crit">Schema / datos de empresa</td><td>Información escrita en un formato que Google entiende directamente: nombre, dirección, teléfono, precios. Permite que los resultados se vean más completos.</td></tr>
         <tr><td class="crit">Proporción texto/código</td><td>Cuánto de la página es contenido de verdad frente a instrucciones de programación. Poco texto suele significar página lenta y con poco valor para el buscador.</td></tr>
+        <tr><td class="crit">LCP</td><td>El tiempo que tarda en verse la imagen o el bloque más grande de la pantalla. Es la métrica que Google usa para decidir si un sitio es rápido o lento.</td></tr>
         <tr><td class="crit">Certificado de seguridad</td><td>Lo que hace que aparezca el candado en el navegador. Si caduca, el navegador advierte que el sitio no es seguro y muchos clientes se van.</td></tr>
       </tbody>
     </table>
@@ -519,7 +615,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
 <footer class="pie">
   <div class="pie-inner">
     <p><strong>Reporte de migración web — Koon Artesanos / Alfa Jardín.</strong></p>
-    <p>Los datos SEO provienen de mediciones reales con SEOQuake sobre la página de inicio de ambos sitios. Las secciones de velocidad y de configuración del servidor se completan al recibir los reportes de PageSpeed Insights y Pingdom Tools.</p>
+    <p>Los datos SEO provienen de mediciones reales con SEOQuake sobre la página de inicio de ambos sitios. Los datos de velocidad provienen de Google PageSpeed Insights sobre koonartesanos.com, medidos el 1 de septiembre de 2026 en computadora y en celular. Quedan pendientes el reporte de Pingdom Tools y la revisión de configuración del servidor.</p>
     <p style="margin-bottom:0">Septiembre 2026 · Consultoría de SEO técnico, rendimiento web y seguridad.</p>
   </div>
 </footer>
