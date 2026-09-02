@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Koon Artesanos — Diagnóstico del sitio nuevo</title>
+<meta name="description" content="Resumen en cinco diapositivas del estado de koonartesanos.com frente a la tienda anterior en Shopify.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --crema:#FBF8F3; --papel:#FFFFFF; --arena:#EFE6D9; --arena-osc:#DFD0BC;
+  --cuero:#8A5A32; --cuero-osc:#5A3A20; --cuero-claro:#B98B5E; --acento:#C0703A;
+  --tinta:#2A231E; --tinta-suave:#5E534B; --linea:#E3D8C8;
+  --mal:#B23A2E; --mal-bg:#FBEDEB; --mal-bd:#E7C3BD;
+  --medio:#B8801F; --medio-bg:#FCF5E5; --medio-bd:#EBD9AE;
+  --bien:#4F7A52; --bien-bg:#EDF4EE; --bien-bd:#C7DCC9;
+  --info:#3D6B8A; --info-bg:#EDF3F7; --info-bd:#C9DBE7;
+  --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+  --serif:Georgia,"Times New Roman",Times,serif;
+  --r:12px; --sombra:0 1px 2px rgba(42,35,30,.05),0 10px 30px -14px rgba(42,35,30,.22);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--crema);color:var(--tinta);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+
+/* ---------- armazón de diapositivas ---------- */
+.slide{display:none;min-height:100vh;padding:clamp(30px,4vw,58px) clamp(20px,4vw,60px) 104px}
+.slide.on{display:block}
+.inner{max-width:1060px;margin:0 auto}
+.kicker{font-family:var(--serif);font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--acento);margin:0 0 14px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,5vw,52px);line-height:1.1;margin:0 0 16px}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(25px,3.5vw,39px);line-height:1.15;margin:0 0 10px;color:var(--cuero-osc)}
+h3{font-family:var(--serif);font-weight:600;font-size:17px;margin:0 0 6px;color:var(--tinta)}
+.lead{font-size:clamp(15.5px,1.6vw,19px);color:var(--tinta-suave);max-width:66ch;margin:0 0 28px}
+p{margin:0 0 14px;max-width:72ch}
+.mini{font-size:13px;color:var(--tinta-suave)}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.87em;background:var(--arena);padding:1.5px 5px;border-radius:4px;color:var(--cuero-osc)}
+
+/* ---------- portada ---------- */
+.slide.cover{background:linear-gradient(160deg,var(--cuero-osc) 0%,var(--cuero) 62%,var(--acento) 100%);color:#fff;position:relative;overflow:hidden}
+.slide.cover::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.045) 0 2px,transparent 2px 9px);pointer-events:none}
+.slide.cover .inner{position:relative;z-index:1}
+.slide.cover .kicker{color:rgba(255,255,255,.82)}
+.slide.cover h1{color:#fff}
+.slide.cover .lead{color:rgba(255,255,255,.92)}
+.sello{display:inline-block;border:1px solid rgba(255,255,255,.42);border-radius:100px;padding:5px 16px;font-size:12.5px;letter-spacing:.05em;margin-bottom:30px}
+.herr{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0 0 26px}
+.herr div{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.24);border-radius:var(--r);padding:20px}
+.herr b{display:block;font-family:var(--serif);font-size:18px;margin-bottom:6px}
+.herr span{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.88);display:block}
+.pie-cover{font-size:13px;color:rgba(255,255,255,.8);border-top:1px solid rgba(255,255,255,.22);padding-top:16px;max-width:none}
+
+/* ---------- bloques ---------- */
+.cifras{display:flex;flex-wrap:wrap;gap:18px 40px;margin:0 0 24px}
+.cifra b{display:block;font-family:var(--serif);font-size:clamp(28px,3.4vw,38px);line-height:1.05;color:var(--cuero-osc)}
+.cifra b.mala{color:var(--mal)} .cifra b.buena{color:var(--bien)}
+.cifra span{font-size:12.5px;color:var(--tinta-suave);letter-spacing:.02em;display:block;margin-top:4px}
+
+.tabla{overflow-x:auto;border:1px solid var(--linea);border-radius:var(--r);background:var(--papel);margin:0 0 22px;box-shadow:var(--sombra)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:520px}
+thead th{background:var(--arena);color:var(--cuero-osc);text-align:left;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;padding:11px 15px;border-bottom:1px solid var(--arena-osc)}
+tbody td{padding:11px 15px;border-bottom:1px solid var(--linea);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:#FDFBF8}
+td.q{font-weight:600}
+.si{color:var(--bien);font-weight:700} .no{color:var(--mal);font-weight:700} .ojo{color:var(--medio);font-weight:700}
+
+.aviso{border-radius:var(--r);padding:18px 20px;margin:0 0 20px;font-size:15px;border:1px solid}
+.aviso p{max-width:none} .aviso :last-child{margin-bottom:0}
+.aviso strong.tit{display:block;margin-bottom:6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.aviso.critico{background:var(--mal-bg);border-color:var(--mal-bd);color:#6E2119} .aviso.critico strong.tit{color:var(--mal)}
+.aviso.nota{background:var(--info-bg);border-color:var(--info-bd);color:#28495D} .aviso.nota strong.tit{color:var(--info)}
+.aviso.ok{background:var(--bien-bg);border-color:var(--bien-bd);color:#33532F} .aviso.ok strong.tit{color:var(--bien)}
+
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:0 0 20px}
+.caja{background:var(--papel);border:1px solid var(--linea);border-radius:var(--r);padding:20px;box-shadow:var(--sombra)}
+.caja h3{margin-bottom:10px}
+.caja ul{margin:0;padding-left:19px} .caja li{margin-bottom:7px;font-size:14.5px}
+
+.capturas{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:4px 0 0}
+.capturas figure{margin:0}
+.capturas img{width:100%;height:auto;max-height:270px;object-fit:cover;object-position:top;display:block;border:1px solid var(--linea);border-radius:8px;background:#fff}
+.capturas figcaption{font-size:12px;color:var(--tinta-suave);margin-top:7px;font-style:italic}
+.capturas a{display:block}
+
+.acciones{counter-reset:a;list-style:none;margin:0 0 18px;padding:0}
+.acciones li{position:relative;padding:11px 0 11px 44px;border-bottom:1px solid var(--linea)}
+.acciones li:last-child{border-bottom:none}
+.acciones li::before{counter-increment:a;content:counter(a);position:absolute;left:0;top:11px;width:27px;height:27px;border-radius:50%;background:var(--cuero);color:#fff;display:grid;place-items:center;font-size:12.5px;font-weight:700}
+.acciones b{display:block;font-size:15.5px;margin-bottom:1px}
+.acciones span{font-size:13.5px;color:var(--tinta-suave)}
+.tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-left:8px;vertical-align:2px}
+.t-alta{background:var(--mal-bg);color:var(--mal);border:1px solid var(--mal-bd)}
+.t-media{background:var(--medio-bg);color:var(--medio);border:1px solid var(--medio-bd)}
+
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:0}
+.meta span{background:var(--arena);border:1px solid var(--arena-osc);border-radius:100px;padding:6px 14px;font-size:13px;color:var(--cuero-osc)}
+
+/* ---------- navegación ---------- */
+.nav{position:fixed;left:0;right:0;bottom:0;background:rgba(251,248,243,.93);backdrop-filter:blur(8px);border-top:1px solid var(--linea);padding:11px clamp(16px,4vw,32px);display:flex;align-items:center;gap:14px;z-index:20}
+.nav button{font:inherit;font-size:15px;background:var(--papel);color:var(--cuero-osc);border:1px solid var(--arena-osc);border-radius:8px;padding:7px 15px;cursor:pointer;line-height:1}
+.nav button:hover{background:var(--arena)}
+.nav button:disabled{opacity:.35;cursor:default}
+.nav .cuenta{font-size:13px;color:var(--tinta-suave);min-width:52px;text-align:center}
+.nav .puntos{display:flex;gap:7px;margin-left:auto}
+.nav .puntos i{width:9px;height:9px;border-radius:50%;background:var(--arena-osc);cursor:pointer;display:block}
+.nav .puntos i.on{background:var(--acento)}
+.nav .tip{font-size:12px;color:var(--tinta-suave);margin-left:14px}
+
+@media(max-width:760px){
+  .herr,.dos,.capturas{grid-template-columns:1fr}
+  .nav .tip{display:none}
+}
+
+@media print{
+  @page{size:A4 landscape;margin:11mm}
+  body{background:#fff}
+  .nav{display:none}
+  .slide{display:block!important;min-height:0;padding:0 0 8mm;break-after:page;page-break-after:always}
+  .slide:last-child{break-after:auto;page-break-after:auto}
+  .slide.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:14mm 12mm}
+  .caja,.tabla,.aviso,.capturas figure{break-inside:avoid;page-break-inside:avoid;box-shadow:none}
+  .capturas img{max-height:52mm}
+  table{min-width:0;font-size:9pt}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 1 ============ -->
+<section class="slide cover on">
+  <div class="inner">
+    <p class="kicker">Koon Artesanos · Alfa Jardín</p>
+    <h1>Cómo quedó el sitio nuevo</h1>
+    <p class="lead">Revisamos <strong>koonartesanos.com</strong> y lo comparamos con la tienda anterior de Shopify, con las mismas herramientas, el mismo día y en las mismas condiciones. Todo lo que sigue son mediciones reales: ninguna cifra es estimada.</p>
+    <span class="sello">Mediciones del 1 de septiembre de 2026</span>
+
+    <div class="herr">
+      <div>
+        <b>SEOQuake</b>
+        <span>Revisa la página como la lee Google: título, textos, estructura y si el sitio le entrega un mapa para encontrarlo todo.</span>
+      </div>
+      <div>
+        <b>PageSpeed Insights</b>
+        <span>La herramienta de Google que califica la velocidad de 0 a 100, midiendo por separado celular y computadora.</span>
+      </div>
+      <div>
+        <b>Pingdom Tools</b>
+        <span>Mide cuánto pesa la página, cuántos archivos tiene que descargar y cuánto tarda en aparecer.</span>
+      </div>
+    </div>
+
+    <p class="pie-cover">Hay tres direcciones publicando el mismo catálogo al mismo tiempo: <strong>koonartesanos.com</strong> (el sitio nuevo), <strong>store.koonartesanos.com</strong> y <strong>koonartesanos.myshopify.com</strong> (la tienda Shopify, todavía activa y visible en buscadores).</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="slide">
+  <div class="inner">
+    <p class="kicker">Diapositiva 2 · Medido con SEOQuake</p>
+    <h2>Lo que ve Google</h2>
+    <p class="lead">SEOQuake revisa una veintena de puntos en la portada de cada sitio y los clasifica en aprobados, avisos y errores. El sitio nuevo aprueba más puntos que la tienda anterior.</p>
+
+    <div class="cifras">
+      <div class="cifra"><b class="buena">16</b><span>Puntos aprobados<br>sitio nuevo</span></div>
+      <div class="cifra"><b>15</b><span>Puntos aprobados<br>Shopify</span></div>
+      <div class="cifra"><b class="buena">847</b><span>Palabras en portada<br>(Shopify: 201)</span></div>
+      <div class="cifra"><b class="buena">213</b><span>Sitios que lo enlazan<br>(Shopify: 0)</span></div>
+    </div>
+
+    <div class="tabla">
+      <table>
+        <thead><tr><th>Qué se revisó</th><th>Tienda Shopify</th><th>Sitio nuevo</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Idioma declarado</td><td class="no">Inglés (incorrecto)</td><td class="si">Español</td></tr>
+          <tr><td class="q">Ficha de negocio para Google</td><td class="no">No tiene</td><td class="si">Sí</td></tr>
+          <tr><td class="q">Contenido de la portada</td><td>201 palabras</td><td class="si">847 palabras</td></tr>
+          <tr><td class="q">Mapa del sitio para buscadores</td><td class="si">Sí</td><td class="no">No existe</td></tr>
+          <tr><td class="q">Proporción de texto en la página</td><td>22,6 %</td><td class="no">2,9 %</td></tr>
+          <tr><td class="q">Título principal de la portada</td><td class="si">Sí</td><td class="no">No hay</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="aviso nota">
+      <strong class="tit">Por qué marcamos como fallos cosas que la herramienta aprueba</strong>
+      <p>En las capturas verás una palomita verde junto al título de 14 caracteres y a la descripción de 294. SEOQuake usa límites muy amplios; Google corta los títulos alrededor de 60 caracteres y las descripciones alrededor de 160. Por eso los contamos como puntos a mejorar aunque la herramienta los dé por buenos.</p>
+    </div>
+
+    <div class="capturas">
+      <figure>
+        <a href="capturas/seoquake-nuevo-diagnostico.png" target="_blank"><img src="capturas/seoquake-nuevo-diagnostico.png" alt="Auditoría SEOQuake de koonartesanos.com"></a>
+        <figcaption>Sitio nuevo: 16 aprobados, 3 avisos, 2 errores. Clic para ver completa.</figcaption>
+      </figure>
+      <figure>
+        <a href="capturas/seoquake-shopify-diagnostico.png" target="_blank"><img src="capturas/seoquake-shopify-diagnostico.png" alt="Auditoría SEOQuake de la tienda Shopify"></a>
+        <figcaption>Tienda Shopify: 15 aprobados, 5 avisos, 1 error. Clic para ver completa.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="slide">
+  <div class="inner">
+    <p class="kicker">Diapositiva 3 · Medido con Pingdom y PageSpeed Insights</p>
+    <h2>Qué tan rápido carga</h2>
+    <p class="lead">El sitio nuevo está mucho mejor construido: pesa cinco veces menos y descarga ocho veces menos archivos. Pero en celular tarda demasiado en mostrar la imagen principal, y ahí es donde entra la mayoría de los clientes.</p>
+
+    <div class="cifras">
+      <div class="cifra"><b class="buena">5×</b><span>más ligero<br>542 KB contra 2,9 MB</span></div>
+      <div class="cifra"><b class="buena">8×</b><span>menos archivos<br>19 contra 159</span></div>
+      <div class="cifra"><b class="buena">3×</b><span>más rápido en escritorio<br>292 ms contra 923 ms</span></div>
+      <div class="cifra"><b class="mala">16,7 s</b><span>en celular hasta ver<br>la imagen principal</span></div>
+    </div>
+
+    <div class="tabla">
+      <table>
+        <thead><tr><th>Calificación de velocidad</th><th>Tienda Shopify</th><th>Sitio nuevo</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Pingdom (nota general)</td><td class="no">D · 66</td><td class="si">B · 82</td></tr>
+          <tr><td class="q">PageSpeed en computadora</td><td class="ojo">65 de 100</td><td class="si">79 de 100</td></tr>
+          <tr><td class="q">PageSpeed en celular</td><td class="no">51 de 100</td><td class="no">48 de 100</td></tr>
+          <tr><td class="q">Tiempo hasta ver la imagen principal en celular</td><td class="no">20,5 s</td><td class="no">16,7 s</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="aviso critico">
+      <strong class="tit">El único fallo grave, y por qué es más barato de lo que parece</strong>
+      <p>Pingdom dice 292 milisegundos y PageSpeed dice 16,7 segundos. No se contradicen. Con una página que pesa apenas 542 KB, la lentitud <strong>no puede venir del tamaño de las imágenes</strong>: la imagen de portada no viaja en la primera carga, se pide después de que el teléfono descarga y ejecuta todo el código. En computadora eso es instantáneo; en un celular de gama media con datos móviles son quince segundos de pantalla vacía.</p>
+      <p>La consecuencia es buena noticia: se arregla cambiando <strong>el orden en que carga la página</strong>, no comprimiendo fotos. Es un ajuste acotado, no un rediseño.</p>
+    </div>
+
+    <p class="mini">Nota: la lentitud en celular no la causó la mudanza. La tienda de Shopify era peor (20,5 s), y por un motivo distinto: cargaba 2,9 MB en 159 archivos por las aplicaciones instaladas encima de la plantilla.</p>
+
+    <div class="capturas">
+      <figure>
+        <a href="capturas/pingdom-nuevo.png" target="_blank"><img src="capturas/pingdom-nuevo.png" alt="Resultado de Pingdom para koonartesanos.com"></a>
+        <figcaption>Pingdom, sitio nuevo: nota B, 542,6 KB y 19 archivos.</figcaption>
+      </figure>
+      <figure>
+        <a href="capturas/pagespeed-nuevo-movil.png" target="_blank"><img src="capturas/pagespeed-nuevo-movil.png" alt="PageSpeed Insights de koonartesanos.com en celular"></a>
+        <figcaption>PageSpeed, sitio nuevo en celular: 48 de 100.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="slide">
+  <div class="inner">
+    <p class="kicker">Diapositiva 4 · Seguridad</p>
+    <h2>Lo que cambió al salir de Shopify</h2>
+    <p class="lead">Mientras la tienda vivía en Shopify, la plataforma se encargaba sola del certificado, las actualizaciones y los respaldos. En un sitio propio esas tareas pasan a ser responsabilidad de quien lo administra. No son un problema: son una lista que hay que atender.</p>
+
+    <div class="aviso ok">
+      <strong class="tit">Verificado y en orden</strong>
+      <p>El sitio publica su <strong>Aviso de Privacidad</strong> conforme a la ley mexicana de protección de datos, con responsable identificado, domicilio del área de datos personales y canal para revocar el consentimiento.</p>
+    </div>
+
+    <div class="aviso nota">
+      <strong class="tit">Lo demás todavía no está medido, y hay que decirlo con claridad</strong>
+      <p>La seguridad de un servidor no se puede comprobar desde fuera: hace falta acceso al hosting. Preferimos dejarlo señalado como pendiente antes que publicar una cifra estimada. Es la única parte del diagnóstico que sigue abierta.</p>
+    </div>
+
+    <div class="dos">
+      <div class="caja">
+        <h3>Qué hay que revisar con acceso al servidor</h3>
+        <ul>
+          <li>Que el candado de seguridad cubra el sitio con y sin <code>www</code>, y que avise antes de vencer.</li>
+          <li>Las instrucciones de seguridad que el servidor le da al navegador de cada visitante.</li>
+          <li>Quién aplica las actualizaciones del sitio y cada cuánto.</li>
+          <li>Que los formularios estén protegidos contra envíos automáticos.</li>
+          <li>Que existan respaldos <em>y</em> que se haya probado restaurar uno.</li>
+          <li>Si conviene un filtro que bloquee ataques antes de que lleguen al sitio.</li>
+        </ul>
+      </div>
+      <div class="caja">
+        <h3>Un pendiente que sí se ve desde fuera</h3>
+        <p>En Shopify existía una página de <strong>políticas de servicio y devoluciones</strong>. Hay que confirmar que esté publicada también en el sitio nuevo: además de ser una obligación frente al consumidor, es de las páginas que más consultan quienes están por comprar un regalo corporativo.</p>
+        <p class="mini">Mismo caso para el resto de páginas informativas que vivían en la tienda anterior: sobre nosotros, bolsa de trabajo y la página de la tienda de Prado Norte.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="slide">
+  <div class="inner">
+    <p class="kicker">Diapositiva 5 · Plan</p>
+    <h2>Qué hacer ahora</h2>
+    <p class="lead">Ocho acciones, ordenadas por lo que más mueve la aguja. Las seis primeras son las que conviene atacar en las próximas semanas.</p>
+
+    <ol class="acciones">
+      <li><b>Corregir el orden de carga de la imagen de portada en celular <span class="tag t-alta">Alta</span></b><span>Es el fallo grave de la diapositiva anterior y el que más ventas cuesta.</span></li>
+      <li><b>Publicar el mapa del sitio <span class="tag t-alta">Alta</span></b><span>Hoy no existe: Google tiene que adivinar qué páginas hay en lugar de recibir la lista.</span></li>
+      <li><b>Poner un título principal en cada página <span class="tag t-alta">Alta</span></b><span>La portada no tiene ninguno, y es la primera señal que Google lee para saber de qué trata.</span></li>
+      <li><b>Reescribir títulos y descripciones <span class="tag t-alta">Alta</span></b><span>El título actual son 14 caracteres sin palabras clave. En Shopify funcionaba un patrón que conviene recuperar: «Producto 100% de piel hecho a mano | Koon Artesanos».</span></li>
+      <li><b>Decidir el futuro de la tienda Shopify y redirigirla <span class="tag t-alta">Alta</span></b><span>Tres direcciones publican el mismo catálogo. Sin redirecciones, la fuerza se reparte entre ellas en vez de sumarse al sitio nuevo.</span></li>
+      <li><b>Revisar la seguridad del servidor <span class="tag t-alta">Alta</span></b><span>La lista de la diapositiva anterior. Requiere acceso al hosting.</span></li>
+      <li><b>Aligerar el código y ordenar el contenido <span class="tag t-media">Media</span></b><span>Solo el 2,9 % de la página es texto, y aparecen fechas sueltas del blog mezcladas con el catálogo.</span></li>
+      <li><b>Crear una página de regalos corporativos con formulario <span class="tag t-media">Media</span></b><span>Es la línea de mayor ticket y hoy no tiene una entrada propia que capture solicitudes.</span></li>
+    </ol>
+
+    <h3 style="margin-top:26px">Cómo sabremos que funcionó, a 90 días</h3>
+    <div class="meta">
+      <span>Velocidad en celular: 48 → 90+</span>
+      <span>Imagen principal: 16,7 s → menos de 2,5 s</span>
+      <span>Errores de SEOQuake: 2 → 0</span>
+      <span>Texto en la página: 2,9 % → más de 15 %</span>
+      <span>Pingdom: B 82 → A 90+</span>
+      <span>Solicitudes corporativas medidas y creciendo</span>
+    </div>
+  </div>
+</section>
+
+<nav class="nav">
+  <button id="prev" aria-label="Anterior">&lsaquo;</button>
+  <span class="cuenta"><span id="act">1</span> / 5</span>
+  <button id="next" aria-label="Siguiente">&rsaquo;</button>
+  <span class="tip">Usa las flechas del teclado · Imprimir → Guardar como PDF exporta las cinco</span>
+  <span class="puntos" id="puntos"></span>
+</nav>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var i = 0;
+  var puntos = document.getElementById('puntos');
+  var act = document.getElementById('act');
+  var prev = document.getElementById('prev');
+  var next = document.getElementById('next');
+
+  slides.forEach(function(_, n){
+    var p = document.createElement('i');
+    p.addEventListener('click', function(){ ir(n); });
+    puntos.appendChild(p);
+  });
+
+  function ir(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(s, k){ s.classList.toggle('on', k === i); });
+    Array.prototype.forEach.call(puntos.children, function(p, k){ p.classList.toggle('on', k === i); });
+    act.textContent = i + 1;
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+    window.scrollTo(0, 0);
+  }
+
+  prev.addEventListener('click', function(){ ir(i - 1); });
+  next.addEventListener('click', function(){ ir(i + 1); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { ir(i + 1); e.preventDefault(); }
+    if (e.key === 'ArrowLeft'  || e.key === 'PageUp')  { ir(i - 1); e.preventDefault(); }
+    if (e.key === 'Home') { ir(0); }
+    if (e.key === 'End')  { ir(slides.length - 1); }
+  });
+
+  ir(0);
+})();
+</script>
+
+</body>
+</html>
