@@ -143,7 +143,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
       <div><span>Cliente</span><strong>Koon Artesanos</strong></div>
       <div><span>Fecha</span><strong>Septiembre 2026</strong></div>
       <div><span>Herramientas</span><strong>SEOQuake · PageSpeed · Pingdom</strong></div>
-      <div><span>Estado</span><strong>SEO y velocidad medidos</strong></div>
+      <div><span>Estado</span><strong>Reporte completo</strong></div>
     </div>
   </div>
 </header>
@@ -207,8 +207,8 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
       <tbody>
         <tr>
           <td class="crit">En celular, la página tarda <strong>16,7 segundos</strong> en mostrar la imagen principal</td>
-          <td>La mayoría de los visitantes se va antes de ver el primer producto. Es el fallo más caro de todos. Viene heredado de Shopify, que tardaba aún más.</td>
-          <td><span class="etiqueta e-media">Días</span></td>
+          <td>La mayoría de los visitantes se va antes de ver el primer producto. Es el fallo más caro de todos, y no es por peso: la foto se pide tarde, después del código.</td>
+          <td><span class="etiqueta e-baja">Días</span></td>
         </tr>
         <tr>
           <td class="crit">No existe el mapa del sitio (<code>sitemap.xml</code>)</td>
@@ -227,7 +227,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
         </tr>
         <tr>
           <td class="crit">Solo el 2,9 % de la página es texto; el resto es código</td>
-          <td>Es la causa técnica directa del punto anterior: página pesada, lenta y con poco contenido que Google pueda valorar.</td>
+          <td>Poco contenido real que Google pueda valorar, y código que se ejecuta antes de mostrar lo importante.</td>
           <td><span class="etiqueta e-media">Días</span></td>
         </tr>
       </tbody>
@@ -237,7 +237,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
   <div class="aviso critico">
     <strong class="tit">El dato que más pesa</strong>
     <p>En computadora el sitio va bien: <strong>79 de 100</strong> en velocidad. En celular baja a <strong>48 de 100</strong>, y la imagen principal tarda <strong>16,7 segundos</strong> en aparecer. El máximo recomendable son 2,5 segundos. Como la mayoría de los clientes de esta categoría entra desde el teléfono, aquí es donde se está perdiendo el negocio.</p>
-    <p style="margin-bottom:0"><strong>Con un matiz importante y justo:</strong> la tienda anterior en Shopify era todavía más lenta en celular (20,5 segundos). El problema no lo creó la migración —viene de antes—, pero tampoco se resolvió. Es una deuda pendiente de las dos plataformas.</p>
+    <p style="margin-bottom:0"><strong>Con dos matices importantes y justos:</strong> la tienda anterior en Shopify era todavía más lenta en celular (20,5 segundos), así que el problema no lo creó la migración. Y el sitio nuevo <strong>pesa cinco veces menos</strong> que el anterior: la lentitud no viene del peso, sino del orden en que se cargan las cosas. Eso lo hace mucho más barato de arreglar.</p>
   </div>
 
   <h3>Y una decisión pendiente</h3>
@@ -403,7 +403,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
 <section id="velocidad">
   <span class="num">Bloque 4</span>
   <h2 class="bloque">Velocidad y experiencia de carga</h2>
-  <p class="entradilla">Medición real con Google PageSpeed Insights sobre los dos sitios, el 1 de septiembre de 2026, en computadora y en celular.</p>
+  <p class="entradilla">Mediciones reales de Google PageSpeed Insights y Pingdom Tools sobre los dos sitios, el 1 de septiembre de 2026.</p>
 
   <div class="semaforo">
     <div class="sitio antes">
@@ -504,6 +504,41 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
     </table>
   </div>
 
+  <h3>Peso de la página — medición de Pingdom</h3>
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Qué mide</th><th>Shopify</th><th>Sitio nuevo</th><th>Diferencia</th></tr></thead>
+      <tbody>
+        <tr><td class="crit">Calificación</td><td><span class="no">D · 66</span></td><td><span class="si">B · 82</span></td><td><span class="si">16 puntos a favor del nuevo</span></td></tr>
+        <tr><td class="crit">Peso de la página</td><td><span class="no">2,9 MB</span></td><td><span class="si">542,6 KB</span></td><td><span class="si">El nuevo pesa 5 veces menos</span></td></tr>
+        <tr><td class="crit">Archivos que se descargan</td><td><span class="no">159</span></td><td><span class="si">19</span></td><td><span class="si">8 veces menos</span></td></tr>
+        <tr><td class="crit">Tiempo de carga</td><td>923 ms</td><td><span class="si">292 ms</span></td><td><span class="si">3 veces más rápido</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13.5px;color:var(--tinta-suave);margin-top:-12px">Pingdom Tools, prueba desde Washington D.C. con conexión de banda ancha.</p>
+
+  <div class="aviso ok">
+    <strong class="tit">Un resultado contundente</strong>
+    <p style="margin-bottom:0">El sitio nuevo es <strong>radicalmente más ligero</strong>: 542 KB frente a 2,9 MB, y 19 archivos frente a 159. La tienda de Shopify arrastraba el peso típico de una plantilla comprada con muchas aplicaciones instaladas encima. <strong>Aquí la migración sí produjo una mejora enorme y medible.</strong></p>
+  </div>
+
+  <h3>Cómo encajan los tres resultados</h3>
+  <p>A primera vista parecen contradecirse: Pingdom dice que el sitio nuevo es ligero y rápido (292 ms), y PageSpeed dice que en celular tarda 16,7 segundos. Las dos mediciones son correctas y juntas señalan exactamente dónde está el problema.</p>
+  <ul>
+    <li><strong>Pingdom mide desde una conexión rápida</strong> y cronometra la descarga inicial de los archivos. Ahí el sitio nuevo sale muy bien: pide poco y el servidor responde rápido.</li>
+    <li><strong>PageSpeed simula un teléfono de gama media con 4G</strong> y cronometra hasta que el cliente <em>ve</em> la imagen principal. Ahí sale muy mal.</li>
+    <li><strong>La única explicación compatible con ambos números</strong> es que la imagen principal <strong>no viene en la carga inicial</strong>: llega después, cuando el navegador ya descargó y ejecutó el código. En una computadora esa cadena tarda un instante; en un celular con 4G se convierte en quince segundos de pantalla vacía.</li>
+  </ul>
+
+  <div class="aviso critico">
+    <strong class="tit">Esto cambia cuál es la solución</strong>
+    <p>Con 542 KB de peso total, <strong>el problema del sitio nuevo no es que las imágenes pesen mucho</strong>: es el <strong>orden en que se cargan</strong>. La foto que encabeza la página se está pidiendo tarde, después del código, cuando debería ser lo primero que se descarga.</p>
+    <p style="margin-bottom:0">Es una corrección de programación puntual —declarar esa imagen en el HTML inicial y darle prioridad de carga—, no un rediseño ni una compresión masiva de fotografías. <strong>Más barato de lo que parecía y con el mismo impacto.</strong></p>
+  </div>
+
+  <p>Los dos sitios son lentos en celular, pero <strong>por motivos distintos</strong>: Shopify por peso bruto (2,9 MB y 159 archivos que descargar), el sitio nuevo por secuencia de carga. El segundo problema es bastante más sencillo y económico de resolver que el primero.</p>
+
   <h3>Dos lecturas que conviene entender bien</h3>
 
   <div class="aviso nota">
@@ -516,28 +551,14 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
     <p style="margin-bottom:0">Google no pudo mostrar la experiencia de visitantes reales en <strong>ninguna de las dos plataformas</strong>, porque no alcanzan el volumen mínimo de visitas que necesita para reunir esa información. Es un dato sobre el tráfico de la marca en conjunto, no sobre el sitio nuevo en particular. Cuando las correcciones surtan efecto, este apartado empezará a mostrar datos y servirá para medir el avance.</p>
   </div>
 
-  <h3>Qué está causando la lentitud</h3>
-  <p>Las cifras señalan un culpable claro y compartido por las dos plataformas:</p>
-  <ul>
-    <li><strong>Las imágenes de portada pesan demasiado.</strong> Los dos sitios arrancan rápido en computadora (0,5 y 0,7 s) y luego se atascan esperando la foto grande. El problema no es el arranque: es el peso de la fotografía que encabeza la página.</li>
-    <li><strong>En celular el efecto se multiplica.</strong> Con red 4G y un teléfono de gama media, esa misma imagen pasa de tardar un segundo a tardar más de quince.</li>
-    <li><strong>El sitio nuevo carga más código de golpe</strong> (540 ms de bloqueo frente a los 280 ms de Shopify) y muestra solo un 2,9 % de texto frente al código, según SEOQuake. Se ejecuta demasiado antes de mostrar lo importante.</li>
-    <li><strong>La estructura visual está bien resuelta en ambos.</strong> La estabilidad es prácticamente perfecta. El problema es de peso, no de diseño.</li>
-  </ul>
-
   <div class="aviso ok">
-    <strong class="tit">La buena noticia</strong>
-    <p style="margin-bottom:0">Esto <strong>no obliga a rehacer el sitio</strong>. Optimizar las imágenes de portada y ordenar la carga de los archivos suele reducir el tiempo entre un 50 % y un 70 %. Es trabajo técnico acotado, de días, no de meses, y el diseño no se toca. Además, el sitio nuevo parte de mejor base: está mejor construido (92–96 en buenas prácticas frente a 73) y ya gana en computadora por 14 puntos.</p>
+    <strong class="tit">El balance de este bloque</strong>
+    <p style="margin-bottom:0">El sitio nuevo <strong>está mejor construido que el anterior</strong>: pesa cinco veces menos, pide ocho veces menos archivos, responde tres veces más rápido, gana 14 puntos en computadora y 19 en buenas prácticas. Le queda <strong>un solo fallo grave, y está bien localizado</strong>: el orden de carga de la imagen de portada en celular. Corregirlo es cuestión de días y no toca el diseño.</p>
   </div>
 
   <h3>Un apunte adicional</h3>
   <p>La <strong>accesibilidad</strong> del sitio nuevo es 85 en ambos dispositivos, mientras que Shopify llegaba a 91 en celular. No es un fallo, pero sí margen de mejora: tiene que ver con contrastes de color, etiquetas de botones y navegación con teclado. Importa por experiencia de usuario y, cada vez más, por cumplimiento.</p>
   <p style="margin-bottom:0">También conviene mirar la <strong>navegación por asistentes de IA</strong>, donde Shopify cumple 4 de 4 requisitos y el sitio nuevo 1 de 2. A medida que más compras empiezan en un asistente conversacional, que el catálogo sea legible para ellos deja de ser un detalle técnico.</p>
-
-  <div class="reservado">
-    <strong>Pendiente para cerrar este bloque</strong>
-    <p>Falta el reporte de <strong>Pingdom Tools</strong>, que aporta el peso total de la página y el número de archivos que se descargan. Es el dato que permitirá cuantificar exactamente cuánto pesa la imagen de portada y cuánto se puede recortar.</p>
-  </div>
 </section>
 
 <section id="plan">
@@ -549,7 +570,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
     <table>
       <thead><tr><th>#</th><th>Acción</th><th>Para qué sirve</th><th>Prioridad</th><th>Quién</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td class="crit">Optimizar la imagen principal y el orden de carga en celular</td><td>Bajar de 16,7 s a menos de 3 s: es donde se está perdiendo la venta</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
+        <tr><td>1</td><td class="crit">Corregir el orden de carga de la imagen de portada en celular</td><td>Bajar de 16,7 s a menos de 3 s: es donde se está perdiendo la venta</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
         <tr><td>2</td><td class="crit">Publicar el mapa del sitio (<code>sitemap.xml</code>)</td><td>Que Google encuentre todas las páginas, no solo algunas</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
         <tr><td>3</td><td class="crit">Añadir un título principal (H1) a cada página</td><td>Que Google entienda de qué trata cada página</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
         <tr><td>4</td><td class="crit">Reescribir títulos y descripciones con las palabras que la gente busca</td><td>Más clics desde Google con el mismo tráfico</td><td><span class="etiqueta e-alta">Alta</span></td><td>Contenido</td></tr>
@@ -557,7 +578,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
         <tr><td>6</td><td class="crit">Revisar certificado, actualizaciones y protección de formularios</td><td>Evitar caídas del sitio y riesgo sobre los datos de clientes</td><td><span class="etiqueta e-alta">Alta</span></td><td>Infraestructura</td></tr>
         <tr><td>7</td><td class="crit">Confirmar que estén publicadas las políticas de servicio y devoluciones</td><td>Cumplimiento legal y confianza en la compra</td><td><span class="etiqueta e-alta">Alta</span></td><td>Legal</td></tr>
         <tr><td>8</td><td class="crit">Aligerar el código y diferir lo que no se ve al entrar</td><td>Reducir el bloqueo de 540 ms y subir la calificación en celular</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
-        <tr><td>9</td><td class="crit">Optimizar el resto de fotos del catálogo</td><td>Carga más rápida en todas las páginas, sin perder calidad visual</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
+        <tr><td>9</td><td class="crit">Aplicar el mismo criterio de carga al resto del catálogo</td><td>Que las fichas de producto y las colecciones abran igual de rápido</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
         <tr><td>10</td><td class="crit">Ordenar los encabezados y quitar el texto de relleno</td><td>Contenido más claro para el cliente y para Google</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo + Contenido</td></tr>
         <tr><td>11</td><td class="crit">Ampliar los datos de empresa a fichas de producto</td><td>Que Google muestre precio y disponibilidad en los resultados</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
         <tr><td>12</td><td class="crit">Crear una página dedicada a regalos corporativos con formulario</td><td>Captar el segmento de mayor ticket</td><td><span class="etiqueta e-media">Media</span></td><td>Marketing</td></tr>
@@ -576,7 +597,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
     <li>
       <h4>Velocidad en celular</h4>
       <span class="plazo">Semanas 1–3 · acciones 1, 8, 9</span>
-      <p>La prioridad comercial del proyecto. Empezar por la imagen de portada, que es la que provoca los 16,7 segundos, y seguir con el resto del catálogo.</p>
+      <p>La prioridad comercial del proyecto. Empezar por la imagen de portada, que es la que provoca los 16,7 segundos: hacer que se descargue primero, antes que el código. Después, aplicar el mismo criterio al resto del catálogo.</p>
     </li>
     <li>
       <h4>Decisión sobre Shopify y cierre legal</h4>
@@ -606,6 +627,8 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
         <tr><td class="crit">Errores en la auditoría SEO</td><td>2</td><td>0</td></tr>
         <tr><td class="crit">Avisos en la auditoría SEO</td><td>3</td><td>0 o 1</td></tr>
         <tr><td class="crit">Proporción de texto en la página</td><td>2,9 %</td><td>Por encima de 15 %</td></tr>
+        <tr><td class="crit">Peso de la página</td><td><span class="si">542,6 KB</span> <span style="color:var(--tinta-suave)">(Shopify: 2,9 MB)</span></td><td>Mantener por debajo de 1,5 MB</td></tr>
+        <tr><td class="crit">Calificación de Pingdom</td><td>B · 82 <span style="color:var(--tinta-suave)">(Shopify: D · 66)</span></td><td>A · 90 o más</td></tr>
         <tr><td class="crit">Páginas que Google encuentra</td><td>Limitadas por la falta de mapa del sitio</td><td>Todo el catálogo publicado</td></tr>
         <tr><td class="crit">Datos de usuarios reales en PageSpeed</td><td>Sin datos en ninguna plataforma</td><td>Con datos suficientes para medir</td></tr>
         <tr><td class="crit">Accesibilidad</td><td>85 / 100 <span style="color:var(--tinta-suave)">(Shopify: 91 en celular)</span></td><td>90 o más</td></tr>
@@ -642,7 +665,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
 <footer class="pie">
   <div class="pie-inner">
     <p><strong>Reporte de migración web — Koon Artesanos / Alfa Jardín.</strong></p>
-    <p>Los datos SEO provienen de mediciones reales con SEOQuake sobre la página de inicio de ambos sitios. Los datos de velocidad provienen de Google PageSpeed Insights sobre ambos sitios, medidos el 1 de septiembre de 2026 en computadora y en celular. Quedan pendientes el reporte de Pingdom Tools y la revisión de configuración del servidor.</p>
+    <p>Los datos SEO provienen de mediciones reales con SEOQuake sobre la página de inicio de ambos sitios. Los datos de velocidad provienen de Google PageSpeed Insights sobre ambos sitios, medidos el 1 de septiembre de 2026 en computadora y en celular. El peso y el número de archivos provienen de Pingdom Tools sobre ambos sitios. Queda pendiente únicamente la revisión de configuración del servidor descrita en el bloque 3.</p>
     <p style="margin-bottom:0">Septiembre 2026 · Consultoría de SEO técnico, rendimiento web y seguridad.</p>
   </div>
 </footer>

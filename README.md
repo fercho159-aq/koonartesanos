@@ -26,12 +26,13 @@ mediciones reales de herramientas.
 |---|---|---|
 | Comparativa SEO | SEOQuake (ambos sitios) | Datos reales incorporados |
 | Velocidad | PageSpeed Insights (ambos sitios) | Datos reales incorporados |
-| Velocidad | Pingdom Tools | Pendiente de recibir |
+| Velocidad | Pingdom Tools (ambos sitios) | Datos reales incorporados |
 | Seguridad | Revisión de servidor | Pendiente de ejecutar |
 
-Las secciones pendientes están marcadas como tales en el documento, con los
-umbrales de referencia contra los que se evaluarán. No se publican cifras
-estimadas.
+Las tres herramientas SEO y de rendimiento están completas. Queda pendiente
+únicamente la revisión de configuración del servidor descrita en el bloque 3
+(certificado, actualizaciones y protección de formularios), señalada como tal
+en el documento. No se publican cifras estimadas.
 
 ## Personalización visual
 
