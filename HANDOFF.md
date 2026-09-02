@@ -13,8 +13,6 @@ artesanos mexicanos: decoración, interiorismo, accesorios personales y —líne
 de mayor ticket— **regalos corporativos**. Tienda física en Prado Norte 540,
 CDMContacto: contacto@koonartesanos.com. ~29 K seguidores en Instagram.
 
-**Agencia/interlocutor:** Alfa Jardín.
-
 **Situación:** la marca migró de una tienda Shopify (plantilla comprada,
 código sobrescrito por varios desarrolladores, diseño desalineado de la
 identidad) a un sitio independiente fuera de Shopify. El encargo original fue

@@ -1,4 +1,4 @@
-# Reporte de auditoría — Koon Artesanos / Alfa Jardín
+# Reporte de auditoría — Koon Artesanos
 
 Reporte comparativo técnico y estratégico de la transición entre la tienda
 Shopify de Koon Artesanos y el nuevo sitio independiente `koonartesanos.com`.
