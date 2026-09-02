@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reporte de Migración Web — Koon Artesanos</title>
-<meta name="description" content="Comparativa entre la tienda anterior en Shopify y el nuevo sitio koonartesanos.com: qué mejoró, qué se perdió y qué hay que corregir.">
+<title>Diagnóstico Web — Koon Artesanos</title>
+<meta name="description" content="Resumen del estado del sitio koonartesanos.com frente a la tienda anterior en Shopify.">
 <meta name="robots" content="noindex, nofollow">
 <style>
 :root{
@@ -20,673 +20,332 @@
   --r:10px; --sombra:0 1px 2px rgba(42,35,30,.05),0 8px 24px -12px rgba(42,35,30,.18);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--crema);color:var(--tinta);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--crema);color:var(--tinta);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 
-.portada{background:linear-gradient(160deg,var(--cuero-osc) 0%,var(--cuero) 62%,var(--acento) 100%);color:#fff;padding:60px 32px 52px;position:relative;overflow:hidden}
-.portada::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.045) 0 2px,transparent 2px 9px);pointer-events:none}
-.portada-inner{max-width:1060px;margin:0 auto;position:relative;z-index:1}
-.marca{font-family:var(--serif);font-size:13px;letter-spacing:.34em;text-transform:uppercase;opacity:.86;margin:0 0 20px}
-.portada h1{font-family:var(--serif);font-size:clamp(30px,4.6vw,48px);line-height:1.14;font-weight:400;margin:0 0 14px;max-width:20ch}
-.subtitulo{font-size:clamp(15px,1.6vw,18px);opacity:.93;max-width:60ch;margin:0 0 32px}
-.meta-portada{display:grid;gap:16px 40px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border-top:1px solid rgba(255,255,255,.28);padding-top:20px;max-width:860px}
-.meta-portada div span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.72;margin-bottom:3px}
-.meta-portada div strong{font-weight:600;font-size:15px}
+.portada{background:linear-gradient(160deg,var(--cuero-osc) 0%,var(--cuero) 62%,var(--acento) 100%);color:#fff;padding:52px 32px 44px;position:relative;overflow:hidden}
+.portada::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.045) 0 2px,transparent 2px 9px)}
+.wrap{max-width:880px;margin:0 auto;position:relative;z-index:1}
+.marca{font-family:var(--serif);font-size:12px;letter-spacing:.34em;text-transform:uppercase;opacity:.86;margin:0 0 18px}
+.portada h1{font-family:var(--serif);font-size:clamp(28px,4.4vw,44px);line-height:1.15;font-weight:400;margin:0 0 12px}
+.portada p{font-size:clamp(15px,1.6vw,18px);opacity:.93;max-width:56ch;margin:0 0 26px}
+.sello{display:inline-block;border:1px solid rgba(255,255,255,.4);border-radius:100px;padding:5px 16px;font-size:12.5px;letter-spacing:.06em}
 
-.envoltorio{max-width:1060px;margin:0 auto;padding:0 32px 80px;display:grid;grid-template-columns:210px 1fr;gap:52px;align-items:start}
-@media(max-width:940px){.envoltorio{grid-template-columns:1fr;gap:0;padding:0 20px 60px}}
-.indice{position:sticky;top:26px;padding:26px 0 0;font-size:13.5px}
-.indice h2{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tinta-suave);margin:0 0 12px;font-weight:700}
-.indice ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--linea)}
-.indice li a{display:block;padding:6px 0 6px 14px;color:var(--tinta-suave);text-decoration:none;border-left:2px solid transparent;margin-left:-2px;transition:.15s}
-.indice li a:hover{color:var(--cuero);border-left-color:var(--cuero-claro)}
-.indice li a.activo{color:var(--cuero-osc);font-weight:600;border-left-color:var(--cuero)}
-@media(max-width:940px){.indice{position:static;margin:26px 0 8px}}
+main{max-width:880px;margin:0 auto;padding:44px 32px 72px}
+@media(max-width:640px){main{padding:32px 20px 56px} .portada{padding:40px 20px 34px}}
+section{margin:0 0 52px}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(23px,2.8vw,31px);margin:0 0 18px;color:var(--cuero-osc);line-height:1.2}
+h3{font-family:var(--serif);font-weight:600;font-size:18px;margin:0 0 4px;color:var(--tinta)}
+p{margin:0 0 14px;max-width:70ch}
+ul{margin:0 0 14px;padding-left:20px;max-width:70ch}
+li{margin-bottom:8px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.87em;background:var(--arena);padding:1.5px 5px;border-radius:4px;color:var(--cuero-osc)}
 
-main{min-width:0;padding-top:26px}
-section{margin:0 0 58px;scroll-margin-top:22px}
-h2.bloque{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.6vw,30px);margin:0 0 6px;color:var(--cuero-osc);line-height:1.22}
-.num{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--acento);text-transform:uppercase;margin-bottom:8px}
-.entradilla{color:var(--tinta-suave);margin:0 0 26px;max-width:72ch;font-size:15.5px}
-h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:32px 0 10px;color:var(--tinta)}
-p{margin:0 0 14px;max-width:76ch}
-ul,ol{margin:0 0 14px;padding-left:20px;max-width:76ch}
-li{margin-bottom:7px}
-code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.87em;background:var(--arena);padding:1.5px 5px;border-radius:4px;color:var(--cuero-osc);word-break:break-word}
-a{color:var(--cuero)}
+.destacado{font-size:clamp(17px,2vw,21px);line-height:1.5;font-family:var(--serif);color:var(--cuero-osc);border-left:3px solid var(--acento);padding-left:18px;margin:0 0 22px;max-width:62ch}
 
-/* Semáforo comparativo */
-.semaforo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 26px}
-@media(max-width:640px){.semaforo{grid-template-columns:1fr}}
-.sitio{background:var(--papel);border:1px solid var(--linea);border-radius:var(--r);padding:20px 22px;box-shadow:var(--sombra)}
-.sitio.antes{border-top:4px solid var(--cuero-claro)}
-.sitio.ahora{border-top:4px solid var(--acento)}
-.sitio .nombre{font-family:var(--serif);font-size:17px;margin:0 0 2px;color:var(--cuero-osc)}
-.sitio .url{font-family:ui-monospace,monospace;font-size:12px;color:var(--tinta-suave);display:block;margin-bottom:14px;word-break:break-all}
-.marcadores{display:flex;gap:18px;flex-wrap:wrap}
-.marcador{text-align:center;min-width:56px}
-.marcador b{display:block;font-family:var(--serif);font-size:26px;line-height:1.1}
-.marcador span{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-suave)}
-.m-bien b{color:var(--bien)} .m-mal b{color:var(--mal)} .m-medio b{color:var(--medio)}
+.aviso{border-radius:var(--r);padding:18px 20px;margin:0 0 20px;font-size:15px;border:1px solid}
+.aviso p{max-width:none} .aviso :last-child{margin-bottom:0}
+.aviso strong.tit{display:block;margin-bottom:6px;font-size:12px;letter-spacing:.09em;text-transform:uppercase}
+.aviso.critico{background:var(--mal-bg);border-color:var(--mal-bd);color:#6E2119} .aviso.critico strong.tit{color:var(--mal)}
+.aviso.nota{background:var(--info-bg);border-color:var(--info-bd);color:#28495D} .aviso.nota strong.tit{color:var(--info)}
+.aviso.ok{background:var(--bien-bg);border-color:var(--bien-bd);color:#33532F} .aviso.ok strong.tit{color:var(--bien)}
 
-.aviso{border-radius:var(--r);padding:18px 20px;margin:0 0 22px;font-size:15px;border:1px solid}
-.aviso p{max-width:none}
-.aviso :last-child{margin-bottom:0}
-.aviso strong.tit{display:block;margin-bottom:6px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
-.aviso.critico{background:var(--mal-bg);border-color:var(--mal-bd);color:#6E2119}
-.aviso.critico strong.tit{color:var(--mal)}
-.aviso.nota{background:var(--info-bg);border-color:var(--info-bd);color:#28495D}
-.aviso.nota strong.tit{color:var(--info)}
-.aviso.ok{background:var(--bien-bg);border-color:var(--bien-bd);color:#33532F}
-.aviso.ok strong.tit{color:var(--bien)}
-
-.tabla-envoltura{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--linea);border-radius:var(--r);background:var(--papel);margin:0 0 22px;box-shadow:var(--sombra)}
-table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
-thead th{background:var(--arena);color:var(--cuero-osc);text-align:left;font-size:11px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;padding:11px 14px;border-bottom:1px solid var(--arena-osc);white-space:nowrap}
-tbody td{padding:11px 14px;border-bottom:1px solid var(--linea);vertical-align:top;line-height:1.5}
+.tabla{overflow-x:auto;border:1px solid var(--linea);border-radius:var(--r);background:var(--papel);margin:0 0 20px;box-shadow:var(--sombra)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+thead th{background:var(--arena);color:var(--cuero-osc);text-align:left;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;padding:10px 14px;border-bottom:1px solid var(--arena-osc)}
+tbody td{padding:10px 14px;border-bottom:1px solid var(--linea);vertical-align:middle}
 tbody tr:last-child td{border-bottom:none}
 tbody tr:nth-child(even){background:#FDFBF8}
-td.crit{font-weight:600}
+td.q{font-weight:600}
 .si{color:var(--bien);font-weight:700} .no{color:var(--mal);font-weight:700} .ojo{color:var(--medio);font-weight:700}
 
-.etiqueta{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:3px 8px;border-radius:100px;white-space:nowrap;line-height:1.5}
-.e-alta{background:var(--mal-bg);color:var(--mal);border:1px solid var(--mal-bd)}
-.e-media{background:var(--medio-bg);color:var(--medio);border:1px solid var(--medio-bd)}
-.e-baja{background:var(--bien-bg);color:var(--bien);border:1px solid var(--bien-bd)}
-.e-pend{background:var(--arena);color:var(--tinta-suave);border:1px solid var(--arena-osc)}
+.prueba{background:var(--papel);border:1px solid var(--linea);border-radius:var(--r);padding:24px;margin:0 0 20px;box-shadow:var(--sombra)}
+.prueba > h3{margin-bottom:2px}
+.prueba .quemide{font-size:13.5px;color:var(--tinta-suave);margin:0 0 18px;max-width:none}
+.prueba .veredicto{margin:16px 0 0;font-size:15px;max-width:none}
 
-.dos-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 22px}
-@media(max-width:720px){.dos-col{grid-template-columns:1fr}}
-.caja{background:var(--papel);border:1px solid var(--linea);border-radius:var(--r);padding:20px 22px;box-shadow:var(--sombra)}
-.caja h4{margin:0 0 12px;font-size:14px;letter-spacing:.05em;text-transform:uppercase}
-.caja.buena h4{color:var(--bien)} .caja.mala h4{color:var(--mal)}
-.caja ul{margin:0;padding-left:18px;font-size:14.5px}
-.caja li{margin-bottom:9px}
-.caja li:last-child{margin-bottom:0}
+.gauges{display:flex;flex-wrap:wrap;gap:22px 30px;margin:0 0 4px;align-items:flex-start}
+.gauge{text-align:center;width:78px}
+.gauge svg{width:64px;height:64px;display:block;margin:0 auto 6px;transform:rotate(-90deg)}
+.gauge circle{fill:none;stroke-width:5}
+.gauge .g-val{stroke-linecap:round}
+.gauge text{transform:rotate(90deg);transform-origin:32px 32px;text-anchor:middle;dominant-baseline:central;font:700 19px var(--sans)}
+.gauge b{display:block;font-size:11.5px;line-height:1.3;color:var(--tinta)}
+.gauge span{display:block;font-size:10.5px;color:var(--tinta-suave)}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:0 0 4px}
+@media(max-width:600px){.par{grid-template-columns:1fr;gap:26px}}
+.par h4{margin:0 0 12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-suave);border-bottom:1px solid var(--linea);padding-bottom:7px}
 
-.reservado{border:2px dashed var(--arena-osc);border-radius:var(--r);padding:26px;text-align:center;color:var(--tinta-suave);background:#FCFAF6;margin:0 0 22px}
-.reservado strong{display:block;color:var(--cuero-osc);font-family:var(--serif);font-size:17px;font-weight:600;margin-bottom:6px}
-.reservado p{max-width:none;margin:0;font-size:14.5px}
+.cifras{display:flex;flex-wrap:wrap;gap:20px 34px;margin:0 0 4px}
+.cifra b{display:block;font-family:var(--serif);font-size:27px;line-height:1.1;color:var(--cuero-osc)}
+.cifra b.mala{color:var(--mal)} .cifra b.buena{color:var(--bien)}
+.cifra span{font-size:11.5px;color:var(--tinta-suave);letter-spacing:.03em}
 
-.fases{counter-reset:fase;margin:0 0 22px;padding:0;list-style:none}
-.fases > li{position:relative;padding:0 0 24px 40px;border-left:2px solid var(--linea);margin-left:12px}
-.fases > li:last-child{border-left-color:transparent;padding-bottom:0}
-.fases > li::before{counter-increment:fase;content:counter(fase);position:absolute;left:-15px;top:0;width:28px;height:28px;border-radius:50%;background:var(--cuero);color:#fff;display:grid;place-items:center;font-size:12.5px;font-weight:700}
-.fases h4{margin:2px 0 4px;font-size:15.5px;color:var(--cuero-osc);font-weight:700}
-.fases .plazo{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-suave);display:block;margin-bottom:8px}
-.fases p{margin-bottom:0;font-size:14.5px}
+.captura{margin:20px 0 0;padding:0}
+.captura img{width:100%;height:auto;display:block;border:1px solid var(--linea);border-radius:8px;background:#fff}
+.captura figcaption{font-size:12.5px;color:var(--tinta-suave);margin-top:8px;font-style:italic}
+.captura.falta::before{content:"Captura pendiente · " attr(data-archivo);display:block;border:2px dashed var(--arena-osc);border-radius:8px;padding:30px 16px;text-align:center;color:var(--tinta-suave);font-size:13px;background:#FCFAF6;font-family:ui-monospace,Menlo,monospace}
+.captura.falta figcaption{display:none}
 
-footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30px 32px;font-size:13px;color:var(--tinta-suave)}
-.pie-inner{max-width:1060px;margin:0 auto}
-.pie-inner p{max-width:none;margin-bottom:8px}
+.acciones{counter-reset:a;list-style:none;margin:0 0 20px;padding:0}
+.acciones li{position:relative;padding:14px 0 14px 46px;border-bottom:1px solid var(--linea)}
+.acciones li:last-child{border-bottom:none}
+.acciones li::before{counter-increment:a;content:counter(a);position:absolute;left:0;top:14px;width:28px;height:28px;border-radius:50%;background:var(--cuero);color:#fff;display:grid;place-items:center;font-size:12.5px;font-weight:700}
+.acciones b{display:block;font-size:15.5px;margin-bottom:2px}
+.acciones span{font-size:13.5px;color:var(--tinta-suave)}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-left:8px;vertical-align:2px}
+.t-alta{background:var(--mal-bg);color:var(--mal);border:1px solid var(--mal-bd)}
+.t-media{background:var(--medio-bg);color:var(--medio);border:1px solid var(--medio-bd)}
+
+footer{border-top:1px solid var(--linea);background:var(--arena);padding:26px 32px;font-size:12.5px;color:var(--tinta-suave)}
+footer div{max-width:880px;margin:0 auto}
+footer p{max-width:none;margin:0 0 6px}
 
 @media print{
-  body{background:#fff;font-size:11pt}
-  .portada{padding:26px;background:var(--cuero-osc)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .envoltorio{display:block;padding:0 16px;max-width:none}
-  .indice{display:none}
-  h2.bloque{page-break-after:avoid}
-  .tabla-envoltura,.caja,.aviso,.sitio,.reservado{page-break-inside:avoid;box-shadow:none}
+  body{background:#fff;font-size:10.5pt}
+  .portada{background:var(--cuero-osc)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:24px}
+  main{padding:20px 14px;max-width:none}
+  section{page-break-inside:avoid}
+  .prueba,.aviso,.tabla,.captura{page-break-inside:avoid;box-shadow:none}
+  .captura.falta{display:none}
   table{min-width:0;font-size:9pt}
-  a{color:var(--tinta);text-decoration:none}
 }
 </style>
 </head>
 <body>
 
 <header class="portada">
-  <div class="portada-inner">
+  <div class="wrap">
     <p class="marca">Koon Artesanos &middot; Alfa Jardín</p>
-    <h1>Reporte de migración web</h1>
-    <p class="subtitulo">Qué mejoró, qué se perdió y qué hay que corregir al pasar de la tienda en Shopify al nuevo sitio <strong>koonartesanos.com</strong>.</p>
-    <div class="meta-portada">
-      <div><span>Cliente</span><strong>Koon Artesanos</strong></div>
-      <div><span>Fecha</span><strong>Septiembre 2026</strong></div>
-      <div><span>Herramientas</span><strong>SEOQuake · PageSpeed · Pingdom</strong></div>
-      <div><span>Estado</span><strong>Reporte completo</strong></div>
-    </div>
+    <h1>Diagnóstico del sitio web</h1>
+    <p>Qué pasó al dejar Shopify, qué mejoró y qué falta por arreglar.</p>
+    <span class="sello">Septiembre 2026 · Medido con SEOQuake, PageSpeed y Pingdom</span>
   </div>
 </header>
 
-<div class="envoltorio">
-
-<nav class="indice" aria-label="Índice">
-  <h2>Contenido</h2>
-  <ol>
-    <li><a href="#resumen">1 · En una página</a></li>
-    <li><a href="#seo">2 · Comparativa SEO</a></li>
-    <li><a href="#seguridad">3 · Seguridad</a></li>
-    <li><a href="#velocidad">4 · Velocidad</a></li>
-    <li><a href="#plan">5 · Qué hacer ahora</a></li>
-    <li><a href="#glosario">6 · Glosario</a></li>
-  </ol>
-</nav>
-
 <main>
 
-<section id="resumen">
-  <span class="num">Bloque 1</span>
-  <h2 class="bloque">En una página</h2>
-  <p class="entradilla">Lo esencial del diagnóstico, sin tecnicismos. El resto del documento desarrolla cada punto.</p>
-
-  <div class="semaforo">
-    <div class="sitio antes">
-      <p class="nombre">Sitio anterior · Shopify</p>
-      <span class="url">koonartesanos.myshopify.com</span>
-      <div class="marcadores">
-        <div class="marcador m-bien"><b>15</b><span>Bien</span></div>
-        <div class="marcador m-medio"><b>5</b><span>Avisos</span></div>
-        <div class="marcador m-mal"><b>1</b><span>Errores</span></div>
-      </div>
-    </div>
-    <div class="sitio ahora">
-      <p class="nombre">Sitio nuevo</p>
-      <span class="url">koonartesanos.com</span>
-      <div class="marcadores">
-        <div class="marcador m-bien"><b>16</b><span>Bien</span></div>
-        <div class="marcador m-medio"><b>3</b><span>Avisos</span></div>
-        <div class="marcador m-mal"><b>2</b><span>Errores</span></div>
-      </div>
-    </div>
-  </div>
-  <p style="font-size:13.5px;color:var(--tinta-suave);margin-top:-12px">Resultado de la auditoría SEOQuake sobre la página de inicio de cada sitio.</p>
+<section>
+  <h2>El veredicto</h2>
+  <p class="destacado">El sitio nuevo está mejor construido que la tienda anterior. Le queda un fallo grave —bien localizado— y tres arreglos de horas.</p>
 
   <div class="aviso ok">
-    <strong class="tit">La buena noticia</strong>
-    <p style="margin-bottom:0">El sitio nuevo <strong>no está peor que el anterior</strong>. En varias cosas importantes está mejor: tiene cuatro veces más contenido, más del doble de enlaces internos, declara correctamente el idioma, incluye datos de empresa que Google entiende y concentra los enlaces externos que apuntan a la marca. La base es sólida.</p>
+    <strong class="tit">Lo que mejoró</strong>
+    <p style="margin-bottom:0">Pesa <strong>5 veces menos</strong> que Shopify, descarga <strong>8 veces menos archivos</strong>, responde <strong>3 veces más rápido</strong> y tiene <strong>4 veces más contenido</strong>. La reputación de la marca en internet ya está en el dominio nuevo.</p>
   </div>
 
   <div class="aviso critico">
-    <strong class="tit">El problema</strong>
-    <p style="margin-bottom:0">Hay <strong>cuatro fallos concretos</strong> que están frenando todo lo demás. Ninguno es de diseño ni obliga a rehacer el sitio: son ajustes técnicos puntuales. Mientras sigan ahí, Google no puede leer bien el sitio ni mostrarlo con la fuerza que la marca merece.</p>
+    <strong class="tit">Lo que falla</strong>
+    <p style="margin-bottom:0">En celular, la imagen de portada tarda <strong>16,7 segundos</strong> en verse. El máximo recomendable son 2,5. Además faltan tres cosas básicas: el <strong>mapa del sitio</strong>, el <strong>título principal</strong> de cada página y unos <strong>títulos con las palabras que la gente busca</strong>.</p>
   </div>
-
-  <div class="tabla-envoltura">
-    <table>
-      <thead><tr><th>Los cinco fallos</th><th>Qué provoca</th><th>Dificultad de arreglo</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="crit">En celular, la página tarda <strong>16,7 segundos</strong> en mostrar la imagen principal</td>
-          <td>La mayoría de los visitantes se va antes de ver el primer producto. Es el fallo más caro de todos, y no es por peso: la foto se pide tarde, después del código.</td>
-          <td><span class="etiqueta e-baja">Días</span></td>
-        </tr>
-        <tr>
-          <td class="crit">No existe el mapa del sitio (<code>sitemap.xml</code>)</td>
-          <td>Google tiene que adivinar qué páginas existen. Muchas no llegan a mostrarse en los resultados.</td>
-          <td><span class="etiqueta e-baja">Horas</span></td>
-        </tr>
-        <tr>
-          <td class="crit">La página de inicio no tiene título principal (H1)</td>
-          <td>Google no sabe de qué trata la página. Es como un catálogo sin portada.</td>
-          <td><span class="etiqueta e-baja">Horas</span></td>
-        </tr>
-        <tr>
-          <td class="crit">El título que aparece en Google dice solo «Koon Artesanos»</td>
-          <td>Se desperdicia el espacio más valioso del buscador. La tienda anterior sí lo aprovechaba.</td>
-          <td><span class="etiqueta e-baja">Horas</span></td>
-        </tr>
-        <tr>
-          <td class="crit">Solo el 2,9 % de la página es texto; el resto es código</td>
-          <td>Poco contenido real que Google pueda valorar, y código que se ejecuta antes de mostrar lo importante.</td>
-          <td><span class="etiqueta e-media">Días</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="aviso critico">
-    <strong class="tit">El dato que más pesa</strong>
-    <p>En computadora el sitio va bien: <strong>79 de 100</strong> en velocidad. En celular baja a <strong>48 de 100</strong>, y la imagen principal tarda <strong>16,7 segundos</strong> en aparecer. El máximo recomendable son 2,5 segundos. Como la mayoría de los clientes de esta categoría entra desde el teléfono, aquí es donde se está perdiendo el negocio.</p>
-    <p style="margin-bottom:0"><strong>Con dos matices importantes y justos:</strong> la tienda anterior en Shopify era todavía más lenta en celular (20,5 segundos), así que el problema no lo creó la migración. Y el sitio nuevo <strong>pesa cinco veces menos</strong> que el anterior: la lentitud no viene del peso, sino del orden en que se cargan las cosas. Eso lo hace mucho más barato de arreglar.</p>
-  </div>
-
-  <h3>Y una decisión pendiente</h3>
-  <p>La tienda de Shopify <strong>sigue publicada y visible en buscadores</strong>. Ya declara a <code>koonartesanos.com</code> como el sitio oficial —eso está bien hecho—, pero mantener dos tiendas vivas con el mismo catálogo divide la atención de Google y la de los clientes.</p>
-  <p style="margin-bottom:0"><strong>Hay que decidir:</strong> o se cierra Shopify y se redirige cada dirección antigua a su equivalente nueva, o se le da un rol distinto y claramente diferenciado. Lo que no conviene es dejarlo como está.</p>
-</section>
-
-<section id="seo">
-  <span class="num">Bloque 2</span>
-  <h2 class="bloque">Comparativa SEO</h2>
-  <p class="entradilla">Datos reales medidos con SEOQuake sobre la página de inicio de ambos sitios. Sin estimaciones.</p>
-
-  <div class="tabla-envoltura">
-    <table>
-      <thead><tr><th>Qué se revisa</th><th>Shopify (antes)</th><th>koonartesanos.com (ahora)</th><th>Lectura</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="crit">Título en Google</td>
-          <td>«Accesorios de piel y regalos corporativos | Koon Artesanos» <span class="si">58 car.</span></td>
-          <td>«Koon Artesanos» <span class="no">14 car.</span></td>
-          <td><span class="no">Retroceso.</span> Se perdieron las palabras que la gente busca.</td>
-        </tr>
-        <tr>
-          <td class="crit">Título principal de la página (H1)</td>
-          <td>1 <span class="si">✓</span></td>
-          <td>0 <span class="no">✗</span></td>
-          <td><span class="no">Fallo.</span> Google no encuentra el encabezado principal.</td>
-        </tr>
-        <tr>
-          <td class="crit">Mapa del sitio (sitemap.xml)</td>
-          <td>Sí <span class="si">✓</span></td>
-          <td>No existe <span class="no">✗</span></td>
-          <td><span class="no">Fallo.</span> El más urgente de los cuatro.</td>
-        </tr>
-        <tr>
-          <td class="crit">Proporción de texto frente a código</td>
-          <td>22,6 % <span class="si">✓</span></td>
-          <td>2,9 % <span class="no">✗</span></td>
-          <td><span class="no">Fallo.</span> Mínimo recomendable: 15 %.</td>
-        </tr>
-        <tr>
-          <td class="crit">Cantidad de contenido</td>
-          <td>201 palabras</td>
-          <td>847 palabras <span class="si">✓</span></td>
-          <td><span class="si">Mejora.</span> Cuatro veces más contenido.</td>
-        </tr>
-        <tr>
-          <td class="crit">Enlaces internos</td>
-          <td>32</td>
-          <td>71 <span class="si">✓</span></td>
-          <td><span class="si">Mejora.</span> Mejor navegación entre páginas.</td>
-        </tr>
-        <tr>
-          <td class="crit">Datos de empresa para Google (Schema)</td>
-          <td>No <span class="no">✗</span></td>
-          <td>Sí, tipo «Organización» <span class="si">✓</span></td>
-          <td><span class="si">Mejora.</span> Falta ampliarlo a productos.</td>
-        </tr>
-        <tr>
-          <td class="crit">Idioma declarado</td>
-          <td>Inglés <span class="no">✗</span></td>
-          <td>Español <span class="si">✓</span></td>
-          <td><span class="si">Mejora.</span> El sitio viejo se declaraba en inglés.</td>
-        </tr>
-        <tr>
-          <td class="crit">Enlaces externos hacia la marca</td>
-          <td>0 detectados</td>
-          <td>213 enlaces / 356 dominios <span class="si">✓</span></td>
-          <td><span class="si">Mejora.</span> La reputación ya está en el dominio nuevo.</td>
-        </tr>
-        <tr>
-          <td class="crit">Descripción en Google</td>
-          <td>220 caracteres <span class="ojo">≈</span></td>
-          <td>294 caracteres <span class="ojo">≈</span></td>
-          <td><span class="ojo">Ajuste.</span> Ambas se cortan; el límite útil son ~160.</td>
-        </tr>
-        <tr>
-          <td class="crit">Jerarquía de encabezados</td>
-          <td>Ordenada y breve</td>
-          <td>27 H2 · 74 H4 · 53 H6 <span class="ojo">≈</span></td>
-          <td><span class="ojo">Ajuste.</span> Se usan para dar estilo, no para estructurar.</td>
-        </tr>
-        <tr>
-          <td class="crit">Textos alternativos en imágenes</td>
-          <td>Completos <span class="si">✓</span></td>
-          <td>Completos <span class="si">✓</span></td>
-          <td><span class="si">Correcto</span> en ambos.</td>
-        </tr>
-        <tr>
-          <td class="crit">robots.txt · versión móvil · favicon · analítica</td>
-          <td>Correcto <span class="si">✓</span></td>
-          <td>Correcto <span class="si">✓</span></td>
-          <td><span class="si">Correcto</span> en ambos.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="dos-col">
-    <div class="caja buena">
-      <h4>Lo que el sitio nuevo hace mejor</h4>
-      <ul>
-        <li>Mucho más contenido en la página de inicio (847 palabras frente a 201).</li>
-        <li>Más del doble de enlaces internos: los clientes y Google recorren mejor el catálogo.</li>
-        <li>Declara el idioma correctamente en español; el sitio de Shopify se declaraba en inglés.</li>
-        <li>Incluye datos de empresa en formato que Google entiende.</li>
-        <li>Concentra 213 enlaces desde 356 dominios externos: la autoridad de marca ya vive aquí.</li>
-        <li>No usa marcos ni tecnología obsoleta; el sitio anterior sí tenía marcos incrustados.</li>
-      </ul>
-    </div>
-    <div class="caja mala">
-      <h4>Lo que hay que corregir</h4>
-      <ul>
-        <li>Publicar el mapa del sitio. Hoy no existe.</li>
-        <li>Poner un título principal (H1) en cada página. Hoy la portada tiene cero.</li>
-        <li>Escribir títulos con las palabras que la gente busca, no solo el nombre de la marca.</li>
-        <li>Aligerar el código: solo 2,9 % de la página es texto real.</li>
-        <li>Recortar las descripciones a unos 160 caracteres para que no se corten.</li>
-        <li>Ordenar los encabezados y quitar el texto de relleno («ver más» aparece 12 veces entre las palabras más repetidas, junto con fechas sueltas).</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3>Las palabras por las que compite cada sitio</h3>
-  <p>La tienda de Shopify concentraba su texto en el catálogo: <em>piel, oficina, hogar, vinos, viajes, regalos corporativos, bordado otomí, artesanía huichol</em>. Eso la hacía aparecer en búsquedas de producto concretas, que son las que traen clientes con intención de compra.</p>
-  <p>El sitio nuevo tiene más texto pero menos enfocado: entre sus palabras más repetidas aparecen <em>ver, más, para, con</em> y fechas sueltas del blog. La palabra <em>piel</em> se mantiene fuerte (32 apariciones), pero el resto del vocabulario comercial —<em>oficina, hogar, charolas, marcos</em>— perdió presencia.</p>
-  <p style="margin-bottom:0"><strong>Traducción:</strong> hay materia prima de sobra; falta dirigirla. Es trabajo de redacción, no de programación.</p>
-</section>
-
-<section id="seguridad">
-  <span class="num">Bloque 3</span>
-  <h2 class="bloque">Seguridad</h2>
-  <p class="entradilla">Qué cambió al dejar una plataforma administrada como Shopify y pasar a un sitio propio.</p>
 
   <div class="aviso nota">
-    <strong class="tit">La idea principal</strong>
-    <p style="margin-bottom:0">Shopify se encargaba en silencio de mantener el sitio protegido: certificados, actualizaciones, copias de seguridad y bloqueo de ataques. <strong>Al salir de Shopify, ese trabajo no desaparece: cambia de manos.</strong> Un sitio propio bien mantenido es igual de seguro o más, pero alguien tiene que tener asignada esa responsabilidad. Hoy no consta quién.</p>
+    <strong class="tit">Y una precisión de justicia</strong>
+    <p style="margin-bottom:0">Shopify tardaba <strong>20,5 segundos</strong> en lo mismo. La lentitud en celular <strong>no la causó el cambio de plataforma</strong>: venía de antes y era peor. El sitio nuevo la mejoró sin llegar a resolverla.</p>
   </div>
+</section>
 
-  <div class="tabla-envoltura">
+<section>
+  <h2>Los números, uno al lado del otro</h2>
+  <div class="tabla">
     <table>
-      <thead><tr><th>Punto</th><th>Con Shopify</th><th>Con el sitio propio</th><th>Prioridad</th></tr></thead>
+      <thead><tr><th>Qué se midió</th><th>Shopify</th><th>Sitio nuevo</th><th>Quién gana</th></tr></thead>
       <tbody>
-        <tr><td class="crit">Certificado de seguridad (candado del navegador)</td><td>Se renovaba solo</td><td>Hay que vigilar que no caduque: si caduca, el sitio deja de abrir</td><td><span class="etiqueta e-alta">Alta</span></td></tr>
-        <tr><td class="crit">Actualizaciones del sistema</td><td>Automáticas</td><td>Manuales. Es la vía de entrada más común a un sitio web</td><td><span class="etiqueta e-alta">Alta</span></td></tr>
-        <tr><td class="crit">Conexión siempre cifrada</td><td>Activada de fábrica</td><td>Hay que activarla expresamente en el servidor</td><td><span class="etiqueta e-alta">Alta</span></td></tr>
-        <tr><td class="crit">Protección de formularios y datos de clientes</td><td>Incluida en la plataforma</td><td>Depende de cómo se programó el sitio</td><td><span class="etiqueta e-alta">Alta</span></td></tr>
-        <tr><td class="crit">Copias de seguridad</td><td>Incluidas</td><td>Hay que configurarlas <em>y probar que se pueden restaurar</em></td><td><span class="etiqueta e-media">Media</span></td></tr>
-        <tr><td class="crit">Bloqueo de ataques y saturación</td><td>Incluido</td><td>Requiere contratar un servicio de protección</td><td><span class="etiqueta e-media">Media</span></td></tr>
-        <tr><td class="crit">Pagos con tarjeta</td><td>Certificación bancaria a cargo de Shopify</td><td>Si el cobro se hace en el sitio propio, la certificación pasa a ser obligación de la empresa</td><td><span class="etiqueta e-alta">Alta</span></td></tr>
+        <tr><td class="q">Peso de la página</td><td>2,9 MB</td><td>542,6 KB</td><td><span class="si">Nuevo</span> · 5× más ligero</td></tr>
+        <tr><td class="q">Archivos que descarga</td><td>159</td><td>19</td><td><span class="si">Nuevo</span> · 8× menos</td></tr>
+        <tr><td class="q">Velocidad en computadora</td><td>65/100</td><td>79/100</td><td><span class="si">Nuevo</span></td></tr>
+        <tr><td class="q">Velocidad en celular</td><td>51/100</td><td>48/100</td><td>Empate · ninguno aprueba</td></tr>
+        <tr><td class="q">Imagen principal en celular</td><td>20,5 s</td><td>16,7 s</td><td><span class="si">Nuevo</span>, pero ambos muy lejos</td></tr>
+        <tr><td class="q">Contenido de la portada</td><td>201 palabras</td><td>847 palabras</td><td><span class="si">Nuevo</span></td></tr>
+        <tr><td class="q">Título en Google</td><td>Con palabras clave</td><td>Solo «Koon Artesanos»</td><td><span class="no">Shopify</span></td></tr>
+        <tr><td class="q">Mapa del sitio</td><td>Sí</td><td>No existe</td><td><span class="no">Shopify</span></td></tr>
+        <tr><td class="q">Título principal (H1)</td><td>Sí</td><td>Ninguno</td><td><span class="no">Shopify</span></td></tr>
+        <tr><td class="q">Calidad de construcción</td><td>73/100</td><td>92–96/100</td><td><span class="si">Nuevo</span></td></tr>
       </tbody>
     </table>
   </div>
-
-  <div class="aviso ok">
-    <strong class="tit">Lo que ya está bien</strong>
-    <p style="margin-bottom:0">El sitio publica su <strong>Aviso de Privacidad</strong> con la empresa responsable identificada, el domicilio del área de datos personales y un correo para que el cliente pueda revocar su consentimiento. Es un requisito legal en México que muchos sitios omiten y aquí está cubierto.</p>
-  </div>
-
-  <p><strong>Pendiente de revisar en el servidor</strong> <span class="etiqueta e-pend">Por medir</span>: la configuración de seguridad de las cabeceras del sitio y el estado del certificado. Son comprobaciones de una tarde y no requieren tocar el diseño. También conviene confirmar que las políticas de servicio y devoluciones que existían en Shopify estén publicadas en el sitio nuevo.</p>
 </section>
 
-<section id="velocidad">
-  <span class="num">Bloque 4</span>
-  <h2 class="bloque">Velocidad y experiencia de carga</h2>
-  <p class="entradilla">Mediciones reales de Google PageSpeed Insights y Pingdom Tools sobre los dos sitios, el 1 de septiembre de 2026.</p>
+<section>
+  <h2>Las pruebas</h2>
+  <p>Tres herramientas independientes, el mismo día. Ninguna cifra de este reporte es estimada.</p>
 
-  <div class="semaforo">
-    <div class="sitio antes">
-      <p class="nombre">Sitio anterior · Shopify</p>
-      <span class="url">koonartesanos.myshopify.com</span>
-      <div class="marcadores">
-        <div class="marcador m-medio"><b>65</b><span>Computadora</span></div>
-        <div class="marcador m-medio"><b>51</b><span>Celular</span></div>
+  <div class="prueba">
+    <h3>SEOQuake</h3>
+    <p class="quemide">Revisa que la página tenga bien puestos los elementos que Google necesita leer.</p>
+    <div class="par">
+      <div>
+        <h4>Shopify</h4>
+        <div class="cifras">
+          <div class="cifra"><b class="buena">15</b><span>Bien</span></div>
+          <div class="cifra"><b>5</b><span>Avisos</span></div>
+          <div class="cifra"><b class="mala">1</b><span>Error</span></div>
+        </div>
+      </div>
+      <div>
+        <h4>Sitio nuevo</h4>
+        <div class="cifras">
+          <div class="cifra"><b class="buena">16</b><span>Bien</span></div>
+          <div class="cifra"><b>3</b><span>Avisos</span></div>
+          <div class="cifra"><b class="mala">2</b><span>Errores</span></div>
+        </div>
       </div>
     </div>
-    <div class="sitio ahora">
-      <p class="nombre">Sitio nuevo</p>
-      <span class="url">koonartesanos.com</span>
-      <div class="marcadores">
-        <div class="marcador m-medio"><b>79</b><span>Computadora</span></div>
-        <div class="marcador m-mal"><b>48</b><span>Celular</span></div>
+    <p class="veredicto"><strong>Los dos errores del sitio nuevo:</strong> no hay mapa del sitio y solo el 2,9 % de la página es texto. A eso se suma que la portada no tiene título principal.</p>
+    <figure class="captura" data-archivo="capturas/seoquake-nuevo.png">
+        <img src="capturas/seoquake-nuevo.png" alt="Auditoría SEOQuake de koonartesanos.com" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
+        <figcaption>Auditoría de SEOQuake sobre koonartesanos.com.</figcaption>
+      </figure>
+    <figure class="captura" data-archivo="capturas/seoquake-shopify.png">
+        <img src="capturas/seoquake-shopify.png" alt="Auditoría SEOQuake de la tienda Shopify" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
+        <figcaption>Auditoría de SEOQuake sobre la tienda anterior en Shopify.</figcaption>
+      </figure>
+  </div>
+
+  <div class="prueba">
+    <h3>Google PageSpeed Insights</h3>
+    <p class="quemide">Mide la experiencia real de carga simulando un teléfono de gama media con red 4G.</p>
+    <div class="par">
+      <div>
+        <h4>Shopify · celular</h4>
+        <div class="gauges">
+          <div class="gauge">
+          <svg viewBox="0 0 64 64" role="img" aria-label="Velocidad: 51 de 100">
+            <circle class="g-bg" cx="32" cy="32" r="26" style="stroke:var(--medio-bg)"></circle>
+            <circle class="g-val" cx="32" cy="32" r="26" style="stroke:var(--medio);stroke-dasharray:83.3 163.4"></circle>
+            <text x="32" y="32" style="fill:var(--medio)">51</text>
+          </svg>
+          <b>Velocidad</b>
+        </div>
+          <div class="gauge">
+          <svg viewBox="0 0 64 64" role="img" aria-label="Accesib.: 91 de 100">
+            <circle class="g-bg" cx="32" cy="32" r="26" style="stroke:var(--bien-bg)"></circle>
+            <circle class="g-val" cx="32" cy="32" r="26" style="stroke:var(--bien);stroke-dasharray:148.7 163.4"></circle>
+            <text x="32" y="32" style="fill:var(--bien)">91</text>
+          </svg>
+          <b>Accesib.</b>
+        </div>
+          <div class="gauge">
+          <svg viewBox="0 0 64 64" role="img" aria-label="Construcción: 73 de 100">
+            <circle class="g-bg" cx="32" cy="32" r="26" style="stroke:var(--medio-bg)"></circle>
+            <circle class="g-val" cx="32" cy="32" r="26" style="stroke:var(--medio);stroke-dasharray:119.3 163.4"></circle>
+            <text x="32" y="32" style="fill:var(--medio)">73</text>
+          </svg>
+          <b>Construcción</b>
+        </div>
+        </div>
+      </div>
+      <div>
+        <h4>Sitio nuevo · celular</h4>
+        <div class="gauges">
+          <div class="gauge">
+          <svg viewBox="0 0 64 64" role="img" aria-label="Velocidad: 48 de 100">
+            <circle class="g-bg" cx="32" cy="32" r="26" style="stroke:var(--mal-bg)"></circle>
+            <circle class="g-val" cx="32" cy="32" r="26" style="stroke:var(--mal);stroke-dasharray:78.4 163.4"></circle>
+            <text x="32" y="32" style="fill:var(--mal)">48</text>
+          </svg>
+          <b>Velocidad</b>
+        </div>
+          <div class="gauge">
+          <svg viewBox="0 0 64 64" role="img" aria-label="Accesib.: 85 de 100">
+            <circle class="g-bg" cx="32" cy="32" r="26" style="stroke:var(--medio-bg)"></circle>
+            <circle class="g-val" cx="32" cy="32" r="26" style="stroke:var(--medio);stroke-dasharray:138.9 163.4"></circle>
+            <text x="32" y="32" style="fill:var(--medio)">85</text>
+          </svg>
+          <b>Accesib.</b>
+        </div>
+          <div class="gauge">
+          <svg viewBox="0 0 64 64" role="img" aria-label="Construcción: 96 de 100">
+            <circle class="g-bg" cx="32" cy="32" r="26" style="stroke:var(--bien-bg)"></circle>
+            <circle class="g-val" cx="32" cy="32" r="26" style="stroke:var(--bien);stroke-dasharray:156.8 163.4"></circle>
+            <text x="32" y="32" style="fill:var(--bien)">96</text>
+          </svg>
+          <b>Construcción</b>
+        </div>
+        </div>
       </div>
     </div>
-  </div>
-  <p style="font-size:13.5px;color:var(--tinta-suave);margin-top:-12px">Calificación de velocidad sobre 100. La prueba en celular simula un teléfono de gama media con red 4G, que es el escenario real de la mayoría de los clientes.</p>
-
-  <div class="aviso critico">
-    <strong class="tit">El hallazgo principal de todo el reporte</strong>
-    <p>En celular, la imagen principal tarda <strong>16,7 segundos</strong> en aparecer. El máximo recomendable son <strong>2,5 segundos</strong>: el sitio está casi <strong>siete veces por encima</strong>.</p>
-    <p style="margin-bottom:0">Traducido a negocio: quien entra desde el teléfono ve una pantalla prácticamente vacía durante más de quince segundos. La gran mayoría cierra antes de ver el primer producto. No importa cuánto tráfico se consiga si se pierde en la puerta.</p>
-  </div>
-
-  <div class="aviso nota">
-    <strong class="tit">Y una precisión que es de justicia</strong>
-    <p style="margin-bottom:0">La tienda anterior en Shopify tardaba <strong>20,5 segundos</strong> en lo mismo. <strong>La lentitud en celular no la provocó la migración: ya existía, y era peor.</strong> El sitio nuevo la mejoró en casi cuatro segundos, pero sigue muy lejos de lo aceptable. Es una deuda arrastrada de las dos plataformas, no un daño causado por el cambio.</p>
+    <p class="veredicto"><strong>En computadora el sitio nuevo gana claro:</strong> 79 contra 65. En celular los dos suspenden, y ahí es donde entra la mayoría de los clientes.</p>
+    <figure class="captura" data-archivo="capturas/pagespeed-nuevo-movil.png">
+        <img src="capturas/pagespeed-nuevo-movil.png" alt="PageSpeed Insights de koonartesanos.com en móvil" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
+        <figcaption>PageSpeed Insights de koonartesanos.com en celular: 48 de 100.</figcaption>
+      </figure>
+    <figure class="captura" data-archivo="capturas/pagespeed-shopify-movil.png">
+        <img src="capturas/pagespeed-shopify-movil.png" alt="PageSpeed Insights de la tienda Shopify en móvil" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
+        <figcaption>PageSpeed Insights de la tienda Shopify en celular: 51 de 100.</figcaption>
+      </figure>
   </div>
 
-  <h3>En celular — donde se juega el negocio</h3>
-  <div class="tabla-envoltura">
-    <table>
-      <thead><tr><th>Qué mide</th><th>Shopify</th><th>Sitio nuevo</th><th>Meta</th><th>Quién gana</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="crit">Tiempo en verse la imagen principal <span style="font-weight:400;color:var(--tinta-suave)">(LCP)</span></td>
-          <td><span class="no">20,5 s</span></td><td><span class="no">16,7 s</span></td><td>≤ 2,5 s</td>
-          <td><span class="si">Nuevo</span>, por 3,8 s. Ambos muy lejos.</td>
-        </tr>
-        <tr>
-          <td class="crit">Tiempo en verse algo <span style="font-weight:400;color:var(--tinta-suave)">(FCP)</span></td>
-          <td><span class="no">8,5 s</span></td><td><span class="no">4,6 s</span></td><td>≤ 1,8 s</td>
-          <td><span class="si">Nuevo</span>, casi la mitad.</td>
-        </tr>
-        <tr>
-          <td class="crit">Sensación general de carga <span style="font-weight:400;color:var(--tinta-suave)">(Speed Index)</span></td>
-          <td><span class="no">9,5 s</span></td><td><span class="no">5,9 s</span></td><td>≤ 3,4 s</td>
-          <td><span class="si">Nuevo</span>, con diferencia.</td>
-        </tr>
-        <tr>
-          <td class="crit">Bloqueo al tocar la pantalla <span style="font-weight:400;color:var(--tinta-suave)">(TBT)</span></td>
-          <td><span class="ojo">280 ms</span></td><td><span class="ojo">540 ms</span></td><td>≤ 200 ms</td>
-          <td>Shopify. Único punto donde el nuevo va peor.</td>
-        </tr>
-        <tr>
-          <td class="crit">Estabilidad: que nada se mueva solo <span style="font-weight:400;color:var(--tinta-suave)">(CLS)</span></td>
-          <td><span class="si">0</span></td><td><span class="si">0</span></td><td>≤ 0,1</td>
-          <td><span class="si">Empate perfecto.</span></td>
-        </tr>
-        <tr>
-          <td class="crit">Calificación global</td>
-          <td>51 / 100</td><td>48 / 100</td><td>90 o más</td>
-          <td>Empate técnico. Ninguno aprueba.</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="prueba">
+    <h3>Pingdom Tools</h3>
+    <p class="quemide">Mide cuánto pesa la página y cuántos archivos necesita descargar.</p>
+    <div class="par">
+      <div>
+        <h4>Shopify</h4>
+        <div class="cifras">
+          <div class="cifra"><b class="mala">D · 66</b><span>Calificación</span></div>
+          <div class="cifra"><b class="mala">2,9 MB</b><span>Peso</span></div>
+          <div class="cifra"><b>159</b><span>Archivos</span></div>
+        </div>
+      </div>
+      <div>
+        <h4>Sitio nuevo</h4>
+        <div class="cifras">
+          <div class="cifra"><b class="buena">B · 82</b><span>Calificación</span></div>
+          <div class="cifra"><b class="buena">542,6 KB</b><span>Peso</span></div>
+          <div class="cifra"><b class="buena">19</b><span>Archivos</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="veredicto"><strong>Resultado contundente a favor del sitio nuevo.</strong> La plantilla de Shopify arrastraba el peso de muchas aplicaciones instaladas encima.</p>
+    <figure class="captura" data-archivo="capturas/pingdom-nuevo.png">
+        <img src="capturas/pingdom-nuevo.png" alt="Resultado de Pingdom para koonartesanos.com" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
+        <figcaption>Pingdom sobre koonartesanos.com: 542,6 KB y 19 archivos.</figcaption>
+      </figure>
+    <figure class="captura" data-archivo="capturas/pingdom-shopify.png">
+        <img src="capturas/pingdom-shopify.png" alt="Resultado de Pingdom para la tienda Shopify" loading="lazy" onerror="this.closest('figure').classList.add('falta')">
+        <figcaption>Pingdom sobre la tienda Shopify: 2,9 MB y 159 archivos.</figcaption>
+      </figure>
   </div>
-
-  <h3>En computadora</h3>
-  <div class="tabla-envoltura">
-    <table>
-      <thead><tr><th>Qué mide</th><th>Shopify</th><th>Sitio nuevo</th><th>Meta</th><th>Quién gana</th></tr></thead>
-      <tbody>
-        <tr><td class="crit">Imagen principal (LCP)</td><td><span class="si">1,2 s</span></td><td>2,7 s</td><td>≤ 2,5 s</td><td>Shopify. El punto más claro a su favor.</td></tr>
-        <tr><td class="crit">Primer contenido (FCP)</td><td><span class="si">0,7 s</span></td><td><span class="si">0,5 s</span></td><td>≤ 1,8 s</td><td><span class="si">Nuevo</span>. Ambos bien.</td></tr>
-        <tr><td class="crit">Sensación de carga</td><td>2,3 s</td><td>2,6 s</td><td>≤ 3,4 s</td><td>Shopify, por poco.</td></tr>
-        <tr><td class="crit">Bloqueo al tocar (TBT)</td><td><span class="no">810 ms</span></td><td><span class="si">70 ms</span></td><td>≤ 200 ms</td><td><span class="si">Nuevo</span>, once veces mejor.</td></tr>
-        <tr><td class="crit">Estabilidad (CLS)</td><td><span class="si">0,001</span></td><td><span class="si">0,001</span></td><td>≤ 0,1</td><td><span class="si">Empate perfecto.</span></td></tr>
-        <tr><td class="crit">Calificación global</td><td>65 / 100</td><td><span class="si">79 / 100</span></td><td>90 o más</td><td><span class="si">Nuevo</span>, 14 puntos arriba.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>Las otras calificaciones</h3>
-  <div class="tabla-envoltura">
-    <table>
-      <thead><tr><th>Categoría</th><th>Shopify</th><th>Sitio nuevo</th><th>Lectura</th></tr></thead>
-      <tbody>
-        <tr><td class="crit">Prácticas recomendadas</td><td>73</td><td><span class="si">92–96</span></td><td><span class="si">El sitio nuevo está mucho mejor construido.</span></td></tr>
-        <tr><td class="crit">Accesibilidad en celular</td><td><span class="si">91</span></td><td>85</td><td>Shopify. Margen de mejora en el nuevo.</td></tr>
-        <tr><td class="crit">Accesibilidad en computadora</td><td>84</td><td>85</td><td>Empate.</td></tr>
-        <tr><td class="crit">SEO (lista básica de Google)</td><td>100</td><td>100</td><td>Empate. Ver la nota de abajo.</td></tr>
-        <tr><td class="crit">Navegación por asistentes de IA</td><td><span class="si">4 de 4</span></td><td>1 de 2</td><td>Shopify. Cuenta cada vez más para la compra asistida.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>Peso de la página — medición de Pingdom</h3>
-  <div class="tabla-envoltura">
-    <table>
-      <thead><tr><th>Qué mide</th><th>Shopify</th><th>Sitio nuevo</th><th>Diferencia</th></tr></thead>
-      <tbody>
-        <tr><td class="crit">Calificación</td><td><span class="no">D · 66</span></td><td><span class="si">B · 82</span></td><td><span class="si">16 puntos a favor del nuevo</span></td></tr>
-        <tr><td class="crit">Peso de la página</td><td><span class="no">2,9 MB</span></td><td><span class="si">542,6 KB</span></td><td><span class="si">El nuevo pesa 5 veces menos</span></td></tr>
-        <tr><td class="crit">Archivos que se descargan</td><td><span class="no">159</span></td><td><span class="si">19</span></td><td><span class="si">8 veces menos</span></td></tr>
-        <tr><td class="crit">Tiempo de carga</td><td>923 ms</td><td><span class="si">292 ms</span></td><td><span class="si">3 veces más rápido</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p style="font-size:13.5px;color:var(--tinta-suave);margin-top:-12px">Pingdom Tools, prueba desde Washington D.C. con conexión de banda ancha.</p>
-
-  <div class="aviso ok">
-    <strong class="tit">Un resultado contundente</strong>
-    <p style="margin-bottom:0">El sitio nuevo es <strong>radicalmente más ligero</strong>: 542 KB frente a 2,9 MB, y 19 archivos frente a 159. La tienda de Shopify arrastraba el peso típico de una plantilla comprada con muchas aplicaciones instaladas encima. <strong>Aquí la migración sí produjo una mejora enorme y medible.</strong></p>
-  </div>
-
-  <h3>Cómo encajan los tres resultados</h3>
-  <p>A primera vista parecen contradecirse: Pingdom dice que el sitio nuevo es ligero y rápido (292 ms), y PageSpeed dice que en celular tarda 16,7 segundos. Las dos mediciones son correctas y juntas señalan exactamente dónde está el problema.</p>
-  <ul>
-    <li><strong>Pingdom mide desde una conexión rápida</strong> y cronometra la descarga inicial de los archivos. Ahí el sitio nuevo sale muy bien: pide poco y el servidor responde rápido.</li>
-    <li><strong>PageSpeed simula un teléfono de gama media con 4G</strong> y cronometra hasta que el cliente <em>ve</em> la imagen principal. Ahí sale muy mal.</li>
-    <li><strong>La única explicación compatible con ambos números</strong> es que la imagen principal <strong>no viene en la carga inicial</strong>: llega después, cuando el navegador ya descargó y ejecutó el código. En una computadora esa cadena tarda un instante; en un celular con 4G se convierte en quince segundos de pantalla vacía.</li>
-  </ul>
-
-  <div class="aviso critico">
-    <strong class="tit">Esto cambia cuál es la solución</strong>
-    <p>Con 542 KB de peso total, <strong>el problema del sitio nuevo no es que las imágenes pesen mucho</strong>: es el <strong>orden en que se cargan</strong>. La foto que encabeza la página se está pidiendo tarde, después del código, cuando debería ser lo primero que se descarga.</p>
-    <p style="margin-bottom:0">Es una corrección de programación puntual —declarar esa imagen en el HTML inicial y darle prioridad de carga—, no un rediseño ni una compresión masiva de fotografías. <strong>Más barato de lo que parecía y con el mismo impacto.</strong></p>
-  </div>
-
-  <p>Los dos sitios son lentos en celular, pero <strong>por motivos distintos</strong>: Shopify por peso bruto (2,9 MB y 159 archivos que descargar), el sitio nuevo por secuencia de carga. El segundo problema es bastante más sencillo y económico de resolver que el primero.</p>
-
-  <h3>Dos lecturas que conviene entender bien</h3>
-
-  <div class="aviso nota">
-    <strong class="tit">Por qué el «SEO 100» no contradice el bloque 2</strong>
-    <p style="margin-bottom:0">PageSpeed da <strong>100 de 100 en SEO a los dos sitios</strong>, y eso está bien, pero mide una lista corta de requisitos básicos: que exista un título, que haya descripción, que la versión móvil esté declarada, que el texto sea legible. <strong>No revisa si hay mapa del sitio, ni si existe un H1, ni si el título está bien escrito.</strong> Eso lo revisa SEOQuake, y ahí es donde aparecen los fallos. Las dos herramientas son compatibles: una comprueba que estén los cimientos, la otra si están bien puestos.</p>
-  </div>
-
-  <div class="aviso nota">
-    <strong class="tit">«No hay datos de usuarios reales» — en los dos sitios</strong>
-    <p style="margin-bottom:0">Google no pudo mostrar la experiencia de visitantes reales en <strong>ninguna de las dos plataformas</strong>, porque no alcanzan el volumen mínimo de visitas que necesita para reunir esa información. Es un dato sobre el tráfico de la marca en conjunto, no sobre el sitio nuevo en particular. Cuando las correcciones surtan efecto, este apartado empezará a mostrar datos y servirá para medir el avance.</p>
-  </div>
-
-  <div class="aviso ok">
-    <strong class="tit">El balance de este bloque</strong>
-    <p style="margin-bottom:0">El sitio nuevo <strong>está mejor construido que el anterior</strong>: pesa cinco veces menos, pide ocho veces menos archivos, responde tres veces más rápido, gana 14 puntos en computadora y 19 en buenas prácticas. Le queda <strong>un solo fallo grave, y está bien localizado</strong>: el orden de carga de la imagen de portada en celular. Corregirlo es cuestión de días y no toca el diseño.</p>
-  </div>
-
-  <h3>Un apunte adicional</h3>
-  <p>La <strong>accesibilidad</strong> del sitio nuevo es 85 en ambos dispositivos, mientras que Shopify llegaba a 91 en celular. No es un fallo, pero sí margen de mejora: tiene que ver con contrastes de color, etiquetas de botones y navegación con teclado. Importa por experiencia de usuario y, cada vez más, por cumplimiento.</p>
-  <p style="margin-bottom:0">También conviene mirar la <strong>navegación por asistentes de IA</strong>, donde Shopify cumple 4 de 4 requisitos y el sitio nuevo 1 de 2. A medida que más compras empiezan en un asistente conversacional, que el catálogo sea legible para ellos deja de ser un detalle técnico.</p>
 </section>
 
-<section id="plan">
-  <span class="num">Bloque 5</span>
-  <h2 class="bloque">Qué hacer ahora</h2>
-  <p class="entradilla">Trece acciones ordenadas por lo que más rinde con menos esfuerzo. Las de prioridad alta bloquean el resultado de todas las demás.</p>
-
-  <div class="tabla-envoltura">
-    <table>
-      <thead><tr><th>#</th><th>Acción</th><th>Para qué sirve</th><th>Prioridad</th><th>Quién</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td class="crit">Corregir el orden de carga de la imagen de portada en celular</td><td>Bajar de 16,7 s a menos de 3 s: es donde se está perdiendo la venta</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
-        <tr><td>2</td><td class="crit">Publicar el mapa del sitio (<code>sitemap.xml</code>)</td><td>Que Google encuentre todas las páginas, no solo algunas</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
-        <tr><td>3</td><td class="crit">Añadir un título principal (H1) a cada página</td><td>Que Google entienda de qué trata cada página</td><td><span class="etiqueta e-alta">Alta</span></td><td>Desarrollo</td></tr>
-        <tr><td>4</td><td class="crit">Reescribir títulos y descripciones con las palabras que la gente busca</td><td>Más clics desde Google con el mismo tráfico</td><td><span class="etiqueta e-alta">Alta</span></td><td>Contenido</td></tr>
-        <tr><td>5</td><td class="crit">Decidir el futuro de la tienda en Shopify y redirigir sus direcciones</td><td>Dejar de competir contra uno mismo y recuperar el historial</td><td><span class="etiqueta e-alta">Alta</span></td><td>Dirección</td></tr>
-        <tr><td>6</td><td class="crit">Revisar certificado, actualizaciones y protección de formularios</td><td>Evitar caídas del sitio y riesgo sobre los datos de clientes</td><td><span class="etiqueta e-alta">Alta</span></td><td>Infraestructura</td></tr>
-        <tr><td>7</td><td class="crit">Confirmar que estén publicadas las políticas de servicio y devoluciones</td><td>Cumplimiento legal y confianza en la compra</td><td><span class="etiqueta e-alta">Alta</span></td><td>Legal</td></tr>
-        <tr><td>8</td><td class="crit">Aligerar el código y diferir lo que no se ve al entrar</td><td>Reducir el bloqueo de 540 ms y subir la calificación en celular</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
-        <tr><td>9</td><td class="crit">Aplicar el mismo criterio de carga al resto del catálogo</td><td>Que las fichas de producto y las colecciones abran igual de rápido</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
-        <tr><td>10</td><td class="crit">Ordenar los encabezados y quitar el texto de relleno</td><td>Contenido más claro para el cliente y para Google</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo + Contenido</td></tr>
-        <tr><td>11</td><td class="crit">Ampliar los datos de empresa a fichas de producto</td><td>Que Google muestre precio y disponibilidad en los resultados</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
-        <tr><td>12</td><td class="crit">Crear una página dedicada a regalos corporativos con formulario</td><td>Captar el segmento de mayor ticket</td><td><span class="etiqueta e-media">Media</span></td><td>Marketing</td></tr>
-        <tr><td>13</td><td class="crit">Mejorar accesibilidad, legibilidad para asistentes de IA, copias de seguridad y panel de seguimiento</td><td>Mejor experiencia, presencia en la compra asistida y control del avance</td><td><span class="etiqueta e-baja">Baja</span></td><td>Desarrollo + Infra</td></tr>
-      </tbody>
-    </table>
+<section>
+  <h2>El único fallo grave, explicado</h2>
+  <p>Pingdom dice que el sitio carga en 292 milisegundos. PageSpeed dice que la imagen tarda 16,7 segundos en verse. Las dos mediciones son correctas, y juntas señalan exactamente el problema.</p>
+  <p class="destacado">Con 542 KB de peso total, la lentitud no puede ser por el tamaño de las fotos. La imagen de portada se está pidiendo <em>tarde</em>: primero se descarga y ejecuta el código, y solo después se solicita la foto.</p>
+  <p>En una computadora esa cadena tarda un instante. En un celular con 4G se convierte en quince segundos de pantalla en blanco, y la mayoría de los visitantes se va antes.</p>
+  <div class="aviso ok">
+    <strong class="tit">Por qué es una buena noticia</strong>
+    <p style="margin-bottom:0">No hay que rehacer el sitio ni comprimir el catálogo de fotos. Es una corrección puntual de programación: <strong>que la imagen de portada se descargue primero, antes que el código</strong>. Días de trabajo, y el diseño no se toca.</p>
   </div>
+</section>
 
-  <h3>Cómo se ordena en el tiempo</h3>
-  <ol class="fases">
-    <li>
-      <h4>Arreglos de horas</h4>
-      <span class="plazo">Semana 1 · acciones 2, 3, 4</span>
-      <p>Los tres fallos SEO que se resuelven el mismo día y desbloquean la visibilidad en Google. Máximo retorno inmediato, coste mínimo.</p>
-    </li>
-    <li>
-      <h4>Velocidad en celular</h4>
-      <span class="plazo">Semanas 1–3 · acciones 1, 8, 9</span>
-      <p>La prioridad comercial del proyecto. Empezar por la imagen de portada, que es la que provoca los 16,7 segundos: hacer que se descargue primero, antes que el código. Después, aplicar el mismo criterio al resto del catálogo.</p>
-    </li>
-    <li>
-      <h4>Decisión sobre Shopify y cierre legal</h4>
-      <span class="plazo">Semanas 1–2 · acciones 5, 7</span>
-      <p>Definir si la tienda anterior se cierra y se redirige o se le da un rol diferenciado, y confirmar que las políticas de venta estén publicadas.</p>
-    </li>
-    <li>
-      <h4>Seguridad</h4>
-      <span class="plazo">Semanas 2–3 · acción 6</span>
-      <p>Revisión del servidor, certificado, actualizaciones y protección de formularios. Va en paralelo, es otro equipo.</p>
-    </li>
-    <li>
-      <h4>Contenido y conversión</h4>
-      <span class="plazo">Semanas 3–6 · acciones 10 a 13</span>
-      <p>Ordenar el contenido, enriquecer las fichas de producto y abrir la puerta comercial al canal corporativo.</p>
-    </li>
+<section>
+  <h2>Qué hacer</h2>
+  <ol class="acciones">
+    <li><b>Corregir el orden de carga de la imagen de portada<span class="tag t-alta">Alta</span></b><span>Bajar de 16,7 s a menos de 3 s en celular. Es donde se pierde la venta.</span></li>
+    <li><b>Publicar el mapa del sitio<span class="tag t-alta">Alta</span></b><span>Para que Google encuentre todas las páginas, no solo algunas. Horas de trabajo.</span></li>
+    <li><b>Poner un título principal en cada página<span class="tag t-alta">Alta</span></b><span>Hoy la portada no tiene ninguno. Horas de trabajo.</span></li>
+    <li><b>Reescribir títulos y descripciones<span class="tag t-alta">Alta</span></b><span>Con las palabras que la gente busca, como hacía Shopify. Más clics con el mismo tráfico.</span></li>
+    <li><b>Decidir qué pasa con la tienda de Shopify<span class="tag t-alta">Alta</span></b><span>Sigue publicada y visible. O se cierra y se redirige, o se le da un rol distinto.</span></li>
+    <li><b>Revisar la seguridad del servidor<span class="tag t-alta">Alta</span></b><span>Certificado, actualizaciones y protección de formularios. Shopify se encargaba solo; ahora no.</span></li>
+    <li><b>Aligerar el código y ordenar el contenido<span class="tag t-media">Media</span></b><span>Solo el 2,9 % de la página es texto. Hay relleno mezclado con el contenido real.</span></li>
+    <li><b>Crear una página de regalos corporativos<span class="tag t-media">Media</span></b><span>Es el segmento de mayor ticket y hoy no tiene puerta de entrada propia.</span></li>
   </ol>
 
-  <h3>Cómo sabremos que funcionó</h3>
-  <div class="tabla-envoltura">
-    <table>
-      <thead><tr><th>Indicador</th><th>Hoy</th><th>Meta a 90 días</th></tr></thead>
-      <tbody>
-        <tr><td class="crit">Velocidad en celular</td><td><span class="no">48 / 100</span> <span style="color:var(--tinta-suave)">(Shopify: 51)</span></td><td>90 o más</td></tr>
-        <tr><td class="crit">Tiempo en verse la imagen principal (celular)</td><td><span class="no">16,7 s</span> <span style="color:var(--tinta-suave)">(Shopify: 20,5 s)</span></td><td>Menos de 2,5 s</td></tr>
-        <tr><td class="crit">Velocidad en computadora</td><td>79 / 100 <span style="color:var(--tinta-suave)">(Shopify: 65)</span></td><td>90 o más</td></tr>
-        <tr><td class="crit">Errores en la auditoría SEO</td><td>2</td><td>0</td></tr>
-        <tr><td class="crit">Avisos en la auditoría SEO</td><td>3</td><td>0 o 1</td></tr>
-        <tr><td class="crit">Proporción de texto en la página</td><td>2,9 %</td><td>Por encima de 15 %</td></tr>
-        <tr><td class="crit">Peso de la página</td><td><span class="si">542,6 KB</span> <span style="color:var(--tinta-suave)">(Shopify: 2,9 MB)</span></td><td>Mantener por debajo de 1,5 MB</td></tr>
-        <tr><td class="crit">Calificación de Pingdom</td><td>B · 82 <span style="color:var(--tinta-suave)">(Shopify: D · 66)</span></td><td>A · 90 o más</td></tr>
-        <tr><td class="crit">Páginas que Google encuentra</td><td>Limitadas por la falta de mapa del sitio</td><td>Todo el catálogo publicado</td></tr>
-        <tr><td class="crit">Datos de usuarios reales en PageSpeed</td><td>Sin datos en ninguna plataforma</td><td>Con datos suficientes para medir</td></tr>
-        <tr><td class="crit">Accesibilidad</td><td>85 / 100 <span style="color:var(--tinta-suave)">(Shopify: 91 en celular)</span></td><td>90 o más</td></tr>
-        <tr><td class="crit">Solicitudes de regalos corporativos</td><td>Sin medición</td><td>Medición activa y en crecimiento</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section id="glosario">
-  <span class="num">Bloque 6</span>
-  <h2 class="bloque">Glosario</h2>
-  <p class="entradilla">Los siete términos que aparecen en el reporte, explicados sin tecnicismos.</p>
-  <div class="tabla-envoltura">
-    <table>
-      <thead><tr><th>Término</th><th>Qué es</th></tr></thead>
-      <tbody>
-        <tr><td class="crit">Mapa del sitio (sitemap)</td><td>Un listado que le entrega al buscador todas las páginas del sitio. Sin él, Google tiene que descubrirlas por su cuenta y suele dejar fuera muchas.</td></tr>
-        <tr><td class="crit">H1</td><td>El título principal que encabeza una página, como el titular de una nota. Debe haber uno por página.</td></tr>
-        <tr><td class="crit">Redirección</td><td>Instrucción que envía a quien visita una dirección antigua hacia la nueva, y que traslada al sitio nuevo el historial acumulado.</td></tr>
-        <tr><td class="crit">Etiqueta canónica</td><td>Aviso al buscador de cuál es la versión oficial de una página cuando existen varias parecidas.</td></tr>
-        <tr><td class="crit">Schema / datos de empresa</td><td>Información escrita en un formato que Google entiende directamente: nombre, dirección, teléfono, precios. Permite que los resultados se vean más completos.</td></tr>
-        <tr><td class="crit">Proporción texto/código</td><td>Cuánto de la página es contenido de verdad frente a instrucciones de programación. Poco texto suele significar página lenta y con poco valor para el buscador.</td></tr>
-        <tr><td class="crit">LCP</td><td>El tiempo que tarda en verse la imagen o el bloque más grande de la pantalla. Es la métrica que Google usa para decidir si un sitio es rápido o lento.</td></tr>
-        <tr><td class="crit">Certificado de seguridad</td><td>Lo que hace que aparezca el candado en el navegador. Si caduca, el navegador advierte que el sitio no es seguro y muchos clientes se van.</td></tr>
-      </tbody>
-    </table>
+  <div class="aviso nota">
+    <strong class="tit">Cómo mediremos que funcionó</strong>
+    <p style="margin-bottom:0">Velocidad en celular de <strong>48 a más de 90</strong> · imagen de portada de <strong>16,7 s a menos de 2,5 s</strong> · errores de SEO de <strong>2 a 0</strong> · proporción de texto de <strong>2,9 % a más de 15 %</strong> · y solicitudes de regalos corporativos medidas y en crecimiento.</p>
   </div>
 </section>
 
 </main>
-</div>
 
-<footer class="pie">
-  <div class="pie-inner">
-    <p><strong>Reporte de migración web — Koon Artesanos / Alfa Jardín.</strong></p>
-    <p>Los datos SEO provienen de mediciones reales con SEOQuake sobre la página de inicio de ambos sitios. Los datos de velocidad provienen de Google PageSpeed Insights sobre ambos sitios, medidos el 1 de septiembre de 2026 en computadora y en celular. El peso y el número de archivos provienen de Pingdom Tools sobre ambos sitios. Queda pendiente únicamente la revisión de configuración del servidor descrita en el bloque 3.</p>
-    <p style="margin-bottom:0">Septiembre 2026 · Consultoría de SEO técnico, rendimiento web y seguridad.</p>
+<footer>
+  <div>
+    <p><strong>Diagnóstico web — Koon Artesanos / Alfa Jardín.</strong> Septiembre 2026.</p>
+    <p>Datos medidos el 1 de septiembre de 2026 con SEOQuake, Google PageSpeed Insights y Pingdom Tools sobre koonartesanos.com y koonartesanos.myshopify.com. Los medidores circulares reproducen los valores de PageSpeed. Pendiente únicamente la revisión de configuración del servidor.</p>
   </div>
 </footer>
-
-<script>
-(function(){
-  var enlaces = Array.prototype.slice.call(document.querySelectorAll('.indice a'));
-  var secciones = enlaces.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); });
-  if(!('IntersectionObserver' in window)) return;
-  var obs = new IntersectionObserver(function(entradas){
-    entradas.forEach(function(e){
-      if(!e.isIntersecting) return;
-      var i = secciones.indexOf(e.target);
-      if(i < 0) return;
-      enlaces.forEach(function(a){ a.classList.remove('activo'); });
-      enlaces[i].classList.add('activo');
-    });
-  }, { rootMargin: '-10% 0px -70% 0px' });
-  secciones.forEach(function(s){ if(s) obs.observe(s); });
-})();
-</script>
 
 </body>
 </html>
