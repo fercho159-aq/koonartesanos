@@ -25,8 +25,7 @@ mediciones reales de herramientas.
 | Bloque | Herramienta | Estado |
 |---|---|---|
 | Comparativa SEO | SEOQuake (ambos sitios) | Datos reales incorporados |
-| Velocidad | PageSpeed Insights (koonartesanos.com) | Datos reales incorporados |
-| Velocidad | PageSpeed Insights (Shopify) | Pendiente, para comparativa |
+| Velocidad | PageSpeed Insights (ambos sitios) | Datos reales incorporados |
 | Velocidad | Pingdom Tools | Pendiente de recibir |
 | Seguridad | Revisión de servidor | Pendiente de ejecutar |
 

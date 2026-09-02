@@ -207,7 +207,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
       <tbody>
         <tr>
           <td class="crit">En celular, la página tarda <strong>16,7 segundos</strong> en mostrar la imagen principal</td>
-          <td>La mayoría de los visitantes se va antes de ver el primer producto. Es el fallo más caro de todos.</td>
+          <td>La mayoría de los visitantes se va antes de ver el primer producto. Es el fallo más caro de todos. Viene heredado de Shopify, que tardaba aún más.</td>
           <td><span class="etiqueta e-media">Días</span></td>
         </tr>
         <tr>
@@ -236,7 +236,8 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
 
   <div class="aviso critico">
     <strong class="tit">El dato que más pesa</strong>
-    <p style="margin-bottom:0">En computadora el sitio va bien: <strong>79 de 100</strong> en velocidad. En celular baja a <strong>48 de 100</strong>, y la imagen principal tarda <strong>16,7 segundos</strong> en aparecer. El máximo recomendable son 2,5 segundos. Como la mayoría de los clientes de esta categoría entra desde el teléfono, aquí es donde se está perdiendo el negocio.</p>
+    <p>En computadora el sitio va bien: <strong>79 de 100</strong> en velocidad. En celular baja a <strong>48 de 100</strong>, y la imagen principal tarda <strong>16,7 segundos</strong> en aparecer. El máximo recomendable son 2,5 segundos. Como la mayoría de los clientes de esta categoría entra desde el teléfono, aquí es donde se está perdiendo el negocio.</p>
+    <p style="margin-bottom:0"><strong>Con un matiz importante y justo:</strong> la tienda anterior en Shopify era todavía más lenta en celular (20,5 segundos). El problema no lo creó la migración —viene de antes—, pero tampoco se resolvió. Es una deuda pendiente de las dos plataformas.</p>
   </div>
 
   <h3>Y una decisión pendiente</h3>
@@ -402,114 +403,140 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
 <section id="velocidad">
   <span class="num">Bloque 4</span>
   <h2 class="bloque">Velocidad y experiencia de carga</h2>
-  <p class="entradilla">Medición real con Google PageSpeed Insights sobre <code>koonartesanos.com</code>, el 1 de septiembre de 2026.</p>
+  <p class="entradilla">Medición real con Google PageSpeed Insights sobre los dos sitios, el 1 de septiembre de 2026, en computadora y en celular.</p>
 
   <div class="semaforo">
     <div class="sitio antes">
-      <p class="nombre">En computadora</p>
-      <span class="url">Resultado aceptable</span>
+      <p class="nombre">Sitio anterior · Shopify</p>
+      <span class="url">koonartesanos.myshopify.com</span>
       <div class="marcadores">
-        <div class="marcador m-medio"><b>79</b><span>Velocidad</span></div>
-        <div class="marcador m-medio"><b>85</b><span>Accesib.</span></div>
-        <div class="marcador m-bien"><b>92</b><span>Buenas práct.</span></div>
-        <div class="marcador m-bien"><b>100</b><span>SEO</span></div>
+        <div class="marcador m-medio"><b>65</b><span>Computadora</span></div>
+        <div class="marcador m-medio"><b>51</b><span>Celular</span></div>
       </div>
     </div>
     <div class="sitio ahora">
-      <p class="nombre">En celular</p>
-      <span class="url">Resultado deficiente</span>
+      <p class="nombre">Sitio nuevo</p>
+      <span class="url">koonartesanos.com</span>
       <div class="marcadores">
-        <div class="marcador m-mal"><b>48</b><span>Velocidad</span></div>
-        <div class="marcador m-medio"><b>85</b><span>Accesib.</span></div>
-        <div class="marcador m-bien"><b>96</b><span>Buenas práct.</span></div>
-        <div class="marcador m-bien"><b>100</b><span>SEO</span></div>
+        <div class="marcador m-medio"><b>79</b><span>Computadora</span></div>
+        <div class="marcador m-mal"><b>48</b><span>Celular</span></div>
       </div>
     </div>
   </div>
-  <p style="font-size:13.5px;color:var(--tinta-suave);margin-top:-12px">PageSpeed Insights, 1 sept 2026. Prueba en celular simulando un teléfono de gama media con red 4G, que es el escenario real de la mayoría de los clientes.</p>
+  <p style="font-size:13.5px;color:var(--tinta-suave);margin-top:-12px">Calificación de velocidad sobre 100. La prueba en celular simula un teléfono de gama media con red 4G, que es el escenario real de la mayoría de los clientes.</p>
 
   <div class="aviso critico">
     <strong class="tit">El hallazgo principal de todo el reporte</strong>
-    <p>La imagen principal de la portada tarda <strong>16,7 segundos</strong> en aparecer en celular. El máximo recomendable son <strong>2,5 segundos</strong>: el sitio está casi <strong>siete veces por encima</strong>.</p>
+    <p>En celular, la imagen principal tarda <strong>16,7 segundos</strong> en aparecer. El máximo recomendable son <strong>2,5 segundos</strong>: el sitio está casi <strong>siete veces por encima</strong>.</p>
     <p style="margin-bottom:0">Traducido a negocio: quien entra desde el teléfono ve una pantalla prácticamente vacía durante más de quince segundos. La gran mayoría cierra antes de ver el primer producto. No importa cuánto tráfico se consiga si se pierde en la puerta.</p>
   </div>
 
-  <h3>Las cinco métricas, con sus valores reales</h3>
+  <div class="aviso nota">
+    <strong class="tit">Y una precisión que es de justicia</strong>
+    <p style="margin-bottom:0">La tienda anterior en Shopify tardaba <strong>20,5 segundos</strong> en lo mismo. <strong>La lentitud en celular no la provocó la migración: ya existía, y era peor.</strong> El sitio nuevo la mejoró en casi cuatro segundos, pero sigue muy lejos de lo aceptable. Es una deuda arrastrada de las dos plataformas, no un daño causado por el cambio.</p>
+  </div>
+
+  <h3>En celular — donde se juega el negocio</h3>
   <div class="tabla-envoltura">
     <table>
-      <thead><tr><th>Qué mide</th><th>Computadora</th><th>Celular</th><th>Meta</th><th>Veredicto</th></tr></thead>
+      <thead><tr><th>Qué mide</th><th>Shopify</th><th>Sitio nuevo</th><th>Meta</th><th>Quién gana</th></tr></thead>
       <tbody>
         <tr>
           <td class="crit">Tiempo en verse la imagen principal <span style="font-weight:400;color:var(--tinta-suave)">(LCP)</span></td>
-          <td>2,7 s</td>
-          <td><span class="no">16,7 s</span></td>
-          <td>≤ 2,5 s</td>
-          <td><span class="no">Crítico en celular</span></td>
+          <td><span class="no">20,5 s</span></td><td><span class="no">16,7 s</span></td><td>≤ 2,5 s</td>
+          <td><span class="si">Nuevo</span>, por 3,8 s. Ambos muy lejos.</td>
         </tr>
         <tr>
           <td class="crit">Tiempo en verse algo <span style="font-weight:400;color:var(--tinta-suave)">(FCP)</span></td>
-          <td><span class="si">0,5 s</span></td>
-          <td><span class="no">4,6 s</span></td>
-          <td>≤ 1,8 s</td>
-          <td><span class="no">Deficiente en celular</span></td>
+          <td><span class="no">8,5 s</span></td><td><span class="no">4,6 s</span></td><td>≤ 1,8 s</td>
+          <td><span class="si">Nuevo</span>, casi la mitad.</td>
         </tr>
         <tr>
           <td class="crit">Sensación general de carga <span style="font-weight:400;color:var(--tinta-suave)">(Speed Index)</span></td>
-          <td>2,6 s</td>
-          <td><span class="no">5,9 s</span></td>
-          <td>≤ 3,4 s</td>
-          <td><span class="no">Deficiente en celular</span></td>
+          <td><span class="no">9,5 s</span></td><td><span class="no">5,9 s</span></td><td>≤ 3,4 s</td>
+          <td><span class="si">Nuevo</span>, con diferencia.</td>
         </tr>
         <tr>
           <td class="crit">Bloqueo al tocar la pantalla <span style="font-weight:400;color:var(--tinta-suave)">(TBT)</span></td>
-          <td><span class="si">70 ms</span></td>
-          <td><span class="ojo">540 ms</span></td>
-          <td>≤ 200 ms</td>
-          <td><span class="ojo">Mejorable en celular</span></td>
+          <td><span class="ojo">280 ms</span></td><td><span class="ojo">540 ms</span></td><td>≤ 200 ms</td>
+          <td>Shopify. Único punto donde el nuevo va peor.</td>
         </tr>
         <tr>
           <td class="crit">Estabilidad: que nada se mueva solo <span style="font-weight:400;color:var(--tinta-suave)">(CLS)</span></td>
-          <td><span class="si">0,001</span></td>
-          <td><span class="si">0</span></td>
-          <td>≤ 0,1</td>
-          <td><span class="si">Excelente en ambos</span></td>
+          <td><span class="si">0</span></td><td><span class="si">0</span></td><td>≤ 0,1</td>
+          <td><span class="si">Empate perfecto.</span></td>
+        </tr>
+        <tr>
+          <td class="crit">Calificación global</td>
+          <td>51 / 100</td><td>48 / 100</td><td>90 o más</td>
+          <td>Empate técnico. Ninguno aprueba.</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p style="font-size:13.5px;color:var(--tinta-suave);margin-top:-12px">Las metas corresponden a los umbrales oficiales de Google. En computadora la herramienta aplica una escala más exigente, por eso marca en rojo valores que en la escala general serían aceptables.</p>
+
+  <h3>En computadora</h3>
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Qué mide</th><th>Shopify</th><th>Sitio nuevo</th><th>Meta</th><th>Quién gana</th></tr></thead>
+      <tbody>
+        <tr><td class="crit">Imagen principal (LCP)</td><td><span class="si">1,2 s</span></td><td>2,7 s</td><td>≤ 2,5 s</td><td>Shopify. El punto más claro a su favor.</td></tr>
+        <tr><td class="crit">Primer contenido (FCP)</td><td><span class="si">0,7 s</span></td><td><span class="si">0,5 s</span></td><td>≤ 1,8 s</td><td><span class="si">Nuevo</span>. Ambos bien.</td></tr>
+        <tr><td class="crit">Sensación de carga</td><td>2,3 s</td><td>2,6 s</td><td>≤ 3,4 s</td><td>Shopify, por poco.</td></tr>
+        <tr><td class="crit">Bloqueo al tocar (TBT)</td><td><span class="no">810 ms</span></td><td><span class="si">70 ms</span></td><td>≤ 200 ms</td><td><span class="si">Nuevo</span>, once veces mejor.</td></tr>
+        <tr><td class="crit">Estabilidad (CLS)</td><td><span class="si">0,001</span></td><td><span class="si">0,001</span></td><td>≤ 0,1</td><td><span class="si">Empate perfecto.</span></td></tr>
+        <tr><td class="crit">Calificación global</td><td>65 / 100</td><td><span class="si">79 / 100</span></td><td>90 o más</td><td><span class="si">Nuevo</span>, 14 puntos arriba.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Las otras calificaciones</h3>
+  <div class="tabla-envoltura">
+    <table>
+      <thead><tr><th>Categoría</th><th>Shopify</th><th>Sitio nuevo</th><th>Lectura</th></tr></thead>
+      <tbody>
+        <tr><td class="crit">Prácticas recomendadas</td><td>73</td><td><span class="si">92–96</span></td><td><span class="si">El sitio nuevo está mucho mejor construido.</span></td></tr>
+        <tr><td class="crit">Accesibilidad en celular</td><td><span class="si">91</span></td><td>85</td><td>Shopify. Margen de mejora en el nuevo.</td></tr>
+        <tr><td class="crit">Accesibilidad en computadora</td><td>84</td><td>85</td><td>Empate.</td></tr>
+        <tr><td class="crit">SEO (lista básica de Google)</td><td>100</td><td>100</td><td>Empate. Ver la nota de abajo.</td></tr>
+        <tr><td class="crit">Navegación por asistentes de IA</td><td><span class="si">4 de 4</span></td><td>1 de 2</td><td>Shopify. Cuenta cada vez más para la compra asistida.</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <h3>Dos lecturas que conviene entender bien</h3>
 
   <div class="aviso nota">
     <strong class="tit">Por qué el «SEO 100» no contradice el bloque 2</strong>
-    <p style="margin-bottom:0">PageSpeed da <strong>100 de 100 en SEO</strong>, y eso está muy bien, pero mide una lista corta de requisitos básicos: que exista un título, que haya descripción, que la versión móvil esté declarada, que el texto sea legible. <strong>No revisa si hay mapa del sitio, ni si existe un H1, ni si el título está bien escrito.</strong> Eso lo revisa SEOQuake, y ahí es donde aparecen los fallos. Las dos herramientas son compatibles: una mide que estén los cimientos, la otra mide si están bien puestos.</p>
+    <p style="margin-bottom:0">PageSpeed da <strong>100 de 100 en SEO a los dos sitios</strong>, y eso está bien, pero mide una lista corta de requisitos básicos: que exista un título, que haya descripción, que la versión móvil esté declarada, que el texto sea legible. <strong>No revisa si hay mapa del sitio, ni si existe un H1, ni si el título está bien escrito.</strong> Eso lo revisa SEOQuake, y ahí es donde aparecen los fallos. Las dos herramientas son compatibles: una comprueba que estén los cimientos, la otra si están bien puestos.</p>
   </div>
 
   <div class="aviso nota">
-    <strong class="tit">«No hay datos de usuarios reales»</strong>
-    <p style="margin-bottom:0">Google no pudo mostrar la experiencia de visitantes reales porque el sitio <strong>no alcanza el volumen mínimo de visitas</strong> que necesita para reunir esa información. Es, en sí mismo, una confirmación del diagnóstico: el tráfico todavía es bajo. Cuando las correcciones surtan efecto, este apartado empezará a mostrar datos y servirá para medir el avance.</p>
+    <strong class="tit">«No hay datos de usuarios reales» — en los dos sitios</strong>
+    <p style="margin-bottom:0">Google no pudo mostrar la experiencia de visitantes reales en <strong>ninguna de las dos plataformas</strong>, porque no alcanzan el volumen mínimo de visitas que necesita para reunir esa información. Es un dato sobre el tráfico de la marca en conjunto, no sobre el sitio nuevo en particular. Cuando las correcciones surtan efecto, este apartado empezará a mostrar datos y servirá para medir el avance.</p>
   </div>
 
   <h3>Qué está causando la lentitud</h3>
-  <p>Las cifras señalan un culpable claro y consistente:</p>
+  <p>Las cifras señalan un culpable claro y compartido por las dos plataformas:</p>
   <ul>
-    <li><strong>La imagen principal de la portada pesa demasiado.</strong> La pantalla aparece rápido (0,5 s en computadora) pero la foto grande tarda muchísimo. El problema no es que el sitio arranque lento: es que la imagen que lo encabeza es enorme.</li>
-    <li><strong>Hay mucho código ejecutándose antes de tiempo.</strong> Los 540 ms de bloqueo en celular y el 2,9 % de texto frente al código que detectó SEOQuake apuntan a lo mismo: se carga demasiado antes de mostrar lo importante.</li>
-    <li><strong>La estructura visual está bien resuelta.</strong> La estabilidad es prácticamente perfecta (0 y 0,001). Eso significa que el maquetado es correcto y que el problema es de peso, no de diseño.</li>
+    <li><strong>Las imágenes de portada pesan demasiado.</strong> Los dos sitios arrancan rápido en computadora (0,5 y 0,7 s) y luego se atascan esperando la foto grande. El problema no es el arranque: es el peso de la fotografía que encabeza la página.</li>
+    <li><strong>En celular el efecto se multiplica.</strong> Con red 4G y un teléfono de gama media, esa misma imagen pasa de tardar un segundo a tardar más de quince.</li>
+    <li><strong>El sitio nuevo carga más código de golpe</strong> (540 ms de bloqueo frente a los 280 ms de Shopify) y muestra solo un 2,9 % de texto frente al código, según SEOQuake. Se ejecuta demasiado antes de mostrar lo importante.</li>
+    <li><strong>La estructura visual está bien resuelta en ambos.</strong> La estabilidad es prácticamente perfecta. El problema es de peso, no de diseño.</li>
   </ul>
 
   <div class="aviso ok">
     <strong class="tit">La buena noticia</strong>
-    <p style="margin-bottom:0">Esto <strong>no obliga a rehacer el sitio</strong>. Optimizar las imágenes de portada y ordenar la carga de los archivos suele reducir el tiempo entre un 50 % y un 70 %. Es trabajo técnico acotado, de días, no de meses, y el diseño no se toca.</p>
+    <p style="margin-bottom:0">Esto <strong>no obliga a rehacer el sitio</strong>. Optimizar las imágenes de portada y ordenar la carga de los archivos suele reducir el tiempo entre un 50 % y un 70 %. Es trabajo técnico acotado, de días, no de meses, y el diseño no se toca. Además, el sitio nuevo parte de mejor base: está mejor construido (92–96 en buenas prácticas frente a 73) y ya gana en computadora por 14 puntos.</p>
   </div>
 
   <h3>Un apunte adicional</h3>
-  <p>La calificación de <strong>accesibilidad es 85</strong> en ambos dispositivos. No es un fallo, pero sí margen de mejora: tiene que ver con contrastes de color, etiquetas de botones y navegación con teclado. Importa por experiencia de usuario y, cada vez más, por cumplimiento. Conviene atenderlo en una segunda fase.</p>
+  <p>La <strong>accesibilidad</strong> del sitio nuevo es 85 en ambos dispositivos, mientras que Shopify llegaba a 91 en celular. No es un fallo, pero sí margen de mejora: tiene que ver con contrastes de color, etiquetas de botones y navegación con teclado. Importa por experiencia de usuario y, cada vez más, por cumplimiento.</p>
+  <p style="margin-bottom:0">También conviene mirar la <strong>navegación por asistentes de IA</strong>, donde Shopify cumple 4 de 4 requisitos y el sitio nuevo 1 de 2. A medida que más compras empiezan en un asistente conversacional, que el catálogo sea legible para ellos deja de ser un detalle técnico.</p>
 
   <div class="reservado">
     <strong>Pendiente para cerrar este bloque</strong>
-    <p>Falta el reporte de <strong>Pingdom Tools</strong> (peso total de la página y número de archivos) y, si se quiere comparativa completa, el <strong>PageSpeed de la tienda en Shopify</strong>. Ambos se incorporan en cuanto lleguen.</p>
+    <p>Falta el reporte de <strong>Pingdom Tools</strong>, que aporta el peso total de la página y el número de archivos que se descargan. Es el dato que permitirá cuantificar exactamente cuánto pesa la imagen de portada y cuánto se puede recortar.</p>
   </div>
 </section>
 
@@ -534,7 +561,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
         <tr><td>10</td><td class="crit">Ordenar los encabezados y quitar el texto de relleno</td><td>Contenido más claro para el cliente y para Google</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo + Contenido</td></tr>
         <tr><td>11</td><td class="crit">Ampliar los datos de empresa a fichas de producto</td><td>Que Google muestre precio y disponibilidad en los resultados</td><td><span class="etiqueta e-media">Media</span></td><td>Desarrollo</td></tr>
         <tr><td>12</td><td class="crit">Crear una página dedicada a regalos corporativos con formulario</td><td>Captar el segmento de mayor ticket</td><td><span class="etiqueta e-media">Media</span></td><td>Marketing</td></tr>
-        <tr><td>13</td><td class="crit">Mejorar accesibilidad, copias de seguridad y panel de seguimiento</td><td>Mejor experiencia, tranquilidad operativa y control del avance</td><td><span class="etiqueta e-baja">Baja</span></td><td>Desarrollo + Infra</td></tr>
+        <tr><td>13</td><td class="crit">Mejorar accesibilidad, legibilidad para asistentes de IA, copias de seguridad y panel de seguimiento</td><td>Mejor experiencia, presencia en la compra asistida y control del avance</td><td><span class="etiqueta e-baja">Baja</span></td><td>Desarrollo + Infra</td></tr>
       </tbody>
     </table>
   </div>
@@ -573,15 +600,15 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
     <table>
       <thead><tr><th>Indicador</th><th>Hoy</th><th>Meta a 90 días</th></tr></thead>
       <tbody>
-        <tr><td class="crit">Velocidad en celular</td><td><span class="no">48 / 100</span></td><td>90 o más</td></tr>
-        <tr><td class="crit">Tiempo en verse la imagen principal (celular)</td><td><span class="no">16,7 s</span></td><td>Menos de 2,5 s</td></tr>
-        <tr><td class="crit">Velocidad en computadora</td><td>79 / 100</td><td>90 o más</td></tr>
+        <tr><td class="crit">Velocidad en celular</td><td><span class="no">48 / 100</span> <span style="color:var(--tinta-suave)">(Shopify: 51)</span></td><td>90 o más</td></tr>
+        <tr><td class="crit">Tiempo en verse la imagen principal (celular)</td><td><span class="no">16,7 s</span> <span style="color:var(--tinta-suave)">(Shopify: 20,5 s)</span></td><td>Menos de 2,5 s</td></tr>
+        <tr><td class="crit">Velocidad en computadora</td><td>79 / 100 <span style="color:var(--tinta-suave)">(Shopify: 65)</span></td><td>90 o más</td></tr>
         <tr><td class="crit">Errores en la auditoría SEO</td><td>2</td><td>0</td></tr>
         <tr><td class="crit">Avisos en la auditoría SEO</td><td>3</td><td>0 o 1</td></tr>
         <tr><td class="crit">Proporción de texto en la página</td><td>2,9 %</td><td>Por encima de 15 %</td></tr>
         <tr><td class="crit">Páginas que Google encuentra</td><td>Limitadas por la falta de mapa del sitio</td><td>Todo el catálogo publicado</td></tr>
-        <tr><td class="crit">Datos de usuarios reales en PageSpeed</td><td>Sin datos por bajo tráfico</td><td>Con datos suficientes para medir</td></tr>
-        <tr><td class="crit">Accesibilidad</td><td>85 / 100</td><td>90 o más</td></tr>
+        <tr><td class="crit">Datos de usuarios reales en PageSpeed</td><td>Sin datos en ninguna plataforma</td><td>Con datos suficientes para medir</td></tr>
+        <tr><td class="crit">Accesibilidad</td><td>85 / 100 <span style="color:var(--tinta-suave)">(Shopify: 91 en celular)</span></td><td>90 o más</td></tr>
         <tr><td class="crit">Solicitudes de regalos corporativos</td><td>Sin medición</td><td>Medición activa y en crecimiento</td></tr>
       </tbody>
     </table>
@@ -615,7 +642,7 @@ footer.pie{border-top:1px solid var(--linea);background:var(--arena);padding:30p
 <footer class="pie">
   <div class="pie-inner">
     <p><strong>Reporte de migración web — Koon Artesanos / Alfa Jardín.</strong></p>
-    <p>Los datos SEO provienen de mediciones reales con SEOQuake sobre la página de inicio de ambos sitios. Los datos de velocidad provienen de Google PageSpeed Insights sobre koonartesanos.com, medidos el 1 de septiembre de 2026 en computadora y en celular. Quedan pendientes el reporte de Pingdom Tools y la revisión de configuración del servidor.</p>
+    <p>Los datos SEO provienen de mediciones reales con SEOQuake sobre la página de inicio de ambos sitios. Los datos de velocidad provienen de Google PageSpeed Insights sobre ambos sitios, medidos el 1 de septiembre de 2026 en computadora y en celular. Quedan pendientes el reporte de Pingdom Tools y la revisión de configuración del servidor.</p>
     <p style="margin-bottom:0">Septiembre 2026 · Consultoría de SEO técnico, rendimiento web y seguridad.</p>
   </div>
 </footer>
